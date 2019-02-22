@@ -7,7 +7,7 @@ using XInputDotNetPure;
 public class InputController : MonoBehaviour
 {
 
-    private enum ControllerType { Gamepad, Keyboard };
+    public enum ControllerType { Gamepad, Keyboard };
 
     private PlayerIndex player;
 
@@ -67,24 +67,51 @@ public class InputController : MonoBehaviour
         {
             holdTimer += Time.deltaTime;
         }
-
-
-        /********** temp for testing **********/
-        Vector2 movement = move(player, transform.position);
-        Vector2 looking = look(player, transform.position);
-        bool press = interactPress(player, buttonHoldTime, ref holdTimer, ref startHoldTimer);
-        bool hold = interactHold(player, buttonHoldTime, ref holdTimer, ref startHoldTimer);
-
-        transform.LookAt(new Vector3(transform.position.x + looking.x, transform.position.y, transform.position.z + looking.y));
-
-        Debug.Log("MOVEMENT: " + movement + "\tLOOKING: " + looking + "\tPRESS: " + press + "\tHOLD: " + hold);
-        /********** temp for testing **********/
     }
-
 
     private void OnDestroy()
     {
         UnsubscribeInputs();
+    }
+
+    public void ChangeControls(ControllerType inControlType)
+    {
+        UnsubscribeInputs();
+
+        if (inControlType == ControllerType.Gamepad)
+            CheckControllerConnected();
+        else
+            controllerType = ControllerType.Keyboard;
+        
+        SubscribeInputs();
+    }
+
+    private void TestStuff()
+    {
+        Vector2 movement = move(player, transform.position);
+        Vector2 looking = look(player, transform.position);
+        bool press = interactPress(player, buttonHoldTime, ref holdTimer, ref startHoldTimer);
+        bool hold = interactHold(player, buttonHoldTime, ref holdTimer, ref startHoldTimer);
+        bool pausing = pause(player);
+        bool phoning = mobile(player);
+        bool button1 = option1(player);
+        bool button2 = option2(player);
+        bool button3 = option3(player);
+        bool button4 = option4(player);
+
+        transform.LookAt(new Vector3(transform.position.x + looking.x, transform.position.y, transform.position.z + looking.y));
+
+        Debug.Log
+        (
+            "\tINTERACT PRESS: " + press + "\tINTERACT HOLD: " + hold +
+            "\tPAUSE: " + pausing + "\tMOBILE: " + phoning + "\tOPTION1: " + button1 + "\tOPTION2: " + button2 + "\tOPTION3: " +
+            button3 + "\tOPTION4: " + button4
+        );
+
+        //if(Input.GetKeyDown(KeyCode.Return))
+        //{
+        //    ChangeControls(ControllerType.Gamepad);
+        //}
     }
 
 
@@ -356,7 +383,7 @@ public class InputController : MonoBehaviour
 
         private bool canPress = false;
 
-
+        private bool mobileCanPress = false, pauseCanPress = false, option1CanPress = false, option2CanPress = false, option3CanPress = false, option4CanPress = false;
 
         public GamepadControls(float inDeadZone)
         {
@@ -436,7 +463,16 @@ public class InputController : MonoBehaviour
 
             if (triggerInput >= deadZone)
             {
-                return true;
+                mobileCanPress = true;
+            }
+
+            if(mobileCanPress == true)
+            {
+                if (triggerInput < deadZone)
+                {
+                    mobileCanPress = false;
+                    return true;
+                }    
             }
 
             return false;
@@ -448,7 +484,16 @@ public class InputController : MonoBehaviour
 
             if(state.Buttons.A == ButtonState.Pressed)
             {
-                return true;
+                option1CanPress = true;
+            }
+
+            if (option1CanPress == true)
+            {
+                if (state.Buttons.A == ButtonState.Released)
+                {
+                    option1CanPress = false;
+                    return true;
+                }
             }
 
             return false;
@@ -461,7 +506,16 @@ public class InputController : MonoBehaviour
 
             if (state.Buttons.B == ButtonState.Pressed)
             {
-                return true;
+                option2CanPress = true;
+            }
+
+            if (option2CanPress == true)
+            {
+                if (state.Buttons.B == ButtonState.Released)
+                {
+                    option2CanPress = false;
+                    return true;
+                }
             }
 
             return false;
@@ -473,7 +527,16 @@ public class InputController : MonoBehaviour
 
             if (state.Buttons.Y == ButtonState.Pressed)
             {
-                return true;
+                option3CanPress = true;
+            }
+
+            if (option3CanPress == true)
+            {
+                if (state.Buttons.Y == ButtonState.Released)
+                {
+                    option3CanPress = false;
+                    return true;
+                }
             }
 
             return false;
@@ -485,7 +548,16 @@ public class InputController : MonoBehaviour
 
             if (state.Buttons.X == ButtonState.Pressed)
             {
-                return true;
+                option4CanPress = true;
+            }
+
+            if (option4CanPress == true)
+            {
+                if (state.Buttons.X == ButtonState.Released)
+                {
+                    option4CanPress = false;
+                    return true;
+                }
             }
 
             return false;
@@ -497,7 +569,16 @@ public class InputController : MonoBehaviour
 
             if (state.Buttons.Start == ButtonState.Pressed)
             {
-                return true;
+                pauseCanPress = true;
+            }
+
+            if (pauseCanPress == true)
+            {
+                if (state.Buttons.Start == ButtonState.Released)
+                {
+                    pauseCanPress = false;
+                    return true;
+                }
             }
 
             return false;
