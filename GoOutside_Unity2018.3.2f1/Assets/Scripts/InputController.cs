@@ -9,7 +9,8 @@ public class InputController : MonoBehaviour
 
     public enum ControllerType { Gamepad, Keyboard };
 
-    private PlayerIndex player;
+    [HideInInspector]
+    public PlayerIndex player;
 
     [SerializeField]
     private bool enableControllerChecking = true;
@@ -51,7 +52,7 @@ public class InputController : MonoBehaviour
 
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         player = PlayerIndex.One;
 
@@ -234,20 +235,7 @@ public class InputController : MonoBehaviour
 
         public Vector2 Move(PlayerIndex player, Vector3 inPlayerPosition)
         {
-            float x = 0;
-            float y = 0;
-
-            if (Input.GetKey(KeyCode.W)) y += 1;
-            if (Input.GetKey(KeyCode.S)) y -= 1;
-            if (Input.GetKey(KeyCode.D)) x += 1;
-            if (Input.GetKey(KeyCode.A)) x -= 1;
-
-            if (x >= 1.0) x = 1.0f;
-            else if (x <= -1.0) x = -1.0f;
-            if (y >= 1.0) y = 1.0f;
-            else if (y <= -1.0) y = -1.0f;
-
-            return new Vector2(x, y);
+            return new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
         }
 
         public Vector2 Look(PlayerIndex player, Vector3 inPlayerPosition)
@@ -393,6 +381,14 @@ public class InputController : MonoBehaviour
         public Vector2 Move(PlayerIndex player, Vector3 inPlayerPosition)
         {
             GamePadState state = GamePad.GetState(player);
+            //float x = 0;
+            //float y = 0;
+
+            //if (state.ThumbSticks.Left.X < 0) x = -1;
+            //else if (state.ThumbSticks.Left.X > 0) x = 1;
+
+            //if (state.ThumbSticks.Left.Y < 0) y = -1;
+            //else if (state.ThumbSticks.Left.Y > 0) y = 1;
 
             return new Vector2(state.ThumbSticks.Left.X, state.ThumbSticks.Left.Y);
         }
