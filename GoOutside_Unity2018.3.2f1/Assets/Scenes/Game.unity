@@ -330,7 +330,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3620dcfd0c822c469ef69c06e0d99e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxSpeed: 2.58
+  maxSpeed: 6.5
+  moveDeadZone: 0.5
+  moveDeceleration: 6.18
+  moveAcceleration: 18
+  turnSpeed: 3.5
 --- !u!1 &1522592899
 GameObject:
   m_ObjectHideFlags: 0
