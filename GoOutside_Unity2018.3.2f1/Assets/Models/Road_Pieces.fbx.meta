@@ -1,0 +1,151 @@
+fileFormatVersion: 2
+guid: e2bf7f7c5e7eae941a43d5342c3d9cb3
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: Ground1
+    100002: //RootNode
+    100004: Thin_Corner
+    100006: Thin_Cross
+    100008: Thin_Straight
+    100010: Thin_Tee
+    100012: Wide_Corner
+    100014: Wide_Cross
+    100016: Wide_Straight
+    100018: Wide_Tee
+    100020: Wide_Thin_Cross
+    100022: Wide_Thin_Tee
+    400000: Ground1
+    400002: //RootNode
+    400004: Thin_Corner
+    400006: Thin_Cross
+    400008: Thin_Straight
+    400010: Thin_Tee
+    400012: Wide_Corner
+    400014: Wide_Cross
+    400016: Wide_Straight
+    400018: Wide_Tee
+    400020: Wide_Thin_Cross
+    400022: Wide_Thin_Tee
+    2100000: Road_Texture
+    2100002: Roads_Anxious
+    2100004: lambert11
+    2300000: Ground1
+    2300002: Thin_Corner
+    2300004: Thin_Cross
+    2300006: Thin_Straight
+    2300008: Thin_Tee
+    2300010: Wide_Corner
+    2300012: Wide_Cross
+    2300014: Wide_Straight
+    2300016: Wide_Tee
+    2300018: Wide_Thin_Cross
+    2300020: Wide_Thin_Tee
+    3300000: Ground1
+    3300002: Thin_Corner
+    3300004: Thin_Cross
+    3300006: Thin_Straight
+    3300008: Thin_Tee
+    3300010: Wide_Corner
+    3300012: Wide_Cross
+    3300014: Wide_Straight
+    3300016: Wide_Tee
+    3300018: Wide_Thin_Cross
+    3300020: Wide_Thin_Tee
+    4300000: Ground1
+    4300002: Wide_Straight
+    4300004: Wide_Corner
+    4300006: Wide_Tee
+    4300008: Wide_Cross
+    4300010: Thin_Straight
+    4300012: Thin_Corner
+    4300014: Thin_Tee
+    4300016: Thin_Cross
+    4300018: Wide_Thin_Tee
+    4300020: Wide_Thin_Cross
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 48
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    previousCalculatedGlobalScale: 1
+    hasPreviousCalculatedGlobalScale: 0
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
