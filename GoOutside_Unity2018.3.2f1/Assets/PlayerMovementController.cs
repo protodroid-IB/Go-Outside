@@ -29,22 +29,29 @@ public class PlayerMovementController : MonoBehaviour
     private float turnSpeed = 1.0f;
     private Quaternion turnRotation = new Quaternion();
 
-    
+    private Rigidbody playerRB;
+
+    private Vector2 direction;
+
+
+
 
 
     private void Start()
     {
         inputController = GameObject.FindWithTag("Managers").GetComponent<InputController>();
+        playerRB = GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        Vector2 direction = inputController.move(inputController.player, transform.position);
+        direction = inputController.move(inputController.player, transform.position);
 
         Turn(direction);
         Move(direction);
     }
+
 
     private void Turn(Vector2 inDirection)
     {
@@ -63,12 +70,15 @@ public class PlayerMovementController : MonoBehaviour
         if(inDirection.sqrMagnitude >= (moveDeadZone * moveDeadZone))
         {
             velocity = Vector3.Slerp(velocity, transform.forward * maxSpeed * Time.deltaTime, moveAcceleration * Time.deltaTime);
-
-            
         }
 
         transform.position += new Vector3(velocity.x, 0f, velocity.z);
 
         velocity = Vector3.Slerp(velocity, Vector3.zero, moveDeceleration * Time.deltaTime);
+    }
+
+    protected void LateUpdate()
+    {
+        transform.localEulerAngles = new Vector3(0, transform.localEulerAngles.y, 0);
     }
 }

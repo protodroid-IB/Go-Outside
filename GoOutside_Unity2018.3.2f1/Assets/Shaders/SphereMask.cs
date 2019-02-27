@@ -5,22 +5,45 @@ using UnityEngine;
 [ExecuteInEditMode]
 public class SphereMask : MonoBehaviour
 {
-    public float maxRadius = 2f;
+    public float minRadius = 5f, maxRadius = 75f;
+    private float radius, radiusDistance;
+
     public float speed = 10f;
 
     public bool ossiclateEffect = false;
 
 
-    // Update is called once per frame
-    void Update()
+    private void Start()
     {
-        float radius;
+        radius = maxRadius;
+        radiusDistance = maxRadius - minRadius;
+    }
 
-        if (ossiclateEffect)
-            radius = (maxRadius / 2) * Mathf.Sin(Time.time * speed / 100f) + (maxRadius / 2f);
-        else
-            radius = maxRadius;
+    //// Update is called once per frame
+    //void Update()
+    //{
+    //    float radius;
 
+    //    if (ossiclateEffect)
+    //        radius = (maxRadius / 2) * Mathf.Sin(Time.time * speed / 100f) + (maxRadius / 2f);
+    //    else
+    //        radius = maxRadius;
+
+
+    //    Shader.SetGlobalFloat("GLOBALMASK_Radius", radius);
+    //    Shader.SetGlobalVector("GLOBALMASK_Position", new Vector3(transform.position.x, transform.position.y - 0.3f, transform.position.z));
+    //}
+
+    private void Update()
+    {
+
+    }
+
+
+
+    public void UpdateMask(float inMentalState)
+    {
+        radius = minRadius + (radiusDistance * inMentalState);
 
         Shader.SetGlobalFloat("GLOBALMASK_Radius", radius);
         Shader.SetGlobalVector("GLOBALMASK_Position", new Vector3(transform.position.x, transform.position.y - 0.3f, transform.position.z));

@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 4492276278704123882}
   - component: {fileID: 689127664781903087}
   - component: {fileID: 4630876465499318145}
+  - component: {fileID: 3803886741947241666}
+  - component: {fileID: 4994821788389249383}
   m_Layer: 0
   m_Name: WideTee
   m_TagString: Untagged
@@ -77,3 +79,32 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!65 &3803886741947241666
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 310614934758046169}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 43.199997, y: 9.592327e-15, z: 43.200005}
+  m_Center: {x: -0.000025749207, y: 0, z: -0.0000009536743}
+--- !u!54 &4994821788389249383
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 310614934758046169}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 126
+  m_CollisionDetection: 0
