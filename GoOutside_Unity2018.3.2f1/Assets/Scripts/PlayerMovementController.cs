@@ -5,6 +5,22 @@ using UnityEngine;
 
 public class PlayerMovementController : MonoBehaviour
 {
+    #region singleton instance
+    public static PlayerMovementController instance;
+
+    private void MakeSingleton()
+    {
+        if (FindObjectsOfType(GetType()).Length > 1)
+        {
+            Destroy(gameObject);
+        }
+        else instance = this;
+    }
+    #endregion
+
+    [HideInInspector]
+    public Transform playerTransform;
+
     private InputController inputController;
 
     [SerializeField]
@@ -34,7 +50,11 @@ public class PlayerMovementController : MonoBehaviour
     private Vector2 direction;
 
 
-
+    private void Awake()
+    {
+        MakeSingleton();
+        playerTransform = transform;
+    }
 
 
     private void Start()
