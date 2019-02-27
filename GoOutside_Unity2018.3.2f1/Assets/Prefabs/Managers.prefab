@@ -46,7 +46,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: 0
-  enableControllerChecking: 0
+  enableControllerChecking: 1
   controllerType: 1
   gamePadDeadZone: 0.15
   buttonHoldTime: 0.25
@@ -62,7 +62,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2b6afc8d3cae094982e4e88f13b9571, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeProgressionSpeed: 5
+  totalGameTime: 0.25
+  startGameTime: 1
 --- !u!114 &732584037089853845
 MonoBehaviour:
   m_ObjectHideFlags: 0

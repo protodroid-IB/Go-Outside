@@ -7,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: PlayerTest
-  m_Shader: {fileID: 4800000, guid: 4103be99a8b7fd44a9754ab30f011570, type: 3}
+  m_Name: PersonTest
+  m_Shader: {fileID: 4800000, guid: 9d8023f84e5ec2d41bd53ac3fafbfc6c, type: 3}
   m_ShaderKeywords: _SMOOTHNESS_TEXTURE_ALBEDO_CHANNEL_A
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -24,7 +24,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _BurnRamp:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: 7f0ef5b629ad12144bc8eec3646606b2, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _DetailAlbedoMap:
@@ -40,7 +40,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _DissolveTex:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: 8a5c076c9c13be1499d072bad2848702, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _EmissionMap:
@@ -73,12 +73,12 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Floats:
     - _BumpScale: 1
-    - _BurnSize: 0
+    - _BurnSize: 0.041
     - _Cutoff: 0.5
     - _DetailNormalMapScale: 1
-    - _DissolveAmount: 0.052
-    - _DissolveLineWidth: 0
-    - _DissolveScale: 0
+    - _DissolveAmount: 0
+    - _DissolveLineWidth: 0.081
+    - _DissolveScale: 1.05
     - _DstBlend: 0
     - _EmissionAmount: 1
     - _GlossMapScale: 0
@@ -94,7 +94,7 @@ Material:
     - _UVSec: 0
     - _ZWrite: 1
     m_Colors:
-    - _Color: {r: 1, g: 0.9764151, b: 0.9764151, a: 1}
-    - _Color2: {r: 1, g: 1, b: 1, a: 1}
+    - _Color: {r: 0, g: 0, b: 0, a: 1}
+    - _Color2: {r: 0, g: 0, b: 0, a: 1}
     - _DissolveLineColor: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}

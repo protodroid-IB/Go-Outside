@@ -154,7 +154,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a618e71326daf9049948ea04f08ea691, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxRadius: 48.12
+  minRadius: 1
+  maxRadius: 65
   speed: 10
   ossiclateEffect: 0
 --- !u!54 &5005859495751140709

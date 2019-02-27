@@ -8,9 +8,7 @@ public class SphereMask : MonoBehaviour
     public float minRadius = 5f, maxRadius = 75f;
     private float radius, radiusDistance;
 
-    public float speed = 10f;
-
-    public bool ossiclateEffect = false;
+    public bool debugMode = false;
 
 
     private void Start()
@@ -43,9 +41,17 @@ public class SphereMask : MonoBehaviour
 
     public void UpdateMask(float inMentalState)
     {
-        radius = minRadius + (radiusDistance * inMentalState);
+        if (!debugMode)
+            radius = minRadius + (radiusDistance * inMentalState);
+        else
+            radius = maxRadius;
 
         Shader.SetGlobalFloat("GLOBALMASK_Radius", radius);
         Shader.SetGlobalVector("GLOBALMASK_Position", new Vector3(transform.position.x, transform.position.y - 0.3f, transform.position.z));
+    }
+
+    private void OnValidate()
+    {
+        UpdateMask(1f);
     }
 }

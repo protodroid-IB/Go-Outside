@@ -9,7 +9,7 @@ public class PlayerMovementController : MonoBehaviour
 
     [SerializeField]
     [Range(0.5f, 20)]
-    private float maxSpeed;
+    private float maxSpeed = 14f;
 
     [SerializeField]
     private float moveDeadZone = 0.5f;
