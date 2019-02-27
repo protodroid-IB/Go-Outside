@@ -212,10 +212,10 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 3.5
+  m_Speed: 5
   m_Acceleration: 8
   avoidancePriority: 50
-  m_AngularSpeed: 120
+  m_AngularSpeed: 800
   m_StoppingDistance: 0
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
@@ -234,6 +234,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2734782773862494603}
   - component: {fileID: 906839357814099120}
+  - component: {fileID: 3411316637288550421}
   m_Layer: 0
   m_Name: Person
   m_TagString: Untagged
@@ -267,6 +268,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4bb0d9ed7cd5d8b4d91e5bfc15eaa05d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &3411316637288550421
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 353719531087285880}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd223b9ab8ba4b64899ec8bd6b2e174c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &6875068546173306609
