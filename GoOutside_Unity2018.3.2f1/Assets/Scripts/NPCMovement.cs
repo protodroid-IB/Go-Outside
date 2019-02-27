@@ -9,6 +9,8 @@ public class NPCMovement : MonoBehaviour
     private NavMeshAgent navAgent;
     private Collider patrolArea;
 
+    private NPCInteraction npcInteraction;
+
     private Transform target;
 
     // Start is called before the first frame update
@@ -16,20 +18,33 @@ public class NPCMovement : MonoBehaviour
     {
         navAgent = transform.GetChild(0).GetComponent<NavMeshAgent>();
         patrolArea = transform.GetChild(1).GetComponent<Collider>();
+        npcInteraction = GetComponent<NPCInteraction>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        CheckInPatrolBounds();
+        
 
-        if (target == null)
+        if(!npcInteraction.GetFreezeNPC())
         {
-            GoHome();
+            navAgent.isStopped = false;
+
+            CheckInPatrolBounds();
+
+            if (target == null)
+            {
+                GoHome();
+            }
+            else
+            {
+                ChaseTarget();
+            }
         }
         else
         {
-            ChaseTarget();
+            if (target != null) target = null;
+            navAgent.isStopped = true;
         }
     }
 

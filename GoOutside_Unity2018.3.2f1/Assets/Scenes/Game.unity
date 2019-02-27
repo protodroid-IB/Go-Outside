@@ -64228,7 +64228,7 @@ PrefabInstance:
     - target: {fileID: 732584037089853844, guid: e1e97150fee4c2c4e87188d111ad3b47,
         type: 3}
       propertyPath: totalGameTime
-      value: 1
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e1e97150fee4c2c4e87188d111ad3b47, type: 3}
@@ -64506,7 +64506,7 @@ PrefabInstance:
     - target: {fileID: 5005859495751140762, guid: c2eb6e399dfa6664baf3c990b28008b2,
         type: 3}
       propertyPath: debugMode
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5005859495751140762, guid: c2eb6e399dfa6664baf3c990b28008b2,
         type: 3}
@@ -64517,6 +64517,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Constraints
       value: 112
+      objectReference: {fileID: 0}
+    - target: {fileID: 5005859495896954653, guid: c2eb6e399dfa6664baf3c990b28008b2,
+        type: 3}
+      propertyPath: m_TagString
+      value: PlayerModel
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c2eb6e399dfa6664baf3c990b28008b2, type: 3}

@@ -4,6 +4,20 @@ using UnityEngine;
 
 public class ResourceManager : MonoBehaviour
 {
+    #region singleton instance
+    public static ResourceManager instance;
+
+    private void MakeSingleton()
+    {
+        if (FindObjectsOfType(GetType()).Length > 1)
+        {
+            Destroy(gameObject);
+        }
+        else instance = this;
+    }
+    #endregion
+
+
     private string timeOfDay = "";
     private int hour = 8;
     private float mins = 0;
