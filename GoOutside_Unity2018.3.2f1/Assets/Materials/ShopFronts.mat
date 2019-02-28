@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: House12
+  m_Name: ShopFronts
   m_Shader: {fileID: 4800000, guid: 4103be99a8b7fd44a9754ab30f011570, type: 3}
   m_ShaderKeywords: _SMOOTHNESS_TEXTURE_ALBEDO_CHANNEL_A
   m_LightmapFlags: 4
@@ -64,7 +64,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _SecondTex:
-        m_Texture: {fileID: 2800000, guid: da80c4f3c3f9e474f86ca43293cdf08c, type: 3}
+        m_Texture: {fileID: 2800000, guid: 14fcd8d3971cd3d4ba529d59cd6c1683, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _ToonRamp:
@@ -94,7 +94,7 @@ Material:
     - _UVSec: 0
     - _ZWrite: 1
     m_Colors:
-    - _Color: {r: 0.72352356, g: 0.741, b: 0.7406646, a: 1}
-    - _Color2: {r: 1, g: 1, b: 1, a: 1}
+    - _Color: {r: 0.7254902, g: 0.7411765, b: 0.7411765, a: 1}
+    - _Color2: {r: 0.8207547, g: 0.8207547, b: 0.8207547, a: 1}
     - _DissolveLineColor: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
