@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Road_Ground
+  m_Name: House15
   m_Shader: {fileID: 4800000, guid: 4103be99a8b7fd44a9754ab30f011570, type: 3}
   m_ShaderKeywords: _SMOOTHNESS_TEXTURE_ALBEDO_CHANNEL_A
   m_LightmapFlags: 4
@@ -40,7 +40,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _DissolveTex:
-        m_Texture: {fileID: 2800000, guid: 8a5c076c9c13be1499d072bad2848702, type: 3}
+        m_Texture: {fileID: 2800000, guid: 5a4065c0dd60ae3418b2ec9042593bca, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _EmissionMap:
@@ -48,7 +48,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: 59b3cac3a2247584c9bef3cdff6d2786, type: 3}
+        m_Texture: {fileID: 2800000, guid: 0c4d5df69e884de43bdada6eb08382c1, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
@@ -64,7 +64,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _SecondTex:
-        m_Texture: {fileID: 2800000, guid: d5bb63ffc95a5ff48b1651b70df0f57b, type: 3}
+        m_Texture: {fileID: 2800000, guid: 60f21190d0cf57c4d86c51535cfe3e54, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _ToonRamp:
@@ -78,7 +78,7 @@ Material:
     - _DetailNormalMapScale: 1
     - _DissolveAmount: 0.0035
     - _DissolveLineWidth: 0.003
-    - _DissolveScale: 0.001
+    - _DissolveScale: 0
     - _DstBlend: 0
     - _EmissionAmount: 2
     - _GlossMapScale: 0
@@ -94,7 +94,7 @@ Material:
     - _UVSec: 0
     - _ZWrite: 1
     m_Colors:
-    - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - _Color: {r: 0.7254902, g: 0.7411765, b: 0.7411765, a: 1}
     - _Color2: {r: 0.8207547, g: 0.8207547, b: 0.8207547, a: 1}
     - _DissolveLineColor: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
