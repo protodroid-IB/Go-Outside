@@ -1,0 +1,159 @@
+fileFormatVersion: 2
+guid: 59755b0509325bd41b3627076e227483
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: //RootNode
+    100002: Gym
+    100004: Players_House
+    100006: School
+    100008: GymBuilding
+    100010: GymRoof
+    100012: PlayerHouseBuilding
+    100014: PlayerHouseRoof
+    100016: SchoolBuilding
+    100018: SchoolRoof
+    100020: transform1
+    100022: transform2
+    100024: transform3
+    100026: pPlane78
+    400000: //RootNode
+    400002: Gym
+    400004: Players_House
+    400006: School
+    400008: GymBuilding
+    400010: GymRoof
+    400012: PlayerHouseBuilding
+    400014: PlayerHouseRoof
+    400016: SchoolBuilding
+    400018: SchoolRoof
+    400020: transform1
+    400022: transform2
+    400024: transform3
+    400026: pPlane78
+    2100000: HouseLot2
+    2100002: HouseLot3
+    2100004: Ground
+    2300000: Gym
+    2300002: Players_House
+    2300004: School
+    2300006: GymBuilding
+    2300008: GymRoof
+    2300010: PlayerHouseBuilding
+    2300012: PlayerHouseRoof
+    2300014: SchoolBuilding
+    2300016: SchoolRoof
+    2300018: pPlane78
+    3300000: Gym
+    3300002: Players_House
+    3300004: School
+    3300006: GymBuilding
+    3300008: GymRoof
+    3300010: PlayerHouseBuilding
+    3300012: PlayerHouseRoof
+    3300014: SchoolBuilding
+    3300016: SchoolRoof
+    3300018: pPlane78
+    4300000: Gym
+    4300002: School
+    4300004: Players_House
+    4300006: GymBuilding
+    4300008: GymRoof
+    4300010: SchoolBuilding
+    4300012: SchoolRoof
+    4300014: PlayerHouseBuilding
+    4300016: PlayerHouseRoof
+    4300018: pPlane78
+    6400000: GymBuilding
+    6400002: GymRoof
+    6400004: PlayerHouseBuilding
+    6400006: PlayerHouseRoof
+    6400008: SchoolBuilding
+    6400010: SchoolRoof
+    6400012: pPlane78
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 48
+    meshCompression: 0
+    addColliders: 1
+    useSRGBMaterialColor: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    previousCalculatedGlobalScale: 1
+    hasPreviousCalculatedGlobalScale: 0
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
