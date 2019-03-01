@@ -9,9 +9,13 @@ public class InputController : MonoBehaviour
 
     public enum ControllerType { Gamepad, Keyboard };
 
+    public enum ControlType { Move, Look, Interact1Press, Interact1Hold, Interact2, Interact3, Interact4, Pause, Option1, Option2, Option3, Option4 };
+
     [HideInInspector]
     public PlayerIndex player;
 
+    [Header("Controller Settings")]
+    [Space(2)]
     [SerializeField]
     private bool enableControllerChecking = true;
 
@@ -24,6 +28,8 @@ public class InputController : MonoBehaviour
     [SerializeField]
     private float buttonHoldTime = 0.12f;
 
+    
+
     private float holdTimer = 0f;
     private bool startHoldTimer = false;
 
@@ -35,19 +41,35 @@ public class InputController : MonoBehaviour
     public delegate bool Press(PlayerIndex player);
     public delegate bool Hold(PlayerIndex player, float holdTime, ref float timer, ref bool startTimer);
 
+    [Space(5)]
+    [Header("Controller Inputs")]
+    [Space(2)]
+
+    [Tooltip("The movement input - WASD or Arrows")]
+    public Control moveControl;
+
     // standard inputs
     public Directional move;
     public Directional look;
-    public Hold interactPress;
-    public Hold interactHold;
+    public Hold interact1Press;
+    public Hold interact1Hold;
     public Press pause;
-    public Press mobile;
+    public Press interact2Press;
+    public Press interact3Press;
+    public Press interact4Press;
 
     // dialogue option selecting
     public Press option1;
     public Press option2;
     public Press option3;
     public Press option4;
+
+
+
+    
+
+
+
 
 
 
@@ -91,10 +113,10 @@ public class InputController : MonoBehaviour
     {
         Vector2 movement = move(player, transform.position);
         Vector2 looking = look(player, transform.position);
-        bool press = interactPress(player, buttonHoldTime, ref holdTimer, ref startHoldTimer);
-        bool hold = interactHold(player, buttonHoldTime, ref holdTimer, ref startHoldTimer);
+        bool press = interact1Press(player, buttonHoldTime, ref holdTimer, ref startHoldTimer);
+        bool hold = interact1Hold(player, buttonHoldTime, ref holdTimer, ref startHoldTimer);
         bool pausing = pause(player);
-        bool phoning = mobile(player);
+        bool phoning = interact2Press(player);
         bool button1 = option1(player);
         bool button2 = option2(player);
         bool button3 = option3(player);
@@ -150,10 +172,12 @@ public class InputController : MonoBehaviour
             gamepadControls = new GamepadControls(gamePadDeadZone);
             move += gamepadControls.Move;
             look += gamepadControls.Look;
-            interactPress += gamepadControls.InteractPress;
-            interactHold += gamepadControls.InteractHold;
+            interact1Press += gamepadControls.InteractPress;
+            interact1Hold += gamepadControls.InteractHold;
             pause += gamepadControls.Pause;
-            mobile += gamepadControls.Mobile;
+            interact2Press += gamepadControls.Interact2;
+            interact3Press += gamepadControls.Interact3;
+            interact4Press += gamepadControls.Interact4;
             option1 += gamepadControls.Option1;
             option2 += gamepadControls.Option2;
             option3 += gamepadControls.Option3;
@@ -164,10 +188,12 @@ public class InputController : MonoBehaviour
             keyboardControls = new KeyboardControls();
             move += keyboardControls.Move;
             look += keyboardControls.Look;
-            interactPress += keyboardControls.InteractPress;
-            interactHold += keyboardControls.InteractHold;
+            interact1Press += keyboardControls.InteractPress;
+            interact1Hold += keyboardControls.InteractHold;
             pause += keyboardControls.Pause;
-            mobile += keyboardControls.Mobile;
+            interact2Press += keyboardControls.Interact2;
+            interact3Press += keyboardControls.Interact3;
+            interact4Press += keyboardControls.Interact4;
             option1 += keyboardControls.Option1;
             option2 += keyboardControls.Option2;
             option3 += keyboardControls.Option3;
@@ -182,10 +208,12 @@ public class InputController : MonoBehaviour
         {
             move -= gamepadControls.Move;
             look -= gamepadControls.Look;
-            interactPress -= gamepadControls.InteractPress;
-            interactHold -= gamepadControls.InteractHold;
+            interact1Press -= gamepadControls.InteractPress;
+            interact1Hold -= gamepadControls.InteractHold;
             pause -= gamepadControls.Pause;
-            mobile -= gamepadControls.Mobile;
+            interact2Press -= gamepadControls.Interact2;
+            interact3Press -= gamepadControls.Interact3;
+            interact4Press -= gamepadControls.Interact4;
             option1 -= gamepadControls.Option1;
             option2 -= gamepadControls.Option2;
             option3 -= gamepadControls.Option3;
@@ -196,10 +224,12 @@ public class InputController : MonoBehaviour
 
             move -= keyboardControls.Move;
             look -= keyboardControls.Look;
-            interactPress -= keyboardControls.InteractPress;
-            interactHold -= keyboardControls.InteractHold;
+            interact1Press -= keyboardControls.InteractPress;
+            interact1Hold -= keyboardControls.InteractHold;
             pause -= keyboardControls.Pause;
-            mobile -= keyboardControls.Mobile;
+            interact2Press -= keyboardControls.Interact2;
+            interact3Press -= keyboardControls.Interact3;
+            interact4Press -= keyboardControls.Interact4;
             option1 -= keyboardControls.Option1;
             option2 -= keyboardControls.Option2;
             option3 -= keyboardControls.Option3;
@@ -215,14 +245,29 @@ public class InputController : MonoBehaviour
      * 
      */ 
 
+    [Serializable]
+    public class Control
+    {
+        private ControlType controlType;
+        public KeyCode mappedKey;
+
+
+        public void SetControlType(ControlType inControlType)
+        {
+            controlType = inControlType;
+        }
+    }
+
     public interface IControls
     {
         Vector2 Move(PlayerIndex player, Vector3 thePlayerPosition);
         Vector2 Look(PlayerIndex player, Vector3 thePlayerPosition);
         bool InteractPress(PlayerIndex player, float inHoldTime, ref float inHoldTimer, ref bool inStartHoldTimer);
         bool InteractHold(PlayerIndex player, float inHoldTime, ref float inHoldTimer, ref bool inStartHoldTimer);
+        bool Interact2(PlayerIndex player);
+        bool Interact3(PlayerIndex player);
+        bool Interact4(PlayerIndex player);
         bool Pause(PlayerIndex player);
-        bool Mobile(PlayerIndex player);
         bool Option1(PlayerIndex player);
         bool Option2(PlayerIndex player);
         bool Option3(PlayerIndex player);
@@ -304,15 +349,37 @@ public class InputController : MonoBehaviour
             return false;
         }
 
-        public bool Mobile(PlayerIndex player)
+
+        public bool Interact2(PlayerIndex player)
         {
-            if(Input.GetKeyDown(KeyCode.Space))
+            if (Input.GetKeyDown(KeyCode.Alpha1))
             {
                 return true;
             }
 
             return false;
         }
+
+        public bool Interact3(PlayerIndex player)
+        {
+            if (Input.GetKeyDown(KeyCode.Alpha2))
+            {
+                return true;
+            }
+
+            return false;
+        }
+
+        public bool Interact4(PlayerIndex player)
+        {
+            if (Input.GetKeyDown(KeyCode.Alpha3))
+            {
+                return true;
+            }
+
+            return false;
+        }
+
 
         public bool Option1(PlayerIndex player)
         {
@@ -451,7 +518,7 @@ public class InputController : MonoBehaviour
             return false;
         }
 
-        public bool Mobile(PlayerIndex player)
+        public bool Interact2(PlayerIndex player)
         {
             GamePadState state = GamePad.GetState(player);
 
@@ -472,6 +539,50 @@ public class InputController : MonoBehaviour
             }
 
             return false;
+        }
+
+        public bool Interact3(PlayerIndex player)
+        {
+            GamePadState state = GamePad.GetState(player);
+
+            if (state.Buttons.A == ButtonState.Pressed)
+            {
+                option1CanPress = true;
+            }
+
+            if (option1CanPress == true)
+            {
+                if (state.Buttons.A == ButtonState.Released)
+                {
+                    option1CanPress = false;
+                    return true;
+                }
+            }
+
+            return false;
+
+        }
+
+        public bool Interact4(PlayerIndex player)
+        {
+            GamePadState state = GamePad.GetState(player);
+
+            if (state.Buttons.A == ButtonState.Pressed)
+            {
+                option1CanPress = true;
+            }
+
+            if (option1CanPress == true)
+            {
+                if (state.Buttons.A == ButtonState.Released)
+                {
+                    option1CanPress = false;
+                    return true;
+                }
+            }
+
+            return false;
+
         }
 
         public bool Option1(PlayerIndex player)

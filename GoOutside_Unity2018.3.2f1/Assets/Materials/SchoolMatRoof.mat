@@ -7,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: SchoolMat
-  m_Shader: {fileID: 4800000, guid: 4103be99a8b7fd44a9754ab30f011570, type: 3}
+  m_Name: SchoolMatRoof
+  m_Shader: {fileID: 4800000, guid: 3fd904ec7d7dcf44eab8f8293c6e4335, type: 3}
   m_ShaderKeywords: _SMOOTHNESS_TEXTURE_ALBEDO_CHANNEL_A
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -40,7 +40,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _DissolveTex:
-        m_Texture: {fileID: 2800000, guid: 5a4065c0dd60ae3418b2ec9042593bca, type: 3}
+        m_Texture: {fileID: 2800000, guid: b52f403d19ee0ec4a86ef2fe3e873821, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _EmissionMap:
@@ -76,11 +76,13 @@ Material:
     - _BurnSize: 0
     - _Cutoff: 0.5
     - _DetailNormalMapScale: 1
-    - _DissolveAmount: 0.0035
+    - _DisableDissolve: 0
+    - _DissolveAmount: 0.31666687
     - _DissolveLineWidth: 0.003
-    - _DissolveScale: 0
+    - _DissolveScale: 0.0035
     - _DstBlend: 0
     - _EmissionAmount: 0
+    - _EnableDissolve: 0
     - _GlossMapScale: 0
     - _Glossiness: 0
     - _GlossyReflections: 1
@@ -95,6 +97,6 @@ Material:
     - _ZWrite: 1
     m_Colors:
     - _Color: {r: 0.7254902, g: 0.7411765, b: 0.7411765, a: 1}
-    - _Color2: {r: 1, g: 0, b: 0.7737832, a: 1}
+    - _Color2: {r: 1, g: 0, b: 0.77254903, a: 1}
     - _DissolveLineColor: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
