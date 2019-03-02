@@ -4,21 +4,44 @@ using System.Collections.Generic;
 using UnityEngine;
 using XInputDotNetPure;
 
-public class InputController : MonoBehaviour
+[ExecuteInEditMode]
+public class InputControllerTest : MonoBehaviour
 {
 
-    public enum ControllerType { Gamepad, Keyboard };
+    public enum ControllerType
+    {
+        Gamepad, Keyboard
+    }
+
+    public enum GP_Axis
+    {
+        None, L_Joystick, R_Joystick, L_Trigger, R_Trigger
+    }
+
+    public enum KB_Axis
+    {
+        None, WASD, Arrows, MouseMove, MouseWheel
+    }
+
+    public enum GP_Button
+    {
+        None, GP_FaceButton1, GP_FaceButton2, GP_FaceButton3, GP_FaceButton4
+    }
+
+    public enum KB_Button
+    {
+        None, Q, E, F, L_Shift, R_Shift, L_Control, R_Control, Space, Return, Escape, AlphaNum1, AlphaNum2, AlphaNum3, AlhpaNum4, AlphaNum5, AlphaNum6, AlphaNum7, AlphaNum8, AlphaNum9, AlphaNum0
+    }
 
     [HideInInspector]
     public PlayerIndex player;
 
     [Header("Controller Settings")]
     [Space(2)]
-    [SerializeField]
-    private bool enableControllerChecking = true;
+    public bool enableControllerChecking = true;
 
     [SerializeField]
-    private ControllerType controllerType;
+    public ControllerType controllerType;
 
     [SerializeField]
     private float gamePadDeadZone = 0.1f;
@@ -26,7 +49,7 @@ public class InputController : MonoBehaviour
     [SerializeField]
     private float buttonHoldTime = 0.12f;
 
-    
+
 
     private float holdTimer = 0f;
     private bool startHoldTimer = false;
@@ -38,6 +61,23 @@ public class InputController : MonoBehaviour
     public delegate Vector2 Directional(PlayerIndex player, Vector3 position);
     public delegate bool Press(PlayerIndex player);
     public delegate bool Hold(PlayerIndex player, float holdTime, ref float timer, ref bool startTimer);
+
+    [Space(5)]
+    [Header("Controller Inputs")]
+    [Space(2)]
+
+    public ControlAxis moveControl;
+    public ControlAxis lookControl;
+    public ControlButton interact1Control;
+    public ControlButton interact2Control;
+    public ControlButton interact3Control;
+    public ControlButton interact4Control;
+    public ControlButton option1Control;
+    public ControlButton option2Control;
+    public ControlButton option3Control;
+    public ControlButton option4Control;
+    public ControlButton pauseControl;
+    public ControlButton quitControl;
 
 
     // standard inputs
@@ -58,7 +98,7 @@ public class InputController : MonoBehaviour
 
 
 
-    
+
 
 
 
@@ -97,7 +137,7 @@ public class InputController : MonoBehaviour
             CheckControllerConnected();
         else
             controllerType = ControllerType.Keyboard;
-        
+
         SubscribeInputs();
     }
 
@@ -140,7 +180,7 @@ public class InputController : MonoBehaviour
 
         controllerType = ControllerType.Keyboard;
 
-        while(controllerConnected == false && controllerNumber < 4)
+        while (controllerConnected == false && controllerNumber < 4)
         {
             player = (PlayerIndex)controllerNumber;
 
@@ -159,7 +199,7 @@ public class InputController : MonoBehaviour
     // This function subscribes the appropriate control inputs to the delegates depending on the controller type
     private void SubscribeInputs()
     {
-        if(controllerType == ControllerType.Gamepad)
+        if (controllerType == ControllerType.Gamepad)
         {
             gamepadControls = new GamepadControls(gamePadDeadZone);
             move += gamepadControls.Move;
@@ -235,7 +275,23 @@ public class InputController : MonoBehaviour
      *
      *  THE CONTROL CLASSES 
      * 
-     */ 
+     */
+
+    [Serializable]
+    public class ControlAxis
+    {
+        public GP_Axis gp_Axis = GP_Axis.None;
+        public KB_Axis kb_Axis = KB_Axis.None;
+    }
+
+    [Serializable]
+    public class ControlButton
+    {
+        public GP_Button gp_Button = GP_Button.None;
+        public KB_Button kb_Button = KB_Button.None;
+    }
+
+
 
     public interface IControls
     {

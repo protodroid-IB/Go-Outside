@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: SchoolMatRoof
+  m_Name: GymMatRoof
   m_Shader: {fileID: 4800000, guid: fb2e5977ae0e03b4983886d9fa3c9949, type: 3}
   m_ShaderKeywords: _SMOOTHNESS_TEXTURE_ALBEDO_CHANNEL_A
   m_LightmapFlags: 4
@@ -97,6 +97,6 @@ Material:
     - _ZWrite: 1
     m_Colors:
     - _Color: {r: 0.7254902, g: 0.7411765, b: 0.7411765, a: 1}
-    - _Color2: {r: 1, g: 0, b: 0.77254903, a: 1}
+    - _Color2: {r: 0.6745098, g: 0.8666667, b: 0.6509804, a: 1}
     - _DissolveLineColor: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}

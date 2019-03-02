@@ -1,4 +1,4 @@
-﻿Shader "Custom/Toon_SphereMask_TextureSwap_RoofDissolve"
+﻿Shader "Custom/Toon_SphereMask_TextureSwap_Roof"
 {
     Properties
     {
@@ -97,11 +97,11 @@
 			float3 secondaryTex = (step(_DissolveAmount, sphereNoise) * c2.rgb);
 			float3 resultTex = primaryTex + secondaryTex + DissolveLine;
 
-			if (_DissolveAmount > 0.0035)
-			{
-				half test = tex2D(_DissolveTex, IN.uv_MainTex).rgb - (_DissolveAmount);
-				clip(test);
-			}
+			float3 roofPlayerDistance = distance(GLOBALMASK_Position, IN.worldPos);
+			float3 roofDissolveAmount = 1 - (saturate(roofPlayerDistance / 35.0));
+
+			half test = tex2D(_DissolveTex, IN.uv_MainTex).rgb - (10.0 * roofDissolveAmount);
+			clip(test);
 
             o.Albedo = resultTex;
             o.Alpha = c.a;
