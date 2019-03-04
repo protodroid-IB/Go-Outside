@@ -20,7 +20,6 @@ public class InteractTrigger : MonoBehaviour
             {
                 interactable.beginInteract.Invoke();
             }
-            
         }
     }
 

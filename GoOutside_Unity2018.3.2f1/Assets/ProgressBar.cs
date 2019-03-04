@@ -12,32 +12,20 @@ public class ProgressBar : MonoBehaviour
     private Animator thisAnimator;
 
     private Interactable interactable;
-
-    [SerializeField]
-    private float timeToFillBar = 5f;
-    private float barFullAmount = 1f;
-    private float fillBarSpeed = 1f;
-
-    private float timeToDrainBarFromFull = 25f;
-    private float drainBarSpeed = 1f;
-
-    private bool isFull = false;
-    private bool isEmpty = true;
-
-    private float fillAmount = 0f;
+    private ProgressController progressController;
 
     // Start is called before the first frame update
     void Start()
     {
         interactable = GetComponentInParent<Interactable>();
+        progressController = interactable.transform.GetComponent<ProgressController>();
         thisAnimator = GetComponent<Animator>();
 
         interactable.interacting += UpdateBar;
         interactable.beginInteract += BeginInteract;
         interactable.endInteract += EndInteract;
 
-        fillBarSpeed = barFullAmount / timeToFillBar;
-        drainBarSpeed = barFullAmount / timeToDrainBarFromFull;
+        progressController.progressComplete += OnFull;
     }
 
     private void OnDestroy()
@@ -45,78 +33,41 @@ public class ProgressBar : MonoBehaviour
         interactable.interacting -= UpdateBar;
         interactable.beginInteract -= BeginInteract;
         interactable.endInteract -= EndInteract;
+
+        progressController.progressComplete -= OnFull;
     }
 
     private void OnFull()
     {
+        thisAnimator.SetBool("Full", true);
         interactable.interacting -= UpdateBar;
     }
 
     private void UpdateBar()
     {
-        if (!isFull)
-        {
-            IncreaseBar();
-        } 
+        // somethign here
     }
 
     private void Update()
     {
-        CheckBarState();
-
-        if(!isFull && !isEmpty)
-            DecreaseBar();
-
-        UpdateBarVisuals();
-    }
-
-    private void IncreaseBar()
-    {
-        fillAmount += fillBarSpeed * Time.deltaTime;
-
-        if (isFull)
-        {
-            OnFull();
-        }
-    }
-
-    private void DecreaseBar()
-    {
-        fillAmount -= drainBarSpeed * Time.deltaTime;
+         UpdateBarVisuals();
     }
 
     private void UpdateBarVisuals()
     {
-        fillTransform.localScale = new Vector3(fillAmount, fillTransform.localScale.y, fillTransform.localScale.z);
+        if(progressController != null && fillTransform != null)
+            fillTransform.localScale = new Vector3(progressController.GetProgress(), fillTransform.localScale.y, fillTransform.localScale.z);
     }
-
-
-
-    private void CheckBarState()
-    {
-        if (fillAmount <= 0.0f)
-        {
-            isEmpty = true;
-            fillAmount = 0.0f;
-        }
-        else isEmpty = false;
-
-        if (fillAmount >= 1.0f)
-        {
-            isFull = true;
-            fillAmount = 1.0f;
-        }
-        else isFull = false;
-    }
-
 
     private void BeginInteract()
     {
+        thisAnimator.ResetTrigger("Off");
         thisAnimator.SetTrigger("Idle");
     }
 
     private void EndInteract()
     {
+        thisAnimator.ResetTrigger("Idle");
         thisAnimator.SetTrigger("Off");
     }
 
