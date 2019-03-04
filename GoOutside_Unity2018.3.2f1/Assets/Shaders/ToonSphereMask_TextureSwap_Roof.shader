@@ -20,6 +20,8 @@
         _BurnRamp("Burn Ramp (RGB)", 2D) = "white" {}
 
 		_EmissionAmount("Emission amount", float) = 2.0
+
+		[MaterialToggle] _DissolveRoofBool("Can Dissolve Roof?", float) = 0
     }
     SubShader
     {
@@ -61,6 +63,9 @@
         float _BurnSize;
         float _EmissionAmount;
 
+		float _DissolveRoofBool;
+		float _RoofDissolveAmount;
+
         struct Input
         {
             float2 uv_MainTex;
@@ -100,8 +105,11 @@
 			float3 roofPlayerDistance = distance(GLOBALMASK_Position, IN.worldPos);
 			float3 roofDissolveAmount = 1 - (saturate(roofPlayerDistance / 35.0));
 
-			half test = tex2D(_DissolveTex, IN.uv_MainTex).rgb - (10.0 * roofDissolveAmount);
-			clip(test);
+			if(_DissolveRoofBool >= 0.5)
+			{
+				half test = tex2D(_DissolveTex, IN.uv_MainTex).rgb - (10.0 * roofDissolveAmount) * _RoofDissolveAmount;
+				clip(test);
+			}
 
             o.Albedo = resultTex;
             o.Alpha = c.a;

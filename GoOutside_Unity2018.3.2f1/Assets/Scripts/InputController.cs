@@ -23,13 +23,14 @@ public class InputController : MonoBehaviour
     [SerializeField]
     private float gamePadDeadZone = 0.1f;
 
-    [SerializeField]
-    private float buttonHoldTime = 0.12f;
+    public float buttonHoldTime = 0.12f;
 
     
+    [HideInInspector]
+    public float holdTimer = 0f;
 
-    private float holdTimer = 0f;
-    private bool startHoldTimer = false;
+    [HideInInspector]
+    public bool startHoldTimer = false;
 
     private KeyboardControls keyboardControls;
     private GamepadControls gamepadControls;

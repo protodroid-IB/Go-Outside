@@ -101,6 +101,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5005859495751140763}
   - component: {fileID: 5005859495751140708}
+  - component: {fileID: 7422356032455218033}
   - component: {fileID: 5005859495751140762}
   - component: {fileID: 5005859495751140709}
   m_Layer: 0
@@ -137,11 +138,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3620dcfd0c822c469ef69c06e0d99e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerTransform: {fileID: 0}
   maxSpeed: 14
   moveDeadZone: 0.5
   moveDeceleration: 6.18
   moveAcceleration: 18
   turnSpeed: 3.5
+--- !u!114 &7422356032455218033
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5005859495751140761}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78b86ac232739e943a1ffc8fdff2af3c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &5005859495751140762
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -156,8 +170,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minRadius: 1
   maxRadius: 65
-  speed: 10
-  ossiclateEffect: 0
+  debugMode: 0
 --- !u!54 &5005859495751140709
 Rigidbody:
   m_ObjectHideFlags: 0

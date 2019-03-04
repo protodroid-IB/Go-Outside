@@ -77,7 +77,7 @@ Material:
     - _Cutoff: 0.5
     - _DetailNormalMapScale: 1
     - _DissolveAmount: 0.0035
-    - _DissolveLineWidth: 0.003
+    - _DissolveLineWidth: 0.001
     - _DissolveScale: 0.001
     - _DstBlend: 0
     - _EmissionAmount: 2
