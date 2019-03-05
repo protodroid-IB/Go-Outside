@@ -68,11 +68,11 @@ public class NPCMovement : MonoBehaviour
         }
         else
         {
-            if(patrolArea.bounds.Contains(PlayerMovementController.instance.playerTransform.position))
+            if(patrolArea.bounds.Contains(GlobalReferences.instance.playerMovement.playerTransform.position))
             {
                 if (target == null)
                 {
-                    SetTarget(PlayerMovementController.instance.playerTransform);
+                    SetTarget(GlobalReferences.instance.playerMovement.playerTransform);
                 }
             }
             else

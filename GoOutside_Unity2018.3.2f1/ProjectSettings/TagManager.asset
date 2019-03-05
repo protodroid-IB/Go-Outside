@@ -9,6 +9,14 @@ TagManager:
   - PlayerModel
   - DoorEnter
   - DoorExit
+  - TickDropSister
+  - TickWorkout
+  - TickLetters
+  - TickDogs
+  - TickPickUpSister
+  - UICountWorkout
+  - UICountLetters
+  - UICountDogs
   layers:
   - Default
   - TransparentFX

@@ -5,7 +5,6 @@ using UnityEngine;
 [ExecuteInEditMode]
 public class CameraMovement : MonoBehaviour
 {
-    private PlayerMovementController playerMovementController;
     private Vector3 playerPosition = Vector3.zero;
 
     [SerializeField]
@@ -17,14 +16,13 @@ public class CameraMovement : MonoBehaviour
 
     private void Start()
     {
-        playerMovementController = GameObject.FindWithTag("Player").GetComponent<PlayerMovementController>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(playerMovementController != null)
-            SetPlayerPosition(playerMovementController.transform.position);
+        if(GlobalReferences.instance.playerMovement != null)
+            SetPlayerPosition(GlobalReferences.instance.playerMovement.transform.position);
         else
             SetPlayerPosition(GameObject.FindWithTag("Player").GetComponent<PlayerMovementController>().transform.position);
         MoveCamera();   

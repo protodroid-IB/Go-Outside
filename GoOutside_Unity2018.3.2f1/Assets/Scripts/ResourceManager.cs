@@ -3,29 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class ResourceManager : MonoBehaviour
-{
-    #region singleton instance
-    public static ResourceManager instance;
-
-    private void MakeSingleton()
-    {
-        if (FindObjectsOfType(GetType()).Length > 1)
-        {
-            Destroy(gameObject);
-        }
-        else instance = this;
-    }
-    #endregion
-
-
+{ 
     private string timeOfDay = "";
     private int hour = 8;
     private float mins = 0;
 
     private float mentalDeductSpeed = 1f;
     private float mentalState = 1f;
-
-    private SphereMask sphereMask;
 
 
     [Header("THE TOTAL REAL TIME LENGTH THAT A DAY BETWEEN 8AM AND 8PM SHOULD RUN FOR IN MINUTES")]
@@ -40,16 +24,10 @@ public class ResourceManager : MonoBehaviour
 
 
 
-
-    //[SerializeField]
-    //private float timeProgressionSpeed = 5f;
-
     // Start is called before the fcirst frame update
     void Start()
     {
-        //timeProgressionSpeed = totalInGameMinutes / totalGameTime;
-        
-        sphereMask = GameObject.FindWithTag("Player").GetComponent<SphereMask>();
+
         gameSpeed = totalInGameMinutes / (totalGameTime * 60f);
         mentalDeductSpeed = 1f / (totalGameTime * 60f);
     }
@@ -111,7 +89,7 @@ public class ResourceManager : MonoBehaviour
     public void UpdateMentalState(float inNum)
     {
         mentalState += inNum;
-        sphereMask.UpdateMask(mentalState);
+        GlobalReferences.instance.sphereMask.UpdateMask(mentalState);
     }
 
 

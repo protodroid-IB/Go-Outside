@@ -5,23 +5,9 @@ using UnityEngine;
 
 public class PlayerMovementController : MonoBehaviour
 {
-    #region singleton instance
-    public static PlayerMovementController instance;
-
-    private void MakeSingleton()
-    {
-        if (FindObjectsOfType(GetType()).Length > 1)
-        {
-            Destroy(gameObject);
-        }
-        else instance = this;
-    }
-    #endregion
 
     [HideInInspector]
     public Transform playerTransform;
-
-    private InputController inputController;
 
     [SerializeField]
     [Range(0.5f, 20)]
@@ -52,21 +38,19 @@ public class PlayerMovementController : MonoBehaviour
 
     private void Awake()
     {
-        MakeSingleton();
         playerTransform = transform;
     }
 
 
     private void Start()
     {
-        inputController = GameObject.FindWithTag("Managers").GetComponent<InputController>();
         playerRB = GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        direction = inputController.move(inputController.player, transform.position);
+        direction = GlobalReferences.instance.inputController.move(GlobalReferences.instance.inputController.player, transform.position);
 
         Turn(direction);
         Move(direction);

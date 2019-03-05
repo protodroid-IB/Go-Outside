@@ -34,6 +34,7 @@ public class Interactable : MonoBehaviour
         if (interacting != null)
         {
             interacting.Invoke();
+            Debug.Log("Player interacting with: " + transform.name);
         }
     }
 }

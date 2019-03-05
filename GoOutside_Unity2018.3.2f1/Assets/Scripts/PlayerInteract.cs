@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class PlayerInteract : MonoBehaviour
 {
-    private InputController inputController;
-
     private bool interacting = false;
 
     public delegate void Interact();
@@ -14,13 +12,12 @@ public class PlayerInteract : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        inputController = GameObject.FindWithTag("Managers").GetComponent<InputController>();
         interact += Interacting;
     }
 
     private void Update()
     {
-        bool holding = inputController.interact1Hold(inputController.player, inputController.buttonHoldTime, ref inputController.holdTimer, ref inputController.startHoldTimer);
+        bool holding = GlobalReferences.instance.inputController.interact1Hold(GlobalReferences.instance.inputController.player, GlobalReferences.instance.inputController.buttonHoldTime, ref GlobalReferences.instance.inputController.holdTimer, ref GlobalReferences.instance.inputController.startHoldTimer);
 
         if (holding)
         {
@@ -30,7 +27,7 @@ public class PlayerInteract : MonoBehaviour
 
     private void Interacting()
     {
-        Debug.Log("Player Interact Interacting!!!");
+        Debug.Log("Player Interact Attempt!");
     }
 
     private void OnDestroy()
