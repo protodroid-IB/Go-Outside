@@ -34,7 +34,8 @@ public class ErrandManager : MonoBehaviour
         if (currentNumLetters < totalNumLetters)
         {
             currentNumLetters++;
-            GlobalReferences.instance.uiManager.UpdateCountUI(Errands.DeliverLetters, currentNumDogs, totalNumLetters);
+            GlobalReferences.instance.uiManager.UpdateCountUI(Errands.DeliverLetters, currentNumLetters, totalNumLetters);
+            Debug.Log(currentNumLetters.ToString() + "/" + totalNumLetters.ToString());
         }
         
 

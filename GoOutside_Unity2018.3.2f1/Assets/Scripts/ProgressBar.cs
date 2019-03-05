@@ -55,7 +55,11 @@ public class ProgressBar : MonoBehaviour
 
     private void UpdateBarVisuals()
     {
-        transform.localRotation = Quaternion.Euler(new Vector3(transform.localEulerAngles.x, -transform.parent.localEulerAngles.y, transform.localEulerAngles.z));
+        Quaternion oldRot = Quaternion.Euler(new Vector3(transform.localEulerAngles.x, transform.localEulerAngles.y, transform.localEulerAngles.z));
+
+        transform.rotation.SetFromToRotation(transform.forward, Vector3.forward);
+
+        transform.rotation = Quaternion.Euler(oldRot.x, transform.rotation.y, oldRot.z);
 
         if(progressController != null && fillTransform != null)
             fillTransform.localScale = new Vector3(progressController.GetProgress(), fillTransform.localScale.y, fillTransform.localScale.z);
