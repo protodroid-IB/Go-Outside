@@ -89,6 +89,5 @@ public class NPCMovement : MonoBehaviour
         {
             navAgent.SetDestination(patrolArea.bounds.center);
         }
-        
     }
 }

@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 732584037089853845}
   - component: {fileID: 177620520}
   - component: {fileID: 5801253641011332518}
+  - component: {fileID: 5950935679616342231}
   m_Layer: 0
   m_Name: Managers
   m_TagString: Managers
@@ -52,6 +53,8 @@ MonoBehaviour:
   controllerType: 1
   gamePadDeadZone: 0.15
   buttonHoldTime: 0.25
+  holdTimer: 0
+  startHoldTimer: 0
 --- !u!114 &732584037089853844
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -90,6 +93,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7253ea7d5f6ed2f46a6203efb194b262, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  totalNumGymMachines: 6
+  totalNumLetters: 12
+  totalNumDogs: 5
 --- !u!114 &5801253641011332518
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -102,3 +108,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c5ccd7d5629382408b256aa1c0f5fb8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerMovement: {fileID: 0}
+  sphereMask: {fileID: 0}
+  playerInteract: {fileID: 0}
+  inputController: {fileID: 0}
+  errandManager: {fileID: 0}
+  uiManager: {fileID: 0}
+  resourceManager: {fileID: 0}
+  cameraShake: {fileID: 0}
+--- !u!114 &5950935679616342231
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 732584037089853841}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c13a77e8835c99847b0b1678bbaf79ee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  active: 1
+  camera: {fileID: 0}
+  traumaMultiplier: 10
+  traumaMagnitude: 2
+  traumaDropOff: 4
+  trauma: 0

@@ -11,13 +11,13 @@ GameObject:
   - component: {fileID: 4212047004920667669}
   - component: {fileID: 4460069990726228344}
   - component: {fileID: 3846462822183729857}
-  - component: {fileID: 4153357265605621816}
+  - component: {fileID: 587427842693346003}
   m_Layer: 0
   m_Name: Park
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &4212047004920667669
 Transform:
@@ -78,8 +78,8 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!65 &4153357265605621816
-BoxCollider:
+--- !u!64 &587427842693346003
+MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -88,6 +88,7 @@ BoxCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  serializedVersion: 3
+  m_Convex: 0
+  m_CookingOptions: 14
+  m_Mesh: {fileID: 4300000, guid: e5921f33a683cc449b2a00760ffbb432, type: 3}

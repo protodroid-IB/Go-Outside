@@ -45,6 +45,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: ShopFront3
       objectReference: {fileID: 0}
+    - target: {fileID: 8244251782686108975, guid: ae0996ea72cfd794c9261c347cabe6bd,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 2070842355, guid: ae0996ea72cfd794c9261c347cabe6bd, type: 3}
       propertyPath: m_LocalPosition.x
       value: 182.91
@@ -108,6 +113,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: ShopFront1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5044419054644469286, guid: d349e28aa6a65de42a0e85e17725481f,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 5304570379067726685, guid: d349e28aa6a65de42a0e85e17725481f,
         type: 3}
@@ -179,11 +189,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1445770466366560074}
     m_Modifications:
-    - target: {fileID: 8151148509251711875, guid: 654a2c08bb3f9734c863ad102fa01db0,
-        type: 3}
-      propertyPath: m_Name
-      value: ShopFront2
-      objectReference: {fileID: 0}
     - target: {fileID: 3905011305693225127, guid: 654a2c08bb3f9734c863ad102fa01db0,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -238,6 +243,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8151148509251711875, guid: 654a2c08bb3f9734c863ad102fa01db0,
+        type: 3}
+      propertyPath: m_Name
+      value: ShopFront2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8151148509251711875, guid: 654a2c08bb3f9734c863ad102fa01db0,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 654a2c08bb3f9734c863ad102fa01db0, type: 3}

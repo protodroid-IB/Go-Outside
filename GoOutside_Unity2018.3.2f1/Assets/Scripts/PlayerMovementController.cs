@@ -73,7 +73,7 @@ public class PlayerMovementController : MonoBehaviour
     {
         if(inDirection.sqrMagnitude >= (moveDeadZone * moveDeadZone))
         {
-            velocity = Vector3.Slerp(velocity, transform.forward * maxSpeed * Time.deltaTime, moveAcceleration * Time.deltaTime);
+            velocity = Vector3.Slerp(velocity, inDirection.magnitude * transform.forward * maxSpeed * Time.deltaTime, moveAcceleration * Time.deltaTime);
         }
 
         transform.position += new Vector3(velocity.x, 0f, velocity.z);
@@ -84,5 +84,10 @@ public class PlayerMovementController : MonoBehaviour
     protected void LateUpdate()
     {
         transform.localEulerAngles = new Vector3(0, transform.localEulerAngles.y, 0);
+    }
+
+    public float GetMaxSpeed()
+    {
+        return maxSpeed;
     }
 }
