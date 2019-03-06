@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 4878400651079210837}
   - component: {fileID: 3064901215409505540}
   - component: {fileID: 7437002487722565392}
+  - component: {fileID: 5316573465940585430}
   m_Layer: 0
   m_Name: ShopFront2
   m_TagString: Untagged
@@ -92,3 +93,19 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 14
   m_Mesh: {fileID: 4300002, guid: d7480e056c3efcd47be8d5e71a7589c0, type: 3}
+--- !u!208 &5316573465940585430
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8151148509251711875}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 32.4, y: 4.748, z: 51.300003}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 23.863, y: 4.748, z: 32.845}
+  m_TimeToStationary: 0.5

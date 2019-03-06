@@ -27,7 +27,9 @@ public class PlayerInteract : MonoBehaviour
 
     private void Interacting()
     {
-        Debug.Log("Player Interact Attempt!");
+        //Debug.Log("Player Interact Attempt!");
+
+        // add general functionality whenever a player interacts with something
     }
 
     private void OnDestroy()

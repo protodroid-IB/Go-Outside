@@ -44,6 +44,7 @@ GameObject:
   - component: {fileID: 2889637116483676962}
   - component: {fileID: 149227494421927273}
   - component: {fileID: 7724471189555933665}
+  - component: {fileID: 5332793833106684079}
   m_Layer: 0
   m_Name: Building
   m_TagString: Untagged
@@ -124,6 +125,22 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 14
   m_Mesh: {fileID: 4300006, guid: 59755b0509325bd41b3627076e227483, type: 3}
+--- !u!208 &5332793833106684079
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3722928108612150175}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 18.900002, y: 4.748, z: 29.7}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 18.900002, y: 4.748, z: -24.300001}
+  m_TimeToStationary: 0.5
 --- !u!1 &6950726421679187808
 GameObject:
   m_ObjectHideFlags: 0
@@ -136,6 +153,7 @@ GameObject:
   - component: {fileID: 2108973572727609253}
   - component: {fileID: 9044867086131818459}
   - component: {fileID: 6079086427993429364}
+  - component: {fileID: 1803588950162731469}
   m_Layer: 0
   m_Name: Roof
   m_TagString: Untagged
@@ -216,3 +234,19 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 14
   m_Mesh: {fileID: 4300008, guid: 59755b0509325bd41b3627076e227483, type: 3}
+--- !u!208 &1803588950162731469
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6950726421679187808}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 18.900002, y: 0.85300004, z: 29.7}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 18.900002, y: 10.349001, z: -24.300001}
+  m_TimeToStationary: 0.5

@@ -19,6 +19,7 @@ public class Interactable : MonoBehaviour
         if(canInteract)
         {
             GlobalReferences.instance.playerInteract.interact += InteractAction;
+            Debug.Log("Player can interact with: " + transform.name);
         }   
         else
             GlobalReferences.instance.playerInteract.interact -= InteractAction;
@@ -33,8 +34,8 @@ public class Interactable : MonoBehaviour
     {
         if (interacting != null)
         {
-            interacting.Invoke();
-            Debug.Log("Player interacting with: " + transform.name);
+            interacting.Invoke();  
         }
+        Debug.Log("Player interacting with: " + transform.name);
     }
 }

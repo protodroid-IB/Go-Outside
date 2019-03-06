@@ -13,22 +13,19 @@ public class CameraMovement : MonoBehaviour
     [SerializeField]
     private float distanceFromPlayer = 30f;
 
-    private PlayerMovementController playerMovement;
-
-
-    private void Start()
-    {
-        playerMovement = GlobalReferences.instance.playerMovement;
-    }
-
     // Update is called once per frame
     void Update()
     {
-        if(playerMovement != null)
-            SetPlayerPosition(GlobalReferences.instance.playerMovement.transform.position);
-        else
-            SetPlayerPosition(GameObject.FindWithTag("Player").GetComponent<PlayerMovementController>().transform.position);
-        MoveCamera();
+        if(GlobalReferences.instance != null)
+        {
+            if (GlobalReferences.instance.playerMovement != null)
+                SetPlayerPosition(GlobalReferences.instance.playerMovement.transform.position);
+            else
+                SetPlayerPosition(GameObject.FindWithTag("Player").GetComponent<PlayerMovementController>().transform.position);
+            
+            MoveCamera();
+        }
+        
     }
 
     private void MoveCamera()
