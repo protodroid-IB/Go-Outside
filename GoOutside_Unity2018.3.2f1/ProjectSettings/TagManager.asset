@@ -17,6 +17,7 @@ TagManager:
   - UICountWorkout
   - UICountLetters
   - UICountDogs
+  - Characters
   layers:
   - Default
   - TransparentFX

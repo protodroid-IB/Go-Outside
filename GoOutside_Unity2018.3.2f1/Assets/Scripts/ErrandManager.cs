@@ -16,14 +16,17 @@ public class ErrandManager : MonoBehaviour
 
 
 
+    /*
+     *      INCREMENT COUNT METHODS
+     */
+
     public void IncrementGymMachineCount()
     {
-        if(currentNumGymMachines < totalNumGymMachines)
+        if (currentNumGymMachines < totalNumGymMachines)
         {
             currentNumGymMachines++;
             GlobalReferences.instance.uiManager.UpdateCountUI(Errands.Workout, currentNumGymMachines, totalNumGymMachines);
         }
-
 
         if (currentNumGymMachines >= totalNumGymMachines)
             WorkoutComplete();
@@ -37,7 +40,7 @@ public class ErrandManager : MonoBehaviour
             GlobalReferences.instance.uiManager.UpdateCountUI(Errands.DeliverLetters, currentNumLetters, totalNumLetters);
             Debug.Log(currentNumLetters.ToString() + "/" + totalNumLetters.ToString());
         }
-        
+
 
         if (currentNumLetters >= totalNumLetters)
             LettersDelivered();
@@ -57,12 +60,35 @@ public class ErrandManager : MonoBehaviour
 
 
 
+    /*
+     *      SISTER ERRAND METHODS
+     */
+
+    public void SisterArrivedAtSchool()
+    {
+        sisterArrivedAtSchool = true;
+        GlobalReferences.instance.uiManager.TickCheckbox(Errands.DropSister);
+    }
+
+    public void SisterBackFromSchool()
+    {
+        sisterBackFromSchool = true;
+        GlobalReferences.instance.uiManager.TickCheckbox(Errands.PickUpSister);
+    }
+
+
+
+
+    /*
+     *      ERRAND COMPLETED METHODS
+     */
+
     private void WorkoutComplete()
     {
         workoutComplete = true;
-        
+
         // update UI
-        if(GlobalReferences.instance.uiManager != null)
+        if (GlobalReferences.instance.uiManager != null)
         {
             GlobalReferences.instance.uiManager.TickCheckbox(Errands.Workout);
         }
@@ -94,7 +120,7 @@ public class ErrandManager : MonoBehaviour
 
     /*
      *      GETTERS
-     */ 
+     */
 
     public bool IsWorkoutComplete()
     {
@@ -109,6 +135,16 @@ public class ErrandManager : MonoBehaviour
     public bool IsDogsPatted()
     {
         return dogsPatted;
+    }
+
+    public bool IsSisterAtSchool()
+    {
+        return sisterArrivedAtSchool;
+    }
+
+    public bool IsSisterBackHome()
+    {
+        return sisterBackFromSchool;
     }
 
 

@@ -169,8 +169,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   minRadius: 1
-  maxRadius: 65
-  debugMode: 0
+  maxRadius: 700
+  debugMode: 1
 --- !u!54 &5005859495751140709
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -185,7 +185,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 80
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!1 &5005859495896954653
 GameObject:
@@ -201,7 +201,7 @@ GameObject:
   - component: {fileID: 5005859495896954655}
   m_Layer: 0
   m_Name: Cube
-  m_TagString: Untagged
+  m_TagString: PlayerModel
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

@@ -238,7 +238,7 @@ GameObject:
   - component: {fileID: 2974920275825333407}
   m_Layer: 5
   m_Name: Count (2)
-  m_TagString: Untagged
+  m_TagString: UICountDogs
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1336,7 +1336,7 @@ GameObject:
   - component: {fileID: 2974920276299697579}
   m_Layer: 5
   m_Name: Count
-  m_TagString: Untagged
+  m_TagString: UICountWorkout
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2166,7 +2166,7 @@ GameObject:
   - component: {fileID: 2974920277166053845}
   m_Layer: 5
   m_Name: Count (1)
-  m_TagString: Untagged
+  m_TagString: UICountLetters
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
