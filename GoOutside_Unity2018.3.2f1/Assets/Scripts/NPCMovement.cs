@@ -61,8 +61,6 @@ public class NPCMovement : MonoBehaviour
 
                 break;
         }
-
-        Debug.Log(state);
     }
 
     private void Idle()

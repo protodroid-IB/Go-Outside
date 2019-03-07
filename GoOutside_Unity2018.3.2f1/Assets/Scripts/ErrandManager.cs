@@ -38,7 +38,6 @@ public class ErrandManager : MonoBehaviour
         {
             currentNumLetters++;
             GlobalReferences.instance.uiManager.UpdateCountUI(Errands.DeliverLetters, currentNumLetters, totalNumLetters);
-            Debug.Log(currentNumLetters.ToString() + "/" + totalNumLetters.ToString());
         }
 
 
