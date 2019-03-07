@@ -6,46 +6,56 @@ using UnityEngine.AI;
 
 public class SisterMovement : MonoBehaviour
 {
-    private float maxSpeed = 2f;
-    private float wanderSpeed;
+    private enum SisterState {Still, Follow, Wander, Target}
+
+    private SisterState sisterState = SisterState.Still;
 
     private NavMeshAgent navAgent;
-
     private Interactable interactable;
+
+    private float maxSpeed = 2f;
+    private float wanderSpeed;
 
     [SerializeField]
     private float distanceToKeepFromPlayer = 1f;
 
+    private Quaternion turnRotation = Quaternion.identity;
+    [SerializeField]
+    private float turnSpeed = 3f;
+    private float lookAtPlayerDistance = 35f; 
+
+
+
     [SerializeField]
     private GameObject wanderPrefab;
-
     private GameObject wanderSphere;
-
-    private bool wander = false;
-
+    //private bool wander = false;
     private Vector3 targetWanderPos;
 
-    private float timer = 0f;
 
     [SerializeField]
-    private float timeBetweenWanderings = 4f;
-
+    private float timeBetweenWanderings = 4f; 
+    private float timer = 0f;
     private bool runTimer = false;
-
     
+
+
 
     // Start is called before the first frame update
     void Start()
     {
+        // speed stuff
         maxSpeed = GlobalReferences.instance.playerMovement.GetMaxSpeed() * 0.5f;
         wanderSpeed = maxSpeed * 0.4f;
         navAgent = GetComponent<NavMeshAgent>();
         navAgent.speed = maxSpeed;
 
+        // interactable stuff
         interactable = GetComponent<Interactable>();
         interactable.interacting += FollowTarget;
         interactable.endInteract += SetWander;
 
+        // wander sphere stuff
         wanderSphere = Instantiate(wanderPrefab, transform.position, Quaternion.identity, transform);
         wanderSphere.SetActive(false);
     }
@@ -53,22 +63,41 @@ public class SisterMovement : MonoBehaviour
 
     private void SetWander()
     {
-        wander = true;
+        sisterState = SisterState.Wander;
         navAgent.speed = wanderSpeed;
     }
 
     private void Update()
     {
-        if(wander)
+        switch(sisterState)
         {
-            Wander();
+            case SisterState.Still:
+                Still();
+                break;
+
+            case SisterState.Wander:
+                Wander();
+                break;
+
+            case SisterState.Target:
+
+                break;
+
+            default:
+                // do nothing
+                break;
         }
+
+        //if(wander)
+        //{
+        //    Wander();
+        //}
 
         if(runTimer)
         {
             if(timer >= timeBetweenWanderings)
             {
-                wander = true;
+                sisterState = SisterState.Wander;
                 runTimer = false;
                 timer = 0f;
                 wanderSphere.SetActive(false);
@@ -76,15 +105,25 @@ public class SisterMovement : MonoBehaviour
             else
             {
                 timer += Time.deltaTime;
+                RotateSisterToFacePlayer();
             }
         }
+    }
+
+    private void Still()
+    {
+        if(CalculateSqrDistanceFromPlayer() <= lookAtPlayerDistance * lookAtPlayerDistance)
+        {
+            RotateSisterToFacePlayer();
+        }
+        
     }
 
     private void FollowTarget()
     {
         if(navAgent.speed != maxSpeed)
         {
-            wander = false;
+            sisterState = SisterState.Follow;
             runTimer = false;
             timer = 0f;
             navAgent.speed = maxSpeed;
@@ -93,16 +132,37 @@ public class SisterMovement : MonoBehaviour
 
         float distanceFromPlayer = CalculateSqrDistanceFromPlayer();
 
-        if (distanceFromPlayer < (distanceToKeepFromPlayer * distanceToKeepFromPlayer))
+        if (distanceFromPlayer <= (distanceToKeepFromPlayer * distanceToKeepFromPlayer))
         {
             navAgent.isStopped = true;
             navAgent.velocity = Vector3.zero;
+            RotateSisterToFacePlayer();
         }
         else
         {
             navAgent.isStopped = false;
             navAgent.SetDestination(GlobalReferences.instance.playerMovement.transform.position);
+
+            if (navAgent.velocity == Vector3.zero)
+            {
+                if(CalculateSqrDistanceFromPlayer() <= lookAtPlayerDistance * lookAtPlayerDistance)
+                    RotateSisterToFacePlayer();
+            }
         }
+
+        
+    }
+
+    private void RotateSisterToFacePlayer()
+    {
+        Vector3 currentDirection = ((transform.position + transform.forward) - transform.position).normalized;
+        Vector3 playerDirection = FindPlayerDirection();
+
+        Vector3 nextDirection = Vector3.Slerp(currentDirection, playerDirection, turnSpeed * Time.deltaTime);
+
+        turnRotation.SetFromToRotation(currentDirection, nextDirection);
+
+        transform.rotation *= turnRotation;
     }
 
     private void Wander()
@@ -126,13 +186,13 @@ public class SisterMovement : MonoBehaviour
             targetWanderPos = hit.position;
 
             navAgent.isStopped = false;
-            navAgent.SetDestination(targetWanderPos);
+            navAgent.SetDestination(targetWanderPos);  
         }
         
 
         if(((transform.position - targetWanderPos).sqrMagnitude < 0.01) || (timer >= 0.75f))
         {
-            wander = false;
+            sisterState = SisterState.Still;
             runTimer = true;
             timer = 0f;
             navAgent.isStopped = true;
@@ -141,6 +201,9 @@ public class SisterMovement : MonoBehaviour
         if (navAgent.velocity == Vector3.zero)
         {
             timer += Time.deltaTime;
+
+            if(CalculateSqrDistanceFromPlayer() <= lookAtPlayerDistance * lookAtPlayerDistance)
+                RotateSisterToFacePlayer();
         }
     }
 
@@ -160,12 +223,12 @@ public class SisterMovement : MonoBehaviour
 
     private float CalculateSqrDistanceFromPlayer()
     {
-        return (transform.position - GlobalReferences.instance.playerMovement.transform.position).sqrMagnitude;
+        return (GlobalReferences.instance.playerMovement.transform.position - transform.position).sqrMagnitude;
     }
 
     private Vector3 FindPlayerDirection()
     {
-        return (transform.position - GlobalReferences.instance.playerMovement.transform.position).normalized;
+        return (GlobalReferences.instance.playerMovement.transform.position - transform.position).normalized;
     }
 
 
