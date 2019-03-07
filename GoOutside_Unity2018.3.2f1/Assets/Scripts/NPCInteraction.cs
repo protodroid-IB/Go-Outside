@@ -1,10 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class NPCInteraction : MonoBehaviour
 {
-    private Rigidbody npcRB;
+    private NavMeshAgent navAgent;
+    private NPCCollisions npcCollisions;
+    private NPCMovement npcMovement;
 
     private bool freezeNPC = false;
 
@@ -13,14 +16,22 @@ public class NPCInteraction : MonoBehaviour
     private float freezeTimer = 0f;
 
     [SerializeField]
+    private float noDamageTime = 2f;
+
+    [SerializeField]
     [Header("The percentage of mental state to be deducted from player")]
     [Range(0.00f, 0.10f)]
     private float damage = 0.02f;
 
+    private Quaternion turnRotation = Quaternion.identity;
+    private Transform npcTransform;
+
     // Start is called before the first frame update
     void Start()
     {
-        npcRB = GetComponentInChildren<Rigidbody>();
+        navAgent = GetComponentInChildren<NavMeshAgent>();
+        npcMovement = GetComponent<NPCMovement>();
+        npcTransform = transform.GetChild(0);
     }
 
     // Update is called once per frame
@@ -28,16 +39,18 @@ public class NPCInteraction : MonoBehaviour
     {
         if(freezeNPC)
         {
-            npcRB.velocity = Vector3.zero;
-
             if(freezeTimer >= freezeTimeOnCollision)
             {
                 freezeNPC = false;
-                npcRB.constraints &= ~RigidbodyConstraints.FreezePosition;
+                navAgent.isStopped = false;
                 freezeTimer = 0f;
+                npcMovement.SetState(NPCState.GoingHome);
             }
 
             freezeTimer += Time.deltaTime;
+
+            
+            GlobalReferences.instance.usefulFunctions.RotateToFacePlayer(ref npcTransform, ref turnRotation, 3f);
         }
     }
 
@@ -47,12 +60,17 @@ public class NPCInteraction : MonoBehaviour
         return freezeNPC;
     }
 
+    public float GetNoDamageTime()
+    {
+        return noDamageTime;
+    }
+
     public void CollideWithPlayer(bool inFreeze)
     {
-        if(freezeNPC == false)
-        {
-            freezeNPC = inFreeze;
-            npcRB.constraints = RigidbodyConstraints.FreezeAll;
-        }
+        navAgent.isStopped = true;
+        navAgent.velocity = Vector3.zero;
+        freezeNPC = inFreeze;
+        GlobalReferences.instance.resourceManager.UpdateMentalState(-damage, true);
+        npcMovement.SetState(NPCState.Collided);
     }
 }

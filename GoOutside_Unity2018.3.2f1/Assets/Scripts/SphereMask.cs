@@ -10,6 +10,8 @@ public class SphereMask : MonoBehaviour
 
     public bool debugMode = false;
 
+    private bool updateRadius = false;
+
 
     private void Start()
     {
@@ -45,6 +47,10 @@ public class SphereMask : MonoBehaviour
             radius = minRadius + (radiusDistance * inMentalState);
         else
             radius = maxRadius;
+
+        if (radius <= minRadius) radius = minRadius;
+
+        
 
         Shader.SetGlobalFloat("GLOBALMASK_Radius", radius);
         Shader.SetGlobalVector("GLOBALMASK_Position", new Vector3(transform.position.x, transform.position.y - 0.3f, transform.position.z));

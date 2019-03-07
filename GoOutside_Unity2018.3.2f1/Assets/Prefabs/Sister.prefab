@@ -227,6 +227,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   distanceToKeepFromPlayer: 2.5
+  turnSpeed: 3
   wanderPrefab: {fileID: 6535523899145136471, guid: 574b09154f60ce2429aa86893049a3a2,
     type: 3}
   timeBetweenWanderings: 3
@@ -251,7 +252,7 @@ NavMeshAgent:
   m_Height: 2
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
-  m_ObstacleAvoidanceType: 4
+  m_ObstacleAvoidanceType: 0
 --- !u!1 &9140402949159648301
 GameObject:
   m_ObjectHideFlags: 0

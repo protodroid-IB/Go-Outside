@@ -41,6 +41,9 @@ public class GlobalReferences : MonoBehaviour
     [HideInInspector]
     public CameraShake cameraShake;
 
+    [HideInInspector]
+    public UsefulFunctions usefulFunctions;
+
     private void Awake()
     {
         MakeSingleton();
@@ -52,6 +55,7 @@ public class GlobalReferences : MonoBehaviour
         uiManager = GetComponent<UIManager>();
         resourceManager = GetComponent<ResourceManager>();
         cameraShake = GetComponent<CameraShake>();
+        usefulFunctions = GetComponent<UsefulFunctions>();
     }
 
     private void Start()
@@ -79,6 +83,9 @@ public class GlobalReferences : MonoBehaviour
 
         if (cameraShake == null)
             cameraShake = GetComponent<CameraShake>();
+
+        if (usefulFunctions == null)
+            usefulFunctions = GetComponent<UsefulFunctions>();
     }
 
 }

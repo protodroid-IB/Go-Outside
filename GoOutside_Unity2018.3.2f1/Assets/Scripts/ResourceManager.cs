@@ -92,6 +92,18 @@ public class ResourceManager : MonoBehaviour
         GlobalReferences.instance.sphereMask.UpdateMask(mentalState);
     }
 
+    public void UpdateMentalState(float inNum, bool withCameraShake)
+    {
+        mentalState += inNum;
+        GlobalReferences.instance.sphereMask.UpdateMask(mentalState);
+
+        float camShakeTrauma = 10f * Mathf.Abs(inNum);
+
+        if (camShakeTrauma >= 0.75) camShakeTrauma = 0.75f;
+
+        GlobalReferences.instance.cameraShake.AddToTrauma(camShakeTrauma);
+    }
+
 
 
     public Vector2 GetTimeOfDay()

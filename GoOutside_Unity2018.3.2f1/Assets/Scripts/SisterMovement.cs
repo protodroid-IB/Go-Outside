@@ -37,6 +37,8 @@ public class SisterMovement : MonoBehaviour
     private float timeBetweenWanderings = 4f; 
     private float timer = 0f;
     private bool runTimer = false;
+
+    private bool hasInteracted = false;
     
 
 
@@ -63,8 +65,12 @@ public class SisterMovement : MonoBehaviour
 
     private void SetWander()
     {
-        sisterState = SisterState.Wander;
-        navAgent.speed = wanderSpeed;
+        if(hasInteracted == true)
+        {
+            sisterState = SisterState.Wander;
+            navAgent.speed = wanderSpeed;
+        }
+        
     }
 
     private void Update()
@@ -121,6 +127,8 @@ public class SisterMovement : MonoBehaviour
 
     private void FollowTarget()
     {
+        hasInteracted = true; 
+
         if(navAgent.speed != maxSpeed)
         {
             sisterState = SisterState.Follow;
