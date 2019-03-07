@@ -18,6 +18,8 @@ TagManager:
   - UICountLetters
   - UICountDogs
   - Characters
+  - SchoolSisterZone
+  - DropOffZone
   layers:
   - Default
   - TransparentFX

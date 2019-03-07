@@ -178,6 +178,7 @@ GameObject:
   - component: {fileID: 4237068016392530301}
   - component: {fileID: 2303609744164169256}
   - component: {fileID: 5359353041363964653}
+  - component: {fileID: 742576849864034547}
   - component: {fileID: 5359353041363964657}
   m_Layer: 0
   m_Name: Sister
@@ -231,6 +232,18 @@ MonoBehaviour:
   wanderPrefab: {fileID: 6535523899145136471, guid: 574b09154f60ce2429aa86893049a3a2,
     type: 3}
   timeBetweenWanderings: 3
+--- !u!114 &742576849864034547
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5359353041363964652}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe146d522f14d1c46acb5fe8e4e96000, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!195 &5359353041363964657
 NavMeshAgent:
   m_ObjectHideFlags: 0

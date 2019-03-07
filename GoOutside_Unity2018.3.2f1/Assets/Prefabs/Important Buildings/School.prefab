@@ -1,5 +1,49 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &3761020148215007252
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 908367831289713688}
+  - component: {fileID: 1078697262481916634}
+  m_Layer: 0
+  m_Name: DropOffZone
+  m_TagString: SchoolSisterZone
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &908367831289713688
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3761020148215007252}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 40.9, y: 0, z: -55.3}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1041961890464247826}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!135 &1078697262481916634
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3761020148215007252}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 38
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &4929025907177153747
 GameObject:
   m_ObjectHideFlags: 0
@@ -11,7 +55,6 @@ GameObject:
   - component: {fileID: 1041961890464247826}
   - component: {fileID: 4929025907177153750}
   - component: {fileID: 4929025907177153749}
-  - component: {fileID: 559328136482567668}
   m_Layer: 0
   m_Name: School
   m_TagString: Untagged
@@ -33,6 +76,7 @@ Transform:
   - {fileID: 2551469108575505149}
   - {fileID: 4161487419216071569}
   - {fileID: 4173130376038205681}
+  - {fileID: 908367831289713688}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
@@ -61,26 +105,10 @@ BoxCollider:
   m_GameObject: {fileID: 4929025907177153747}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 67.922485, y: 23.915867, z: 147.33197}
   m_Center: {x: 16.913574, y: 10.537067, z: 5.0632935}
---- !u!208 &559328136482567668
-NavMeshObstacle:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4929025907177153747}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Shape: 1
-  m_Extents: {x: 0.5, y: 0.5, z: 0.5}
-  m_MoveThreshold: 0.1
-  m_Carve: 0
-  m_CarveOnlyStationary: 1
-  m_Center: {x: 0, y: 0, z: 0}
-  m_TimeToStationary: 0.5
 --- !u!1 &7012783881844408908
 GameObject:
   m_ObjectHideFlags: 0
@@ -93,12 +121,13 @@ GameObject:
   - component: {fileID: 2515450699728089766}
   - component: {fileID: 1864274047771745274}
   - component: {fileID: 1913345150869604722}
+  - component: {fileID: 4121804017681444018}
   m_Layer: 0
   m_Name: Building
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &2551469108575505149
 Transform:
@@ -173,6 +202,22 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 14
   m_Mesh: {fileID: 4300010, guid: 59755b0509325bd41b3627076e227483, type: 3}
+--- !u!208 &4121804017681444018
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7012783881844408908}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 29.7, y: 4.748, z: 70.200005}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: -30.858002, y: 4.748, z: -70.200005}
+  m_TimeToStationary: 0.5
 --- !u!1 &7073263503748969946
 GameObject:
   m_ObjectHideFlags: 0
@@ -191,7 +236,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &4161487419216071569
 Transform:

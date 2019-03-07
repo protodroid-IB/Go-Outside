@@ -100,21 +100,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7073263503748969946, guid: 127467ec3890ceb4e936869e2c5824e7,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 7012783881844408908, guid: 127467ec3890ceb4e936869e2c5824e7,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 8
-      objectReference: {fileID: 0}
     - target: {fileID: 4173130376038205678, guid: 127467ec3890ceb4e936869e2c5824e7,
         type: 3}
       propertyPath: roofMesh
       value: 
       objectReference: {fileID: 1653844908421124106}
+    - target: {fileID: 3761020148215007252, guid: 127467ec3890ceb4e936869e2c5824e7,
+        type: 3}
+      propertyPath: m_TagString
+      value: SchoolSisterZone
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 127467ec3890ceb4e936869e2c5824e7, type: 3}
 --- !u!4 &1488998949386410583 stripped
@@ -381,11 +376,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7733927396957414179, guid: a1a7fb43bf4959a4f865f30f3938544e,
+        type: 3}
+      propertyPath: roofMesh
+      value: 
+      objectReference: {fileID: 6846956660657098638}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a1a7fb43bf4959a4f865f30f3938544e, type: 3}
 --- !u!4 &6324514089773297483 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8450341082722963230, guid: a1a7fb43bf4959a4f865f30f3938544e,
+    type: 3}
+  m_PrefabInstance: {fileID: 2486150268353536085}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &6846956660657098638 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 9044867086131818459, guid: a1a7fb43bf4959a4f865f30f3938544e,
     type: 3}
   m_PrefabInstance: {fileID: 2486150268353536085}
   m_PrefabAsset: {fileID: 0}
