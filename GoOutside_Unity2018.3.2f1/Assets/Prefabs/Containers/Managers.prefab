@@ -117,6 +117,8 @@ MonoBehaviour:
   uiManager: {fileID: 0}
   resourceManager: {fileID: 0}
   cameraShake: {fileID: 0}
+  usefulFunctions: {fileID: 0}
+  parkZoneCollider: {fileID: 0}
 --- !u!114 &5950935679616342231
 MonoBehaviour:
   m_ObjectHideFlags: 0

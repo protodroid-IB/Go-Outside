@@ -37,6 +37,9 @@ public class NPCMovement : MonoBehaviour
         patrolCollider = transform.GetChild(1).GetComponent<Collider>();
 
         homePosition = transform.GetChild(0).position;
+
+        npcInteraction.freeze += Freeze;
+        npcInteraction.unfreeze += UnFreeze;
     }
 
 
@@ -133,7 +136,22 @@ public class NPCMovement : MonoBehaviour
         state = inState;
     }
 
+    public void Freeze()
+    {
+        state = NPCState.Collided;
+    }
 
+    public void UnFreeze()
+    {
+        state = NPCState.GoingHome;
+    }
+
+
+    private void OnDestroy()
+    {
+        npcInteraction.freeze -= Freeze;
+        npcInteraction.unfreeze -= UnFreeze;
+    }
 
     // Start is called before the first frame update
     //void Start()

@@ -44,6 +44,8 @@ public class GlobalReferences : MonoBehaviour
     [HideInInspector]
     public UsefulFunctions usefulFunctions;
 
+    public Collider parkZoneCollider;
+
     private void Awake()
     {
         MakeSingleton();

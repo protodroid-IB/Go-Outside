@@ -7,7 +7,12 @@ public class NPCInteraction : MonoBehaviour
 {
     private NavMeshAgent navAgent;
     private NPCCollisions npcCollisions;
-    private NPCMovement npcMovement;
+
+    public delegate void FreezeUnfreeze();
+    public FreezeUnfreeze unfreeze;
+    public FreezeUnfreeze freeze;
+
+    //private NPCMovement npcMovement;
 
     private bool freezeNPC = false;
 
@@ -30,7 +35,7 @@ public class NPCInteraction : MonoBehaviour
     void Start()
     {
         navAgent = GetComponentInChildren<NavMeshAgent>();
-        npcMovement = GetComponent<NPCMovement>();
+        //npcMovement = GetComponent<NPCMovement>();
         npcTransform = transform.GetChild(0);
     }
 
@@ -44,7 +49,9 @@ public class NPCInteraction : MonoBehaviour
                 freezeNPC = false;
                 navAgent.isStopped = false;
                 freezeTimer = 0f;
-                npcMovement.SetState(NPCState.GoingHome);
+                if(unfreeze != null)
+                    unfreeze.Invoke();
+                //npcMovement.SetState(NPCState.GoingHome);
             }
 
             freezeTimer += Time.deltaTime;
@@ -71,6 +78,8 @@ public class NPCInteraction : MonoBehaviour
         navAgent.velocity = Vector3.zero;
         freezeNPC = inFreeze;
         GlobalReferences.instance.resourceManager.UpdateMentalState(-damage, true);
-        npcMovement.SetState(NPCState.Collided);
+        if(freeze != null)
+            freeze.Invoke();
+        //npcMovement.SetState(NPCState.Collided);
     }
 }

@@ -184,24 +184,6 @@ Camera:
     type: 3}
   m_PrefabInstance: {fileID: 3344248724344486621}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1762882553 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1892745609685091750, guid: 094962ad05ec8b94088d52aec6e45b90,
-    type: 3}
-  m_PrefabInstance: {fileID: 7505555811136281239}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1762882559
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1762882553}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 72e3067afe88f644e977756761a8dba7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1882578561
 GameObject:
   m_ObjectHideFlags: 0
@@ -343,6 +325,11 @@ PrefabInstance:
       propertyPath: camera
       value: 
       objectReference: {fileID: 891205442}
+    - target: {fileID: 5801253641011332518, guid: e1e97150fee4c2c4e87188d111ad3b47,
+        type: 3}
+      propertyPath: parkZoneCollider
+      value: 
+      objectReference: {fileID: 7668255108157721566}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e1e97150fee4c2c4e87188d111ad3b47, type: 3}
 --- !u!1001 &1104856326267684448
@@ -1642,7 +1629,7 @@ PrefabInstance:
     - target: {fileID: 5005859495751140762, guid: c2eb6e399dfa6664baf3c990b28008b2,
         type: 3}
       propertyPath: maxRadius
-      value: 55
+      value: 700
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c2eb6e399dfa6664baf3c990b28008b2, type: 3}
@@ -6012,6 +5999,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 094962ad05ec8b94088d52aec6e45b90, type: 3}
+--- !u!65 &7668255108157721566 stripped
+BoxCollider:
+  m_CorrespondingSourceObject: {fileID: 7668255108157721566, guid: 0e0eb639075b78840b1489970388b917,
+    type: 3}
+  m_PrefabInstance: {fileID: 7809621877412726335}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &7809621877412726335
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6023,11 +6016,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Park
-      objectReference: {fileID: 0}
-    - target: {fileID: 5145220447424616253, guid: 0e0eb639075b78840b1489970388b917,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 4212047004920667669, guid: 0e0eb639075b78840b1489970388b917,
         type: 3}
