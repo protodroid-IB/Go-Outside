@@ -32,4 +32,9 @@ public class DogController : MonoBehaviour
     {
         progressController.progressComplete -= DogPattingComplete;
     }
+
+    private void OnDestroy()
+    {
+        progressController.progressComplete -= DogPattingComplete;
+    }
 }
