@@ -79,6 +79,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 632212826910288465, guid: 3eb07cad41e9552468a3483282773c8b,
+        type: 3}
+      propertyPath: fillTransform
+      value: 
+      objectReference: {fileID: 7864990891185365439}
     - target: {fileID: 8364817167204612899, guid: 3eb07cad41e9552468a3483282773c8b,
         type: 3}
       propertyPath: timeToProgress
@@ -89,11 +94,11 @@ PrefabInstance:
       propertyPath: timeToDrainProgress
       value: 10
       objectReference: {fileID: 0}
-    - target: {fileID: 632212826910288465, guid: 3eb07cad41e9552468a3483282773c8b,
+    - target: {fileID: 6733099831843436722, guid: 3eb07cad41e9552468a3483282773c8b,
         type: 3}
-      propertyPath: fillTransform
-      value: 
-      objectReference: {fileID: 7864990891185365439}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3eb07cad41e9552468a3483282773c8b, type: 3}
 --- !u!1 &3903918765283387351 stripped

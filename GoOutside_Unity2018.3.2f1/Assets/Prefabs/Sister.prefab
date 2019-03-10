@@ -70,7 +70,7 @@ GameObject:
   - component: {fileID: 4802422612248508235}
   - component: {fileID: 5485364413977790499}
   - component: {fileID: 4715936108863677421}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: SisterBody
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -278,7 +278,7 @@ GameObject:
   - component: {fileID: 3926238898515949839}
   - component: {fileID: 3202533966403307756}
   - component: {fileID: 7552692168348746966}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}

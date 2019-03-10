@@ -123,7 +123,7 @@ GameObject:
   - component: {fileID: 8528251480242073536}
   - component: {fileID: 2392011058994049697}
   - component: {fileID: 2442707052176246008}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: NPCBody
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -266,7 +266,7 @@ GameObject:
   - component: {fileID: 479606845687652364}
   - component: {fileID: 4293928510201560392}
   - component: {fileID: 7844435961662512101}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -24,18 +24,22 @@ public class PlayerMovementController : MonoBehaviour
     [Range(0.25f, 30)]
     private float moveAcceleration = 1.0f;
 
-    private Vector3 velocity = Vector3.zero;
+    [HideInInspector]
+    public Vector3 velocity = Vector3.zero;
 
     [SerializeField]
     [Range(0.25f, 10)]
     private float turnSpeed = 1.0f;
     private Quaternion turnRotation = new Quaternion();
 
-    private Rigidbody playerRB;
+    [HideInInspector]
+    public Rigidbody playerRB;
 
     private Vector2 direction;
     private bool useGravity = true;
     private float floorHeight = 0f;
+
+    private bool collided = false;
 
 
     private void Awake()
@@ -87,8 +91,19 @@ public class PlayerMovementController : MonoBehaviour
     {
         transform.localEulerAngles = new Vector3(0, transform.localEulerAngles.y, 0);
 
-        //if (useGravity == false)
-            //transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z);
+        if (collided == true)
+        {
+            playerRB.velocity = Vector3.zero;
+            velocity = Vector3.zero;
+            playerRB.constraints |= RigidbodyConstraints.FreezePositionY;
+        }
+        else
+        {
+            playerRB.constraints &= ~RigidbodyConstraints.FreezePositionY;
+        }
+
+
+        collided = false;
     }
 
     public float GetMaxSpeed()
@@ -96,16 +111,12 @@ public class PlayerMovementController : MonoBehaviour
         return maxSpeed;
     }
 
-    //private void OnCollisionEnter(Collision collision)
-    //{
-    //    if(useGravity)
-    //    {
-    //        if (collision.gameObject.tag != "Player" && collision.gameObject.tag != "PlayerModel")
-    //        {
-    //            useGravity = false;
-    //            floorHeight = transform.position.y;
-    //        }
-    //    }
-        
-    //}
+    private void OnCollisionStay(Collision collision)
+    {
+        if (collision.gameObject.layer == LayerMask.NameToLayer("PlayerCollide"))
+        {
+            collided = true;
+        }
+
+    }
 }

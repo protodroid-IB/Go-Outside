@@ -24,6 +24,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: GymMachine
       objectReference: {fileID: 0}
+    - target: {fileID: 4091972133325200157, guid: 3eb07cad41e9552468a3483282773c8b,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8787415112052503140, guid: 3eb07cad41e9552468a3483282773c8b,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -119,6 +124,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 632212826910288465, guid: 3eb07cad41e9552468a3483282773c8b,
+        type: 3}
+      propertyPath: fillTransform
+      value: 
+      objectReference: {fileID: 5664967343362501166}
+    - target: {fileID: 6733099831843436722, guid: 3eb07cad41e9552468a3483282773c8b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 8306179956049683588, guid: 3eb07cad41e9552468a3483282773c8b,
         type: 3}
       propertyPath: m_IsTrigger
@@ -139,16 +154,6 @@ PrefabInstance:
       propertyPath: m_Size.z
       value: 4
       objectReference: {fileID: 0}
-    - target: {fileID: 4091972133325200157, guid: 3eb07cad41e9552468a3483282773c8b,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 632212826910288465, guid: 3eb07cad41e9552468a3483282773c8b,
-        type: 3}
-      propertyPath: fillTransform
-      value: 
-      objectReference: {fileID: 5664967343362501166}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3eb07cad41e9552468a3483282773c8b, type: 3}
 --- !u!1 &1555306672836357190 stripped

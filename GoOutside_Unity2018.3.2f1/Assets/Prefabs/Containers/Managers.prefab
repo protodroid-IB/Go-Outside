@@ -135,7 +135,7 @@ MonoBehaviour:
   active: 1
   camera: {fileID: 0}
   traumaMultiplier: 14
-  traumaMagnitude: 2
+  traumaMagnitude: 5
   traumaDropOff: 4
   trauma: 0
 --- !u!114 &5668330395773294515
