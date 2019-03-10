@@ -119,6 +119,7 @@ MonoBehaviour:
   cameraShake: {fileID: 0}
   usefulFunctions: {fileID: 0}
   parkZoneCollider: {fileID: 0}
+  chromaticAbberationEffect: {fileID: 0}
 --- !u!114 &5950935679616342231
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -133,7 +134,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   active: 1
   camera: {fileID: 0}
-  traumaMultiplier: 10
+  traumaMultiplier: 14
   traumaMagnitude: 2
   traumaDropOff: 4
   trauma: 0

@@ -5,6 +5,9 @@ using UnityEngine;
 [ExecuteInEditMode]
 public class CameraMovement : MonoBehaviour
 {
+    [SerializeField]
+    private PlayerMovementController playerMovement;
+
     private Vector3 playerPosition = Vector3.zero;
 
     [SerializeField]
@@ -16,15 +19,10 @@ public class CameraMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(GlobalReferences.instance != null)
-        {
-            if (GlobalReferences.instance.playerMovement != null)
-                SetPlayerPosition(GlobalReferences.instance.playerMovement.transform.position);
-            else
-                SetPlayerPosition(GameObject.FindWithTag("Player").GetComponent<PlayerMovementController>().transform.position);
+        if (playerMovement != null)
+            SetPlayerPosition(playerMovement.transform.position);
             
-            MoveCamera();
-        }
+        MoveCamera();
         
     }
 
@@ -36,5 +34,10 @@ public class CameraMovement : MonoBehaviour
     public void SetPlayerPosition(Vector3 inPosition)
     {
         playerPosition = inPosition;
+    }
+
+    private void OnValidate()
+    {
+        MoveCamera();
     }
 }

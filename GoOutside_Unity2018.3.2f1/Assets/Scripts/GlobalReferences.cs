@@ -46,6 +46,9 @@ public class GlobalReferences : MonoBehaviour
 
     public Collider parkZoneCollider;
 
+    [HideInInspector]
+    public ChromaticAbberationEffect chromaticAbberationEffect;
+
     private void Awake()
     {
         MakeSingleton();
@@ -58,6 +61,7 @@ public class GlobalReferences : MonoBehaviour
         resourceManager = GetComponent<ResourceManager>();
         cameraShake = GetComponent<CameraShake>();
         usefulFunctions = GetComponent<UsefulFunctions>();
+        chromaticAbberationEffect = Camera.main.GetComponent<ChromaticAbberationEffect>();
     }
 
     private void Start()
@@ -88,6 +92,10 @@ public class GlobalReferences : MonoBehaviour
 
         if (usefulFunctions == null)
             usefulFunctions = GetComponent<UsefulFunctions>();
+
+        if(chromaticAbberationEffect == null)
+            chromaticAbberationEffect = Camera.main.GetComponent<ChromaticAbberationEffect>();
+
     }
 
 }

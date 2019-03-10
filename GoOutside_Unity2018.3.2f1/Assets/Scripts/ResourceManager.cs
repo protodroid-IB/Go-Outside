@@ -99,9 +99,10 @@ public class ResourceManager : MonoBehaviour
 
         float camShakeTrauma = 10f * Mathf.Abs(inNum);
 
-        if (camShakeTrauma >= 0.75) camShakeTrauma = 0.75f;
+        if (camShakeTrauma >= 0.9) camShakeTrauma = 0.9f;
 
         GlobalReferences.instance.cameraShake.AddToTrauma(camShakeTrauma);
+        GlobalReferences.instance.chromaticAbberationEffect.TriggerEffect(camShakeTrauma);
     }
 
 

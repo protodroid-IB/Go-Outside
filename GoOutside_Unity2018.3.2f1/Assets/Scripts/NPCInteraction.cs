@@ -51,7 +51,6 @@ public class NPCInteraction : MonoBehaviour
                 freezeTimer = 0f;
                 if(unfreeze != null)
                     unfreeze.Invoke();
-                //npcMovement.SetState(NPCState.GoingHome);
             }
 
             freezeTimer += Time.deltaTime;
@@ -80,6 +79,5 @@ public class NPCInteraction : MonoBehaviour
         GlobalReferences.instance.resourceManager.UpdateMentalState(-damage, true);
         if(freeze != null)
             freeze.Invoke();
-        //npcMovement.SetState(NPCState.Collided);
     }
 }

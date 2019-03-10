@@ -8,7 +8,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: FieldOfVision
-  m_Shader: {fileID: 4800000, guid: 02c8ec7513d952448adc4ba91779a52b, type: 3}
+  m_Shader: {fileID: 4800000, guid: 4cc6f1c407488ef46b94125c61539c11, type: 3}
   m_ShaderKeywords: _ALPHABLEND_ON _EMISSION
   m_LightmapFlags: 1
   m_EnableInstancingVariants: 0
@@ -70,6 +70,7 @@ Material:
     - _DisAmount: 0.0015
     - _DisLineWidth: 0.0015
     - _DstBlend: 10
+    - _FlashIntensity: 0
     - _GlossMapScale: 1
     - _Glossiness: 0
     - _GlossyReflections: 1
@@ -84,7 +85,7 @@ Material:
     - _UVSec: 0
     - _ZWrite: 0
     m_Colors:
-    - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - _Color: {r: 1, g: 0.9858491, b: 0.9858491, a: 1}
     - _Color2: {r: 1, g: 1, b: 1, a: 1}
     - _DisLineColor: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0.509434, g: 0.509434, b: 0.509434, a: 1}

@@ -34,6 +34,8 @@ public class PlayerMovementController : MonoBehaviour
     private Rigidbody playerRB;
 
     private Vector2 direction;
+    private bool useGravity = true;
+    private float floorHeight = 0f;
 
 
     private void Awake()
@@ -84,10 +86,26 @@ public class PlayerMovementController : MonoBehaviour
     protected void LateUpdate()
     {
         transform.localEulerAngles = new Vector3(0, transform.localEulerAngles.y, 0);
+
+        //if (useGravity == false)
+            //transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z);
     }
 
     public float GetMaxSpeed()
     {
         return maxSpeed;
     }
+
+    //private void OnCollisionEnter(Collision collision)
+    //{
+    //    if(useGravity)
+    //    {
+    //        if (collision.gameObject.tag != "Player" && collision.gameObject.tag != "PlayerModel")
+    //        {
+    //            useGravity = false;
+    //            floorHeight = transform.position.y;
+    //        }
+    //    }
+        
+    //}
 }

@@ -11,6 +11,7 @@ public class DogOwnerMovement : MonoBehaviour
     private DogOwnerState state = DogOwnerState.FollowDog;
     private NavMeshAgent navAgent;
     private DogMovement dogMovement;
+    private NPCInteraction npcInteraction;
     private Transform dogOwnerTransform;
 
     [SerializeField]
@@ -50,8 +51,12 @@ public class DogOwnerMovement : MonoBehaviour
         normalDistance = (minDistanceFromDog + maxDistanceFromDog) / 2f;
 
         fieldOfVision = GetComponentInChildren<FieldOfVisionLogic>();
-        fieldOfVision.detected = PlayerDetected;
-        fieldOfVision.notDetected = PlayerNotDetected;
+        fieldOfVision.detected += PlayerDetected;
+        fieldOfVision.notDetected += PlayerNotDetected;
+
+        npcInteraction = GetComponentInChildren<NPCInteraction>();
+        npcInteraction.freeze += Freeze;
+        npcInteraction.unfreeze += UnFreeze;
     }
 
     private void Update()
@@ -74,18 +79,23 @@ public class DogOwnerMovement : MonoBehaviour
 
                 break;
         }
+
+        //if(GlobalReferences.instance.usefulFunctions.Ca)
+        //Debug.Log(state);
     }
 
     private void ChasePlayer()
     {
+        navAgent.isStopped = false;
+
         navAgent.speed = runningSpeed;
 
         Vector3 nextPosition = GlobalReferences.instance.playerMovement.transform.position;
 
-        nextPosition = CheckInPark(nextPosition, dogPosVariation);
+        float distanceFromPlayer = GlobalReferences.instance.usefulFunctions.CalculateSqrDistanceFromPlayer(navAgent.transform.position);
 
         NavMeshHit hit;
-        NavMesh.SamplePosition(nextPosition, out hit, maxDistanceFromDog, 1);
+        NavMesh.SamplePosition(nextPosition, out hit, distanceFromPlayer, 1);
         navAgent.SetDestination(hit.position);
     }
 
@@ -100,7 +110,7 @@ public class DogOwnerMovement : MonoBehaviour
         NavMesh.SamplePosition(nextPosition, out hit, maxDistanceFromDog, 1);
         navAgent.SetDestination(hit.position);
 
-        if(dogMovement.GetState() != DogState.Idle)
+        if(dogMovement.GetState() != DogState.Idle || GlobalReferences.instance.usefulFunctions.CalculateSqrDistanceFromTarget(navAgent.transform.position, dogBody.position) >= (maxDistanceFromDog * maxDistanceFromDog))
         {
             navAgent.isStopped = false;
 
@@ -123,7 +133,8 @@ public class DogOwnerMovement : MonoBehaviour
         }
         else
         {
-            state = DogOwnerState.Idle;   
+            if(!fieldOfVision.isDetected)
+                state = DogOwnerState.Idle;   
         }
 
         
@@ -198,23 +209,36 @@ public class DogOwnerMovement : MonoBehaviour
 
     public void UnFreeze()
     {
-        if (dogMovement.GetState() == DogState.Idle)
-            state = DogOwnerState.Idle;
+        if(!fieldOfVision.isDetected)
+        {
+            if (dogMovement.GetState() == DogState.Idle)
+                state = DogOwnerState.Idle;
+            else
+                state = DogOwnerState.FollowDog;
+        }
         else
-            state = DogOwnerState.FollowDog;
+        {
+                state = DogOwnerState.ChasePlayer;
+        }
     }
 
 
     public void PlayerDetected()
     {
-        state = DogOwnerState.ChasePlayer;
+        if (!npcInteraction.GetFreezeNPC())
+            state = DogOwnerState.ChasePlayer;
     }
 
     public void PlayerNotDetected()
     {
-        if (dogMovement.GetState() == DogState.Idle)
-            state = DogOwnerState.Idle;
-        else
-            state = DogOwnerState.FollowDog;
+        Invoke("UnFreeze", 2f);
+    }
+
+    private void OnDestroy()
+    {
+        fieldOfVision.detected -= PlayerDetected;
+        fieldOfVision.notDetected -= PlayerNotDetected;
+        npcInteraction.freeze -= Freeze;
+        npcInteraction.unfreeze -= UnFreeze;
     }
 }
