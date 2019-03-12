@@ -21,6 +21,7 @@ TagManager:
   - SchoolSisterZone
   - DropOffZone
   - PlayerCollide
+  - HomeSisterZone
   layers:
   - Default
   - TransparentFX

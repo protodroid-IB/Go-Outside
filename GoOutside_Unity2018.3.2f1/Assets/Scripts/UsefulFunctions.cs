@@ -39,6 +39,11 @@ public class UsefulFunctions : MonoBehaviour
         return (inTarget - inPosition).sqrMagnitude;
     }
 
+    public float CalculateSqrDistanceFromTarget(Vector2 inPosition, Vector2 inTarget)
+    {
+        return (inTarget - inPosition).sqrMagnitude;
+    }
+
     /// <summary>
     /// This function returns the direction towards the player.
     /// </summary>
@@ -77,6 +82,11 @@ public class UsefulFunctions : MonoBehaviour
     {
         return (targetPosition - inPosition).normalized;
     }
+    public Vector2 FindTargetDirection(Vector2 inPosition, Vector2 targetPosition)
+    {
+        return (targetPosition - inPosition).normalized;
+    }
+
 
 
     /// <summary>
