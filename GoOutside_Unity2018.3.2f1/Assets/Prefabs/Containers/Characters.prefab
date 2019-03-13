@@ -404,6 +404,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6531400645985910861}
     m_Modifications:
+    - target: {fileID: 6418961666148947185, guid: 55efa6720e7887a40a7fc172be711dfa,
+        type: 3}
+      propertyPath: m_Name
+      value: ConversationalNPC
+      objectReference: {fileID: 0}
     - target: {fileID: 3718070744276257500, guid: 55efa6720e7887a40a7fc172be711dfa,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -459,11 +464,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6418961666148947185, guid: 55efa6720e7887a40a7fc172be711dfa,
-        type: 3}
-      propertyPath: m_Name
-      value: ConversationalNPC
-      objectReference: {fileID: 0}
     - target: {fileID: 1474562923, guid: 55efa6720e7887a40a7fc172be711dfa, type: 3}
       propertyPath: m_havePropertiesChanged
       value: 1
@@ -487,6 +487,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 9186248465609304092}
     m_Modifications:
+    - target: {fileID: 6960847515537298916, guid: 10097a538db1c8e4792b874694c90dd6,
+        type: 3}
+      propertyPath: m_Name
+      value: HumanDogNPC
+      objectReference: {fileID: 0}
     - target: {fileID: 8427546695798604765, guid: 10097a538db1c8e4792b874694c90dd6,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -541,11 +546,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6960847515537298916, guid: 10097a538db1c8e4792b874694c90dd6,
-        type: 3}
-      propertyPath: m_Name
-      value: HumanDogNPC
       objectReference: {fileID: 0}
     - target: {fileID: 2088892659, guid: 10097a538db1c8e4792b874694c90dd6, type: 3}
       propertyPath: dogBody
@@ -602,6 +602,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 9186248465609304092}
     m_Modifications:
+    - target: {fileID: 6960847515537298916, guid: 10097a538db1c8e4792b874694c90dd6,
+        type: 3}
+      propertyPath: m_Name
+      value: HumanDogNPC (3)
+      objectReference: {fileID: 0}
     - target: {fileID: 8427546695798604765, guid: 10097a538db1c8e4792b874694c90dd6,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -656,11 +661,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6960847515537298916, guid: 10097a538db1c8e4792b874694c90dd6,
-        type: 3}
-      propertyPath: m_Name
-      value: HumanDogNPC (3)
       objectReference: {fileID: 0}
     - target: {fileID: 2088892659, guid: 10097a538db1c8e4792b874694c90dd6, type: 3}
       propertyPath: dogBody
@@ -717,6 +717,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 9186248465609304092}
     m_Modifications:
+    - target: {fileID: 6960847515537298916, guid: 10097a538db1c8e4792b874694c90dd6,
+        type: 3}
+      propertyPath: m_Name
+      value: HumanDogNPC (5)
+      objectReference: {fileID: 0}
     - target: {fileID: 8427546695798604765, guid: 10097a538db1c8e4792b874694c90dd6,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -782,11 +787,6 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 0.9999999
       objectReference: {fileID: 0}
-    - target: {fileID: 6960847515537298916, guid: 10097a538db1c8e4792b874694c90dd6,
-        type: 3}
-      propertyPath: m_Name
-      value: HumanDogNPC (5)
-      objectReference: {fileID: 0}
     - target: {fileID: 2088892659, guid: 10097a538db1c8e4792b874694c90dd6, type: 3}
       propertyPath: dogBody
       value: 
@@ -842,6 +842,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 9186248465609304092}
     m_Modifications:
+    - target: {fileID: 6960847515537298916, guid: 10097a538db1c8e4792b874694c90dd6,
+        type: 3}
+      propertyPath: m_Name
+      value: HumanDogNPC (4)
+      objectReference: {fileID: 0}
     - target: {fileID: 8427546695798604765, guid: 10097a538db1c8e4792b874694c90dd6,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -896,11 +901,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6960847515537298916, guid: 10097a538db1c8e4792b874694c90dd6,
-        type: 3}
-      propertyPath: m_Name
-      value: HumanDogNPC (4)
       objectReference: {fileID: 0}
     - target: {fileID: 2088892659, guid: 10097a538db1c8e4792b874694c90dd6, type: 3}
       propertyPath: dogBody
@@ -957,6 +957,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 9186248465609304092}
     m_Modifications:
+    - target: {fileID: 6960847515537298916, guid: 10097a538db1c8e4792b874694c90dd6,
+        type: 3}
+      propertyPath: m_Name
+      value: HumanDogNPC (8)
+      objectReference: {fileID: 0}
     - target: {fileID: 8427546695798604765, guid: 10097a538db1c8e4792b874694c90dd6,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1011,11 +1016,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6960847515537298916, guid: 10097a538db1c8e4792b874694c90dd6,
-        type: 3}
-      propertyPath: m_Name
-      value: HumanDogNPC (8)
       objectReference: {fileID: 0}
     - target: {fileID: 2088892659, guid: 10097a538db1c8e4792b874694c90dd6, type: 3}
       propertyPath: dogBody
@@ -1072,6 +1072,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 9186248465609304092}
     m_Modifications:
+    - target: {fileID: 6960847515537298916, guid: 10097a538db1c8e4792b874694c90dd6,
+        type: 3}
+      propertyPath: m_Name
+      value: HumanDogNPC (9)
+      objectReference: {fileID: 0}
     - target: {fileID: 8427546695798604765, guid: 10097a538db1c8e4792b874694c90dd6,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1126,11 +1131,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6960847515537298916, guid: 10097a538db1c8e4792b874694c90dd6,
-        type: 3}
-      propertyPath: m_Name
-      value: HumanDogNPC (9)
       objectReference: {fileID: 0}
     - target: {fileID: 2088892659, guid: 10097a538db1c8e4792b874694c90dd6, type: 3}
       propertyPath: dogBody
@@ -1187,6 +1187,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 9186248465609304092}
     m_Modifications:
+    - target: {fileID: 6960847515537298916, guid: 10097a538db1c8e4792b874694c90dd6,
+        type: 3}
+      propertyPath: m_Name
+      value: HumanDogNPC (6)
+      objectReference: {fileID: 0}
     - target: {fileID: 8427546695798604765, guid: 10097a538db1c8e4792b874694c90dd6,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1241,11 +1246,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6960847515537298916, guid: 10097a538db1c8e4792b874694c90dd6,
-        type: 3}
-      propertyPath: m_Name
-      value: HumanDogNPC (6)
       objectReference: {fileID: 0}
     - target: {fileID: 2088892659, guid: 10097a538db1c8e4792b874694c90dd6, type: 3}
       propertyPath: dogBody
@@ -1302,6 +1302,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 9186248465609304092}
     m_Modifications:
+    - target: {fileID: 6960847515537298916, guid: 10097a538db1c8e4792b874694c90dd6,
+        type: 3}
+      propertyPath: m_Name
+      value: HumanDogNPC (2)
+      objectReference: {fileID: 0}
     - target: {fileID: 8427546695798604765, guid: 10097a538db1c8e4792b874694c90dd6,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1356,11 +1361,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6960847515537298916, guid: 10097a538db1c8e4792b874694c90dd6,
-        type: 3}
-      propertyPath: m_Name
-      value: HumanDogNPC (2)
       objectReference: {fileID: 0}
     - target: {fileID: 2088892659, guid: 10097a538db1c8e4792b874694c90dd6, type: 3}
       propertyPath: dogBody
@@ -1417,6 +1417,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 9186248465609304092}
     m_Modifications:
+    - target: {fileID: 6960847515537298916, guid: 10097a538db1c8e4792b874694c90dd6,
+        type: 3}
+      propertyPath: m_Name
+      value: HumanDogNPC (7)
+      objectReference: {fileID: 0}
     - target: {fileID: 8427546695798604765, guid: 10097a538db1c8e4792b874694c90dd6,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1482,11 +1487,6 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 1.0000001
       objectReference: {fileID: 0}
-    - target: {fileID: 6960847515537298916, guid: 10097a538db1c8e4792b874694c90dd6,
-        type: 3}
-      propertyPath: m_Name
-      value: HumanDogNPC (7)
-      objectReference: {fileID: 0}
     - target: {fileID: 2088892659, guid: 10097a538db1c8e4792b874694c90dd6, type: 3}
       propertyPath: dogBody
       value: 
@@ -1542,6 +1542,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 9186248465609304092}
     m_Modifications:
+    - target: {fileID: 6960847515537298916, guid: 10097a538db1c8e4792b874694c90dd6,
+        type: 3}
+      propertyPath: m_Name
+      value: HumanDogNPC (1)
+      objectReference: {fileID: 0}
     - target: {fileID: 8427546695798604765, guid: 10097a538db1c8e4792b874694c90dd6,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1596,11 +1601,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6960847515537298916, guid: 10097a538db1c8e4792b874694c90dd6,
-        type: 3}
-      propertyPath: m_Name
-      value: HumanDogNPC (1)
       objectReference: {fileID: 0}
     - target: {fileID: 2088892659, guid: 10097a538db1c8e4792b874694c90dd6, type: 3}
       propertyPath: dogBody
