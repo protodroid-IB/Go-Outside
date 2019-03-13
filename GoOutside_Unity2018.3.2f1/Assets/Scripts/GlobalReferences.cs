@@ -49,6 +49,14 @@ public class GlobalReferences : MonoBehaviour
     [HideInInspector]
     public ChromaticAbberationEffect chromaticAbberationEffect;
 
+    [HideInInspector]
+    public GameManager gameManager;
+
+    [HideInInspector]
+    public DialogueManager dialogueManager;
+
+    //public PlayerMovementController PlayerMovement { get => playerMovement;}
+
     private void Awake()
     {
         MakeSingleton();
@@ -62,6 +70,8 @@ public class GlobalReferences : MonoBehaviour
         cameraShake = GetComponent<CameraShake>();
         usefulFunctions = GetComponent<UsefulFunctions>();
         chromaticAbberationEffect = Camera.main.GetComponent<ChromaticAbberationEffect>();
+        gameManager = GetComponent<GameManager>();
+        dialogueManager = GetComponent<DialogueManager>();
     }
 
     private void Start()
@@ -95,6 +105,12 @@ public class GlobalReferences : MonoBehaviour
 
         if(chromaticAbberationEffect == null)
             chromaticAbberationEffect = Camera.main.GetComponent<ChromaticAbberationEffect>();
+
+        if (gameManager == null)
+            gameManager = GetComponent<GameManager>();
+
+        if (dialogueManager == null)
+            dialogueManager = GetComponent<DialogueManager>();
 
     }
 

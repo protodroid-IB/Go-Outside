@@ -46,23 +46,30 @@ public class NPCMovement : MonoBehaviour
 
     private void Update()
     {
-        switch(state)
+        if(!GlobalReferences.instance.dialogueManager.IsDialogueActive())
         {
-            case NPCState.Idle:
-                Idle();
-                break;
+            switch (state)
+            {
+                case NPCState.Idle:
+                    Idle();
+                    break;
 
-            case NPCState.Chasing:
-                Chasing();
-                break;
+                case NPCState.Chasing:
+                    Chasing();
+                    break;
 
-            case NPCState.GoingHome:
-                GoingHome();
-                break;
+                case NPCState.GoingHome:
+                    GoingHome();
+                    break;
 
-            case NPCState.Talking:
+                case NPCState.Talking:
 
-                break;
+                    break;
+            }
+        }
+        else
+        {
+            navAgent.isStopped = true;
         }
     }
 
@@ -74,6 +81,8 @@ public class NPCMovement : MonoBehaviour
 
     private void Chasing()
     {
+        navAgent.isStopped = false;
+
         if (navAgent.speed != runSpeed)
         {
             navAgent.speed = runSpeed;
@@ -93,7 +102,9 @@ public class NPCMovement : MonoBehaviour
 
     private void GoingHome()
     {
-        if(navAgent.speed != walkSpeed)
+        navAgent.isStopped = false;
+
+        if (navAgent.speed != walkSpeed)
         {
             navAgent.speed = walkSpeed;
             navAgent.SetDestination(homePosition);

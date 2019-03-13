@@ -61,24 +61,32 @@ public class DogOwnerMovement : MonoBehaviour
 
     private void Update()
     {
-        switch(state)
+        if(!GlobalReferences.instance.dialogueManager.IsDialogueActive())
         {
-            case DogOwnerState.FollowDog:
-                FollowDog();
-                break;
+            switch (state)
+            {
+                case DogOwnerState.FollowDog:
+                    FollowDog();
+                    break;
 
-            case DogOwnerState.Idle:
-                Idle();
-                break;
+                case DogOwnerState.Idle:
+                    Idle();
+                    break;
 
-            case DogOwnerState.ChasePlayer:
-                ChasePlayer();
-                break;
+                case DogOwnerState.ChasePlayer:
+                    ChasePlayer();
+                    break;
 
-            case DogOwnerState.Collided:
+                case DogOwnerState.Collided:
 
-                break;
+                    break;
+            }
         }
+        else
+        {
+            navAgent.isStopped = true;
+        }
+        
 
         //if(GlobalReferences.instance.usefulFunctions.Ca)
         //Debug.Log(state);
@@ -101,6 +109,8 @@ public class DogOwnerMovement : MonoBehaviour
 
     private void FollowDog()
     {
+        navAgent.isStopped = false;
+
         Vector3 nextPosition = dogBody.position + dogBody.right * (dogPosVariation * Mathf.Sin(Time.time * 0.15f));
 
 

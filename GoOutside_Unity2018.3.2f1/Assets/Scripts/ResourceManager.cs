@@ -40,8 +40,11 @@ public class ResourceManager : MonoBehaviour
     {
         if (startGameTime)
         {
-            TrackTime();
-            MentalStateWithTime();
+            if(!GlobalReferences.instance.dialogueManager.IsDialogueActive())
+            {
+                TrackTime();
+                MentalStateWithTime();
+            }           
         }
         else
         {

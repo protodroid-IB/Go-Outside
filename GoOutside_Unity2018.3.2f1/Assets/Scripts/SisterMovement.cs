@@ -75,49 +75,55 @@ public class SisterMovement : MonoBehaviour
 
     private void Update()
     {
-        switch(sisterState)
+        if(!GlobalReferences.instance.dialogueManager.IsDialogueActive())
         {
-            case SisterState.Still:
-                Still();
-                break;
+            switch (sisterState)
+            {
+                case SisterState.Still:
+                    Still();
+                    break;
 
-            case SisterState.Wander:
-                Wander();
-                break;
+                case SisterState.Wander:
+                    Wander();
+                    break;
 
-            case SisterState.Target:
+                case SisterState.Target:
 
-                break;
+                    break;
 
-            default:
-                // do nothing
-                break;
+                default:
+                    // do nothing
+                    break;
+            }
+
+
+            if (runTimer)
+            {
+                if (timer >= timeBetweenWanderings)
+                {
+                    sisterState = SisterState.Wander;
+                    runTimer = false;
+                    timer = 0f;
+                    wanderSphere.SetActive(false);
+                }
+                else
+                {
+                    timer += Time.deltaTime;
+                    RotateSisterToFacePlayer();
+                }
+            }
         }
-
-        //if(wander)
-        //{
-        //    Wander();
-        //}
-
-        if(runTimer)
+        else
         {
-            if(timer >= timeBetweenWanderings)
-            {
-                sisterState = SisterState.Wander;
-                runTimer = false;
-                timer = 0f;
-                wanderSphere.SetActive(false);
-            }
-            else
-            {
-                timer += Time.deltaTime;
-                RotateSisterToFacePlayer();
-            }
+            navAgent.isStopped = true;
         }
+        
     }
 
     private void Still()
     {
+        navAgent.isStopped = true;
+
         if(CalculateSqrDistanceFromPlayer() <= lookAtPlayerDistance * lookAtPlayerDistance)
         {
             RotateSisterToFacePlayer();

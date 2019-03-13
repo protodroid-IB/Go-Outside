@@ -30,19 +30,26 @@ public class DogMovement : MonoBehaviour
 
     private void Update()
     {
-        switch(state)
+        if (!GlobalReferences.instance.dialogueManager.IsDialogueActive())
         {
-            case DogState.Idle:
-                Idle();
-                break;
+            switch (state)
+            {
+                case DogState.Idle:
+                    Idle();
+                    break;
 
-            case DogState.Walking:
-                Walking();
-                break;
+                case DogState.Walking:
+                    Walking();
+                    break;
 
-            case DogState.Petted:
-                Petted();
-                break;
+                case DogState.Petted:
+                    Petted();
+                    break;
+            }
+        }
+        else
+        {
+            navAgent.isStopped = true;
         }
     }
 
@@ -53,6 +60,9 @@ public class DogMovement : MonoBehaviour
 
     private void Walking()
     {
+
+        navAgent.isStopped = false;
+
         if(waypoints == null)
         {
             GenerateWaypoints();
@@ -83,6 +93,8 @@ public class DogMovement : MonoBehaviour
 
     private void Idle()
     {
+        navAgent.isStopped = true;
+
         //throw new NotImplementedException();
         if(waypoints != null)
         {

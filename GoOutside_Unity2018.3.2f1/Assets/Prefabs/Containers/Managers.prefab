@@ -9,13 +9,15 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 732584037089853847}
+  - component: {fileID: 1056975161177881605}
   - component: {fileID: 732584037089853846}
-  - component: {fileID: 732584037089853844}
-  - component: {fileID: 732584037089853845}
-  - component: {fileID: 177620520}
   - component: {fileID: 5801253641011332518}
-  - component: {fileID: 5950935679616342231}
   - component: {fileID: 5668330395773294515}
+  - component: {fileID: 732584037089853844}
+  - component: {fileID: 177620520}
+  - component: {fileID: 2590747339311577428}
+  - component: {fileID: 732584037089853845}
+  - component: {fileID: 5950935679616342231}
   m_Layer: 0
   m_Name: Managers
   m_TagString: Managers
@@ -37,6 +39,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1056975161177881605
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 732584037089853841}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd8dde746107b2248a16568983e72f1b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &732584037089853846
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -56,47 +70,6 @@ MonoBehaviour:
   buttonHoldTime: 0.25
   holdTimer: 0
   startHoldTimer: 0
---- !u!114 &732584037089853844
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 732584037089853841}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d2b6afc8d3cae094982e4e88f13b9571, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  totalGameTime: 2
-  startGameTime: 1
---- !u!114 &732584037089853845
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 732584037089853841}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8efa87cd2407e814488a31e4507b1774, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &177620520
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 732584037089853841}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7253ea7d5f6ed2f46a6203efb194b262, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  totalNumGymMachines: 6
-  totalNumLetters: 12
-  totalNumDogs: 5
 --- !u!114 &5801253641011332518
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -120,6 +93,71 @@ MonoBehaviour:
   usefulFunctions: {fileID: 0}
   parkZoneCollider: {fileID: 0}
   chromaticAbberationEffect: {fileID: 0}
+--- !u!114 &5668330395773294515
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 732584037089853841}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36bf60a0e8e37cc438fa50f2fec06f53, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &732584037089853844
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 732584037089853841}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2b6afc8d3cae094982e4e88f13b9571, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  totalGameTime: 2
+  startGameTime: 1
+--- !u!114 &177620520
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 732584037089853841}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7253ea7d5f6ed2f46a6203efb194b262, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  totalNumGymMachines: 6
+  totalNumLetters: 12
+  totalNumDogs: 5
+--- !u!114 &2590747339311577428
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 732584037089853841}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2bf42a9c4e74a56448e561b7a1034953, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &732584037089853845
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 732584037089853841}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8efa87cd2407e814488a31e4507b1774, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &5950935679616342231
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -138,15 +176,3 @@ MonoBehaviour:
   traumaMagnitude: 5
   traumaDropOff: 4
   trauma: 0
---- !u!114 &5668330395773294515
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 732584037089853841}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 36bf60a0e8e37cc438fa50f2fec06f53, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

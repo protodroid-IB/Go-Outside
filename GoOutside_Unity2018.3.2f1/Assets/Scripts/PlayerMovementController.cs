@@ -56,10 +56,23 @@ public class PlayerMovementController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        direction = GlobalReferences.instance.inputController.move(GlobalReferences.instance.inputController.player, transform.position);
+        if (!GlobalReferences.instance.dialogueManager.IsDialogueActive())
+        {
+            direction = GlobalReferences.instance.inputController.move(GlobalReferences.instance.inputController.player, transform.position);
 
-        Turn(direction);
-        Move(direction);
+            Turn(direction);
+            Move(direction);
+        }
+        else
+        {
+            transform.position += new Vector3(velocity.x, 0f, velocity.z);
+            velocity = Vector3.Slerp(velocity, Vector3.zero, moveDeceleration * Time.deltaTime);
+        }
+
+
+        
+        
+        
     }
 
 
