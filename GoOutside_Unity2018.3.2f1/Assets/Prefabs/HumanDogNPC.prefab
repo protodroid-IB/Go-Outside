@@ -1239,16 +1239,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1156481871}
     m_Modifications:
-    - target: {fileID: 3463137059021605154, guid: ed6b5365a42f91743962cd179e54ca1e,
-        type: 3}
-      propertyPath: m_Name
-      value: ProgressBar
-      objectReference: {fileID: 0}
-    - target: {fileID: 3463137059021605154, guid: ed6b5365a42f91743962cd179e54ca1e,
-        type: 3}
-      propertyPath: m_Layer
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 3463137059021605155, guid: ed6b5365a42f91743962cd179e54ca1e,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1302,6 +1292,16 @@ PrefabInstance:
     - target: {fileID: 3463137059021605155, guid: ed6b5365a42f91743962cd179e54ca1e,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3463137059021605154, guid: ed6b5365a42f91743962cd179e54ca1e,
+        type: 3}
+      propertyPath: m_Name
+      value: ProgressBar
+      objectReference: {fileID: 0}
+    - target: {fileID: 3463137059021605154, guid: ed6b5365a42f91743962cd179e54ca1e,
+        type: 3}
+      propertyPath: m_Layer
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3463137059675467309, guid: ed6b5365a42f91743962cd179e54ca1e,

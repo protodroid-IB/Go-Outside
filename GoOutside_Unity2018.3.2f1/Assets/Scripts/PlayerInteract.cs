@@ -17,7 +17,10 @@ public class PlayerInteract : MonoBehaviour
 
     private void Update()
     {
-        bool holding = GlobalReferences.instance.inputController.interact1Hold(GlobalReferences.instance.inputController.player, GlobalReferences.instance.inputController.buttonHoldTime, ref GlobalReferences.instance.inputController.holdTimer, ref GlobalReferences.instance.inputController.startHoldTimer);
+        bool holding =
+            GlobalReferences.instance.inputController.interact1Hold(GlobalReferences.instance.inputController.player, GlobalReferences.instance.inputController.buttonHoldTime, ref GlobalReferences.instance.inputController.holdTimer, ref GlobalReferences.instance.inputController.startHoldTimer) ||
+            GlobalReferences.instance.inputController.interact1Press(GlobalReferences.instance.inputController.player, GlobalReferences.instance.inputController.buttonHoldTime, ref GlobalReferences.instance.inputController.holdTimer, ref GlobalReferences.instance.inputController.startHoldTimer);
+
 
         if (holding)
         {

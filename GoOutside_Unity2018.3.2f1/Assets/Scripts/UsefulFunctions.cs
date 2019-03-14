@@ -122,4 +122,12 @@ public class UsefulFunctions : MonoBehaviour
 
         return false;
     }
+
+
+    public bool CheckAnimationPlaying(Animator inAnimator, string inName)
+    {
+        if (inAnimator.GetCurrentAnimatorStateInfo(0).IsName(inName)) return true;
+
+        return false;
+    }
 }

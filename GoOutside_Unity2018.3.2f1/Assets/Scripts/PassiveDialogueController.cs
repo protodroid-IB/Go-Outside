@@ -32,6 +32,13 @@ public class PassiveDialogueController : MonoBehaviour
         animator.SetTrigger("Off");
     }
 
+    public void DeactivatePassiveDialogue()
+    {
+        interactable.beginInteract -= DialogueEnter;
+        interactable.endInteract -= DialogueExit;
+        DialogueExit();
+    }
+
     private void OnDestroy()
     {
         interactable.beginInteract -= DialogueEnter;

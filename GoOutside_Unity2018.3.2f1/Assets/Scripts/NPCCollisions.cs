@@ -32,13 +32,17 @@ public class NPCCollisions : MonoBehaviour
     {
         if(!canCollide)
         {
-            if (timer >= npcInteraction.GetNoDamageTime())
+            if (npcInteraction.GetHasSpoken())
             {
-                timer = 0f;
-                canCollide = true;
-            }
+                if (timer >= npcInteraction.GetNoDamageTime())
+                {
+                    timer = 0f;
+                    canCollide = true;
+                }
 
-            timer += Time.deltaTime;
+                timer += Time.deltaTime;
+            }
+            
         }
         
     }

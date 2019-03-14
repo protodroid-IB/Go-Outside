@@ -248,6 +248,7 @@ GameObject:
   - component: {fileID: 3718070744276257500}
   - component: {fileID: 8533944764376183916}
   - component: {fileID: 2268707533527266658}
+  - component: {fileID: 1674323199}
   m_Layer: 0
   m_Name: ConversationalNPC
   m_TagString: Untagged
@@ -302,6 +303,20 @@ MonoBehaviour:
   runSpeed: 5
   walkSpeed: 2.5
   turnSpeed: 3
+--- !u!114 &1674323199
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6418961666148947185}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0934588fb95d70e459427509f877ecd7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogue: Why were you running away? I Just wanted to tell you I think you have
+    a cool haircut!
 --- !u!1 &6627512309256885760
 GameObject:
   m_ObjectHideFlags: 0
@@ -353,10 +368,15 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3718070744276257500}
     m_Modifications:
-    - target: {fileID: 8021095724222492734, guid: 8df761c47c80842419205e5cc6bb9a7c,
+    - target: {fileID: 8021095724792947914, guid: 8df761c47c80842419205e5cc6bb9a7c,
         type: 3}
-      propertyPath: m_Name
-      value: PassiveDialogueWindow
+      propertyPath: m_havePropertiesChanged
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8021095724792947914, guid: 8df761c47c80842419205e5cc6bb9a7c,
+        type: 3}
+      propertyPath: m_isInputParsingRequired
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8021095724222492733, guid: 8df761c47c80842419205e5cc6bb9a7c,
         type: 3}
@@ -463,16 +483,16 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 8021095724222492734, guid: 8df761c47c80842419205e5cc6bb9a7c,
+        type: 3}
+      propertyPath: m_Name
+      value: PassiveDialogueWindow
+      objectReference: {fileID: 0}
     - target: {fileID: 8021095724222492729, guid: 8df761c47c80842419205e5cc6bb9a7c,
         type: 3}
       propertyPath: npcBody
       value: 
       objectReference: {fileID: 4695902343358026031}
-    - target: {fileID: 8021095724792947914, guid: 8df761c47c80842419205e5cc6bb9a7c,
-        type: 3}
-      propertyPath: m_textInfo.textComponent
-      value: 
-      objectReference: {fileID: 1474562923}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8df761c47c80842419205e5cc6bb9a7c, type: 3}
 --- !u!224 &2046533532 stripped
@@ -481,15 +501,3 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 8021095724065501089}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1474562923 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8021095724792947914, guid: 8df761c47c80842419205e5cc6bb9a7c,
-    type: 3}
-  m_PrefabInstance: {fileID: 8021095724065501089}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

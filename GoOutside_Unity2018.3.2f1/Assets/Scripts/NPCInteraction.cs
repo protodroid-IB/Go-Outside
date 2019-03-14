@@ -31,11 +31,15 @@ public class NPCInteraction : MonoBehaviour
     private Quaternion turnRotation = Quaternion.identity;
     private Transform npcTransform;
 
+
+    private bool hasSpoken = false;
+    public delegate void Dialogue();
+    public Dialogue dialogue;
+
     // Start is called before the first frame update
     void Start()
     {
         navAgent = GetComponentInChildren<NavMeshAgent>();
-        //npcMovement = GetComponent<NPCMovement>();
         npcTransform = transform.GetChild(0);
     }
 
@@ -44,19 +48,30 @@ public class NPCInteraction : MonoBehaviour
     {
         if(freezeNPC)
         {
-            if(freezeTimer >= freezeTimeOnCollision)
+            if(hasSpoken)
             {
-                freezeNPC = false;
-                navAgent.isStopped = false;
-                freezeTimer = 0f;
-                if(unfreeze != null)
-                    unfreeze.Invoke();
+                if (freezeTimer >= freezeTimeOnCollision)
+                {
+                    freezeNPC = false;
+                    navAgent.isStopped = false;
+                    freezeTimer = 0f;
+                    if (unfreeze != null)
+                        unfreeze.Invoke();
+                }
+
+                freezeTimer += Time.deltaTime;
+
+                GlobalReferences.instance.usefulFunctions.RotateToFacePlayer(ref npcTransform, ref turnRotation, 3f);
             }
-
-            freezeTimer += Time.deltaTime;
-
-            
-            GlobalReferences.instance.usefulFunctions.RotateToFacePlayer(ref npcTransform, ref turnRotation, 3f);
+            else
+            {
+                if(!GlobalReferences.instance.dialogueManager.IsDialogueActive())
+                {
+                    hasSpoken = true;
+                    navAgent.isStopped = false;
+                    freezeTimer = 0f;
+                }
+            }
         }
     }
 
@@ -79,5 +94,20 @@ public class NPCInteraction : MonoBehaviour
         GlobalReferences.instance.resourceManager.UpdateMentalState(-damage, true);
         if(freeze != null)
             freeze.Invoke();
+
+        if (!hasSpoken)
+            if (dialogue != null)
+                dialogue.Invoke();
+            
+    }
+
+    public void SetHasSpoken(bool inActive)
+    {
+        hasSpoken = inActive;
+    }
+
+    public bool GetHasSpoken()
+    {
+        return hasSpoken;
     }
 }
