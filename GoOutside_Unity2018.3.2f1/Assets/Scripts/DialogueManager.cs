@@ -25,9 +25,14 @@ public class DialogueManager : MonoBehaviour
     [SerializeField]
     private float dialogueTextSpeed = 2f;
 
+    private bool askingQuestion = false;
+
+    private string[] choices;
+
 
     private void Start()
     {
+        dialogueGO.SetActive(true);
         dialogueAnimator = dialogueGO.GetComponent<Animator>();
         dialogueText = dialogueGO.GetComponentInChildren<TextMeshProUGUI>();
         dialogueText.text = "";
@@ -37,11 +42,6 @@ public class DialogueManager : MonoBehaviour
 
     private void Update()
     {
-        //if (Input.GetKeyDown(KeyCode.Space))
-        //{
-        //    dialogueActive = !dialogueActive;
-        //}
-
         UpdateDialogue();
     }
 
@@ -53,6 +53,14 @@ public class DialogueManager : MonoBehaviour
             if (canStartTalking)
             {
                 StartDialogue(inputDialogue);
+            }
+            else
+            {
+                if(askingQuestion)
+                {
+                    GlobalReferences.instance.choiceManager.ActivateChoices(choices);
+                    askingQuestion = false;
+                }
             }
         }
         else
@@ -67,6 +75,7 @@ public class DialogueManager : MonoBehaviour
         {
             dialogueActive = false;
         }
+
     }
 
 
@@ -76,7 +85,20 @@ public class DialogueManager : MonoBehaviour
         {
             inputDialogue = inDialogue;
             dialogueActive = true;
+            askingQuestion = false;
             GlobalReferences.instance.playerInteract.interact += ProgressDialogue;
+        }
+    }
+
+    public void Speak(string inDialogue, string[] inChoices)
+    {
+        if (!dialogueActive)
+        {
+            inputDialogue = inDialogue;
+            choices = inChoices;
+
+            dialogueActive = true;
+            askingQuestion = true;
         }
     }
 
@@ -159,5 +181,10 @@ public class DialogueManager : MonoBehaviour
             dialogueAnimator.ResetTrigger("Off");
             dialogueAnimator.SetTrigger("Off");
         }
+    }
+
+    public void SetDialogueActive(bool inActive)
+    {
+        dialogueActive = inActive;
     }
 }

@@ -39,7 +39,7 @@ public class UIManager : MonoBehaviour
     private void UpdateTimeOfDayUI(Vector2 inTimeOfDay)
     {
         string timeString = "";
-        string timePhase = "AM";
+        string timePhase = "am";
 
         float hour = inTimeOfDay.x;
         float min = inTimeOfDay.y;
@@ -47,7 +47,7 @@ public class UIManager : MonoBehaviour
 
         if ((int)hour >= 12)
         {
-            timePhase = "PM";
+            timePhase = "pm";
         }
 
 
@@ -58,15 +58,9 @@ public class UIManager : MonoBehaviour
 
 
         
-        // if hours is lower than 10
-        if(hour < 10)
-        {
-            timeString = "0" + ((int)(hour)).ToString() + ":";
-        }
-        else
-        {
-            timeString = ((int)(hour)).ToString() + ":";
-        }
+
+        timeString = ((int)(hour)).ToString() + ":";
+
 
         if(inTimeOfDay.y < 10)
         {

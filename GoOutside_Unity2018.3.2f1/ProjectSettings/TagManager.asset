@@ -22,6 +22,8 @@ TagManager:
   - DropOffZone
   - PlayerCollide
   - HomeSisterZone
+  - DialogueUI
+  - ChoiceUI
   layers:
   - Default
   - TransparentFX

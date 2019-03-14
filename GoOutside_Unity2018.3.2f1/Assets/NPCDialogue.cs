@@ -11,6 +11,12 @@ public class NPCDialogue : MonoBehaviour
     [SerializeField]
     private string dialogue;
 
+    [SerializeField]
+    private bool askingQuestion = false;
+
+    [SerializeField]
+    private string[] choices = new string[4];
+
     // Start is called before the first frame update
     void Start()
     {
@@ -23,9 +29,12 @@ public class NPCDialogue : MonoBehaviour
 
     private void NPCSpeak()
     {
-        GlobalReferences.instance.dialogueManager.Speak(dialogue);
+        if(!askingQuestion)
+            GlobalReferences.instance.dialogueManager.Speak(dialogue);
+        else
+            GlobalReferences.instance.dialogueManager.Speak(dialogue, choices);
 
-        if(passiveDialogue != null)
+        if (passiveDialogue != null)
             passiveDialogue.DeactivatePassiveDialogue();
     }
 

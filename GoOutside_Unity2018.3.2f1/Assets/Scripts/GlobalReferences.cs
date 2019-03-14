@@ -55,6 +55,11 @@ public class GlobalReferences : MonoBehaviour
     [HideInInspector]
     public DialogueManager dialogueManager;
 
+    [HideInInspector]
+    public ChoiceManager choiceManager;
+
+    
+
     //public PlayerMovementController PlayerMovement { get => playerMovement;}
 
     private void Awake()
@@ -72,6 +77,8 @@ public class GlobalReferences : MonoBehaviour
         chromaticAbberationEffect = Camera.main.GetComponent<ChromaticAbberationEffect>();
         gameManager = GetComponent<GameManager>();
         dialogueManager = GetComponent<DialogueManager>();
+        choiceManager = GetComponent<ChoiceManager>();
+
     }
 
     private void Start()
@@ -112,6 +119,8 @@ public class GlobalReferences : MonoBehaviour
         if (dialogueManager == null)
             dialogueManager = GetComponent<DialogueManager>();
 
+        if(choiceManager == null)
+            choiceManager = GetComponent<ChoiceManager>();
     }
 
 }
