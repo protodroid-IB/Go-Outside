@@ -27,7 +27,7 @@ public class DialogueManager : MonoBehaviour
 
     private bool askingQuestion = false;
 
-    private string[] choices;
+    private Choice[] choices;
 
 
     private void Start()
@@ -90,7 +90,7 @@ public class DialogueManager : MonoBehaviour
         }
     }
 
-    public void Speak(string inDialogue, string[] inChoices)
+    public void Speak(string inDialogue, Choice[] inChoices)
     {
         if (!dialogueActive)
         {

@@ -36,6 +36,9 @@ public class ChoiceUIReferences : MonoBehaviour
     [HideInInspector]
     public Animator animator;
 
+    [HideInInspector]
+    public int[] buttonAnimateOrder = { 0, 1, 2, 3 };
+
     public delegate void Activate();
     public Activate activate;
     public Activate deactivate;
@@ -68,21 +71,25 @@ public class ChoiceUIReferences : MonoBehaviour
     public void ChoiceOne()
     {
         AnimateChoice(0);
+        AnimateButton(buttonAnimateOrder[0]);
     }
 
     public void ChoiceTwo()
     {
         AnimateChoice(1);
+        AnimateButton(buttonAnimateOrder[1]);
     }
 
     public void ChoiceThree()
     {
         AnimateChoice(2);
+        AnimateButton(buttonAnimateOrder[2]);
     }
 
     public void ChoiceFour()
     {
         AnimateChoice(3);
+        AnimateButton(buttonAnimateOrder[3]);
     }
 
     private void AnimateChoice(int inIndex)
@@ -95,7 +102,10 @@ public class ChoiceUIReferences : MonoBehaviour
         {
             choiceAnimators[inIndex].SetTrigger("Off");
         }
+    }
 
+    private void AnimateButton(int inIndex)
+    {
         if (GlobalReferences.instance.usefulFunctions.CheckAnimationPlaying(buttonAnimators[inIndex], "Option_Off"))
         {
             buttonAnimators[inIndex].SetTrigger("Idle");
@@ -115,6 +125,24 @@ public class ChoiceUIReferences : MonoBehaviour
         else
         {
             timerAnimator.SetTrigger("Off");
+        }
+    }
+
+    public void AnimateSelected(int inChoiceNum, bool inState)
+    {
+        choiceAnimators[inChoiceNum].SetBool("Selected", inState);
+
+        Animator buttonAnim = buttonSpots[inChoiceNum].GetComponentInChildren<Animator>();
+
+        buttonAnim.SetBool("Selected", inState);
+    }
+
+
+    public void SetButtonAnimatorOrderArray(int[] inArray)
+    {
+        for(int i=0; i < inArray.Length; i++)
+        {
+            buttonAnimateOrder[i] = inArray[i];
         }
     }
 

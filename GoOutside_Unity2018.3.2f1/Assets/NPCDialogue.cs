@@ -14,8 +14,9 @@ public class NPCDialogue : MonoBehaviour
     [SerializeField]
     private bool askingQuestion = false;
 
+
     [SerializeField]
-    private string[] choices = new string[4];
+    private Choice[] choices = new Choice[4];
 
     // Start is called before the first frame update
     void Start()

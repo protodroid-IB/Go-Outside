@@ -97,7 +97,6 @@ MonoBehaviour:
   gameManager: {fileID: 0}
   dialogueManager: {fileID: 0}
   choiceManager: {fileID: 0}
-  choiceReferences: {fileID: 0}
 --- !u!114 &5668330395773294515
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -196,3 +195,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   choiceReferences: {fileID: 0}
+  timeToMakeChoice: 10
+  numSecondsBetweenChoiceSwaps: 2
+  buttonSwapSpeed: 20

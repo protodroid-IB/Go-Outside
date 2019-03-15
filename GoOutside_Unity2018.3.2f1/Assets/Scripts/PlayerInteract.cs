@@ -8,6 +8,11 @@ public class PlayerInteract : MonoBehaviour
 
     public delegate void Interact();
     public Interact interact;
+    public Interact option1Interact;
+    public Interact option2Interact;
+    public Interact option3Interact;
+    public Interact option4Interact;
+
 
     // Start is called before the first frame update
     void Start()
@@ -17,14 +22,42 @@ public class PlayerInteract : MonoBehaviour
 
     private void Update()
     {
-        bool holding =
-            GlobalReferences.instance.inputController.interact1Hold(GlobalReferences.instance.inputController.player, GlobalReferences.instance.inputController.buttonHoldTime, ref GlobalReferences.instance.inputController.holdTimer, ref GlobalReferences.instance.inputController.startHoldTimer) ||
-            GlobalReferences.instance.inputController.interact1Press(GlobalReferences.instance.inputController.player, GlobalReferences.instance.inputController.buttonHoldTime, ref GlobalReferences.instance.inputController.holdTimer, ref GlobalReferences.instance.inputController.startHoldTimer);
+        bool holding = GlobalReferences.instance.inputController.interact1Hold(GlobalReferences.instance.inputController.player, GlobalReferences.instance.inputController.buttonHoldTime, ref GlobalReferences.instance.inputController.holdTimer, ref GlobalReferences.instance.inputController.startHoldTimer);
+        bool pressing = GlobalReferences.instance.inputController.interact1Press(GlobalReferences.instance.inputController.player, GlobalReferences.instance.inputController.buttonHoldTime, ref GlobalReferences.instance.inputController.holdTimer, ref GlobalReferences.instance.inputController.startHoldTimer);
 
+        bool option1 = GlobalReferences.instance.inputController.option1(GlobalReferences.instance.inputController.player);
+        bool option2 = GlobalReferences.instance.inputController.option2(GlobalReferences.instance.inputController.player);
+        bool option3 = GlobalReferences.instance.inputController.option3(GlobalReferences.instance.inputController.player);
+        bool option4 = GlobalReferences.instance.inputController.option4(GlobalReferences.instance.inputController.player);
 
-        if (holding)
+        if (holding || pressing)
         {
             interact.Invoke();
+        }
+
+        if(option1)
+        {
+            if (option1Interact != null)
+                option1Interact.Invoke();
+                
+        }
+
+        if (option2)
+        {
+            if (option2Interact != null)
+                option2Interact.Invoke();
+        }
+
+        if (option3)
+        {
+            if (option3Interact != null)
+                option3Interact.Invoke();
+        }
+
+        if (option4)
+        {
+            if (option4Interact != null)
+                option4Interact.Invoke();
         }
     }
 

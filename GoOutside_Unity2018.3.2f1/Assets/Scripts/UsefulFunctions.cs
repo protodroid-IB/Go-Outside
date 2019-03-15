@@ -130,4 +130,15 @@ public class UsefulFunctions : MonoBehaviour
 
         return false;
     }
+
+    public void ShuffleArray(ref int[] inArray)
+    {
+        for (int i = 0; i < inArray.Length; i++)
+        {
+            int tmp = inArray[i]; 
+            int r = Random.Range(i, inArray.Length); 
+            inArray[i] = inArray[r]; 
+            inArray[r] = tmp; 
+        }
+    }
 }
