@@ -131,6 +131,12 @@ public class ResourceManager : MonoBehaviour
     }
 
 
+    public float GetMentalState()
+    {
+        return mentalState;
+    }
+
+
 
 
 

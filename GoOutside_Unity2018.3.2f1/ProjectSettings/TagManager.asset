@@ -29,6 +29,7 @@ TagManager:
   - Button3
   - Button4
   - Preload
+  - Music
   layers:
   - Default
   - TransparentFX
