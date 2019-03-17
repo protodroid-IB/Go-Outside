@@ -422,6 +422,7 @@ MonoBehaviour:
   - {fileID: 1914374908081624389}
   - {fileID: 3279991100398387343}
   - {fileID: 9123419400994677259}
+  buttonParent: {fileID: 5324252830202421767}
   buttonSpots:
   - {fileID: 2328897870943431884}
   - {fileID: 3066187692662871290}
@@ -1010,6 +1011,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Button A/B
       objectReference: {fileID: 0}
+    - target: {fileID: 8018236948511209067, guid: 633e802576b6d044e85b7b72c6dc3144,
+        type: 3}
+      propertyPath: m_TagString
+      value: Button2
+      objectReference: {fileID: 0}
     - target: {fileID: 958917041492304878, guid: 633e802576b6d044e85b7b72c6dc3144,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1183,6 +1189,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Button D/Y
+      objectReference: {fileID: 0}
+    - target: {fileID: 8018236948511209067, guid: 633e802576b6d044e85b7b72c6dc3144,
+        type: 3}
+      propertyPath: m_TagString
+      value: Button4
       objectReference: {fileID: 0}
     - target: {fileID: 958917041492304878, guid: 633e802576b6d044e85b7b72c6dc3144,
         type: 3}
@@ -1526,6 +1537,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Button S/X
       objectReference: {fileID: 0}
+    - target: {fileID: 8018236948511209067, guid: 633e802576b6d044e85b7b72c6dc3144,
+        type: 3}
+      propertyPath: m_TagString
+      value: Button3
+      objectReference: {fileID: 0}
     - target: {fileID: 958917041492304878, guid: 633e802576b6d044e85b7b72c6dc3144,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1699,6 +1715,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Button W/A
+      objectReference: {fileID: 0}
+    - target: {fileID: 8018236948511209067, guid: 633e802576b6d044e85b7b72c6dc3144,
+        type: 3}
+      propertyPath: m_TagString
+      value: Button1
       objectReference: {fileID: 0}
     - target: {fileID: 958917041492304878, guid: 633e802576b6d044e85b7b72c6dc3144,
         type: 3}

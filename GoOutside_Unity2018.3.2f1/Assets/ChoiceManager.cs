@@ -147,6 +147,7 @@ public class ChoiceManager : MonoBehaviour
                 choiceSelected = true;
                 choiceSelectedNum = inChoiceNum;
                 choiceReferences.AnimateSelected(choiceSelectedNum, true);
+                choiceReferences.FindButtonAnimateOrder();
                 startTimer = false;
 
                 Invoke("EndChoiceSequence", 1f);
@@ -226,7 +227,7 @@ public class ChoiceManager : MonoBehaviour
         canSwap = true;
         int[] spotIndex = { 0, 1, 2, 3 };
         GlobalReferences.instance.usefulFunctions.ShuffleArray(ref spotIndex);
-        choiceReferences.SetButtonAnimatorOrderArray(spotIndex);
+        //choiceReferences.SetButtonAnimatorOrderArray(spotIndex);
 
        // string test = "BUTTON ANIMATE ORDER: \t";
         for (int i = 0; i < choiceButtons.Length; i++)
@@ -308,10 +309,9 @@ public class ChoiceManager : MonoBehaviour
                 GlobalReferences.instance.resourceManager.UpdateMentalState(choiceEffects[choiceSelectedNum]);
         }
 
-        Debug.Log(choiceEffects[choiceSelectedNum]);
-
         choiceSelectedNum = -1;
     }
+
 
 
 

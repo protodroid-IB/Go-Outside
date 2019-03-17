@@ -1,5 +1,49 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &559401956
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 559401957}
+  - component: {fileID: 559401958}
+  m_Layer: 0
+  m_Name: DropOffZone
+  m_TagString: HomeSisterZone
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &559401957
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 559401956}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.3, y: -1.90463, z: -20.7}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 6324514089773297483}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!135 &559401958
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 559401956}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 19.72908
+  m_Center: {x: -16.113983, y: 0, z: 8.927017}
 --- !u!1 &2537173116424606050
 GameObject:
   m_ObjectHideFlags: 0
@@ -100,16 +144,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1078697262481916634, guid: 127467ec3890ceb4e936869e2c5824e7,
+        type: 3}
+      propertyPath: m_Radius
+      value: 36.509266
+      objectReference: {fileID: 0}
+    - target: {fileID: 1078697262481916634, guid: 127467ec3890ceb4e936869e2c5824e7,
+        type: 3}
+      propertyPath: m_Center.x
+      value: -14.693432
+      objectReference: {fileID: 0}
+    - target: {fileID: 1078697262481916634, guid: 127467ec3890ceb4e936869e2c5824e7,
+        type: 3}
+      propertyPath: m_Center.z
+      value: 7.2401733
+      objectReference: {fileID: 0}
     - target: {fileID: 4173130376038205678, guid: 127467ec3890ceb4e936869e2c5824e7,
         type: 3}
       propertyPath: roofMesh
       value: 
       objectReference: {fileID: 1653844908421124106}
-    - target: {fileID: 3761020148215007252, guid: 127467ec3890ceb4e936869e2c5824e7,
-        type: 3}
-      propertyPath: m_TagString
-      value: SchoolSisterZone
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 127467ec3890ceb4e936869e2c5824e7, type: 3}
 --- !u!4 &1488998949386410583 stripped

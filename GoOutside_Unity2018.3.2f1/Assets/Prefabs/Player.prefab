@@ -184,8 +184,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   minRadius: 1
-  maxRadius: 750
-  debugMode: 1
+  maxRadius: 55
+  debugMode: 0
 --- !u!54 &5005859495751140709
 Rigidbody:
   m_ObjectHideFlags: 0

@@ -25,6 +25,9 @@ public class ChoiceUIReferences : MonoBehaviour
     private Animator[] choiceAnimators;
 
     [SerializeField]
+    private Transform buttonParent;
+
+    [SerializeField]
     private GameObject[] buttonSpots;
 
     [SerializeField]
@@ -145,6 +148,17 @@ public class ChoiceUIReferences : MonoBehaviour
             buttonAnimateOrder[i] = inArray[i];
         }
     }
+
+    public void FindButtonAnimateOrder()
+    {
+        for(int i=0; i < buttonParent.childCount; i++)
+        {
+            int buttonNum = int.Parse(buttonParent.GetChild(i).GetChild(0).tag.Substring(6)) - 1;
+            buttonAnimateOrder[i] = buttonNum;
+        }
+
+    }
+
 
 
 

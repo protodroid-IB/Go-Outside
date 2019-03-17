@@ -195,6 +195,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   choiceReferences: {fileID: 0}
-  timeToMakeChoice: 10
-  numSecondsBetweenChoiceSwaps: 2
-  buttonSwapSpeed: 20
+  timeToMakeChoice: 8
+  numSecondsBetweenChoiceSwaps: 1
+  buttonSwapSpeed: 25
