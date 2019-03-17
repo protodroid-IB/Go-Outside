@@ -7,8 +7,6 @@ using XInputDotNetPure;
 public class InputController : MonoBehaviour
 {
 
-    public enum ControllerType { Gamepad, Keyboard };
-
     [HideInInspector]
     public PlayerIndex player;
 
@@ -57,9 +55,11 @@ public class InputController : MonoBehaviour
     public Press option3;
     public Press option4;
 
+    public ControllerType ControllerType { get => controllerType;}
 
 
-    
+
+
 
 
 

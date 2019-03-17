@@ -68,7 +68,7 @@ public class GlobalReferences : MonoBehaviour
         playerInteract = GameObject.FindWithTag("Player").GetComponent<PlayerInteract>();
         playerMovement = GameObject.FindWithTag("Player").GetComponent<PlayerMovementController>();
         sphereMask = GameObject.FindWithTag("Player").GetComponent<SphereMask>();
-        inputController = GetComponent<InputController>();
+        inputController = GameObject.FindWithTag("Preload").GetComponent<InputController>();
         errandManager = GetComponent<ErrandManager>();
         uiManager = GetComponent<UIManager>();
         resourceManager = GetComponent<ResourceManager>();
@@ -93,7 +93,7 @@ public class GlobalReferences : MonoBehaviour
             sphereMask = GameObject.FindWithTag("Player").GetComponent<SphereMask>();
 
         if (inputController == null)
-            inputController = GetComponent<InputController>();
+            inputController = GameObject.FindWithTag("Preload").GetComponent<InputController>();
 
         if (errandManager == null)
             errandManager = GetComponent<ErrandManager>();

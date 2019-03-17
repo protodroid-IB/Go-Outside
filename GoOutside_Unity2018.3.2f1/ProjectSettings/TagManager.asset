@@ -28,6 +28,7 @@ TagManager:
   - Button2
   - Button3
   - Button4
+  - Preload
   layers:
   - Default
   - TransparentFX

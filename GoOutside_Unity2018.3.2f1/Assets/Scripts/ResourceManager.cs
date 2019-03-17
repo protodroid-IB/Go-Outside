@@ -22,6 +22,11 @@ public class ResourceManager : MonoBehaviour
     [SerializeField]
     private bool startGameTime = false;
 
+    private bool dayEnded = false;
+    private Vector2 endGameTime = new Vector2(20, 0);
+
+    public bool DayEnded { get => dayEnded;}
+
 
 
     // Start is called before the fcirst frame update
@@ -79,6 +84,8 @@ public class ResourceManager : MonoBehaviour
         }
 
         timeOfDay = hour + ":" + (int)mins;
+
+        CheckEndOfDay();
     }
 
 
@@ -106,6 +113,14 @@ public class ResourceManager : MonoBehaviour
 
         GlobalReferences.instance.cameraShake.AddToTrauma(camShakeTrauma);
         GlobalReferences.instance.chromaticAbberationEffect.TriggerEffect(camShakeTrauma);
+    }
+
+    public void CheckEndOfDay()
+    {
+        if(GetTimeOfDay() == endGameTime)
+        {
+            dayEnded = true;
+        }
     }
 
 
