@@ -50,6 +50,8 @@ public class MainMenuController : MonoBehaviour
     {
         inputController = GameObject.FindWithTag("Preload").GetComponent<InputController>();
         newPointerPosition = menuItems[0].pointerSpotLocation.position;
+
+        controllerText.text = inputController.ControllerType.ToString();
     }
 
     private void ReceiveInput()
