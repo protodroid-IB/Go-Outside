@@ -18,23 +18,49 @@ public class DynamicMusicManager : MonoBehaviour
         public float startPoint, minVolume, maxVolume;
 
         private float volumeDistance;
+        private float gradient;
 
         [HideInInspector]
         private float currentVolume = 0f;
+
+        [SerializeField]
+        private bool debug = false;
 
         public void SetUpTrack(GameObject inParent)
         {
             audioSource = inParent.AddComponent<AudioSource>();
             audioSource.clip = clip;
+            audioSource.loop = true;
             audioSource.Play();
+
+            volumeDistance = (maxVolume - minVolume);
+            gradient = volumeDistance / (1f - startPoint);
         }
 
         public void UpdateVolume(float inCutoff)
         {
-            if((1f - inCutoff) >= startPoint)
+            float newCutoff = 1f - inCutoff;
+
+            if (newCutoff > 0)
             {
-                audioSource.volume = maxVolume; 
+                if (startPoint <= newCutoff)
+                {
+                    float newVolume = gradient * newCutoff + (volumeDistance - gradient);
+                    audioSource.volume = newVolume;
+
+                    //if (debug)
+                    //    Debug.Log(audioSource.clip.name + ":\t" + newVolume);
+                }
+                else
+                {
+                    audioSource.volume = 0f;
+                }
             }
+            else
+            {
+                audioSource.volume = 0f;
+            }
+
         }
 
         public void SetVolume(float inVolume)
