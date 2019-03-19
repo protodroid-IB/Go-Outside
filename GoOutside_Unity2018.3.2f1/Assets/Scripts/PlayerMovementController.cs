@@ -56,7 +56,7 @@ public class PlayerMovementController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!GlobalReferences.instance.dialogueManager.IsDialogueActive())
+        if (!GlobalReferences.instance.gameManager.GetStopAction())
         {
             direction = GlobalReferences.instance.inputController.move(GlobalReferences.instance.inputController.player, transform.position);
 

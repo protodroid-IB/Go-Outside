@@ -34,7 +34,11 @@ public class Interactable : MonoBehaviour
     {
         if (interacting != null)
         {
-            interacting.Invoke();  
+            if(!GlobalReferences.instance.gameManager.GetStopAction())
+            {
+                interacting.Invoke();
+            }
+          
         }
         Debug.Log("Player interacting with: " + transform.name);
     }

@@ -65,7 +65,7 @@ public class NPCInteraction : MonoBehaviour
             }
             else
             {
-                if(!GlobalReferences.instance.dialogueManager.IsDialogueActive())
+                if(!GlobalReferences.instance.gameManager.GetStopAction())
                 {
                     hasSpoken = true;
                     navAgent.isStopped = false;
