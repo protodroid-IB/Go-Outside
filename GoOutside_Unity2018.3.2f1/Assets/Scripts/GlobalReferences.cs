@@ -58,6 +58,9 @@ public class GlobalReferences : MonoBehaviour
     [HideInInspector]
     public ChoiceManager choiceManager;
 
+    [HideInInspector]
+    public MobilePhoneManager mobilePhoneManager;
+
     
 
     //public PlayerMovementController PlayerMovement { get => playerMovement;}
@@ -78,6 +81,7 @@ public class GlobalReferences : MonoBehaviour
         gameManager = GetComponent<GameManager>();
         dialogueManager = GetComponent<DialogueManager>();
         choiceManager = GetComponent<ChoiceManager>();
+        mobilePhoneManager = GetComponent<MobilePhoneManager>();
 
     }
 
@@ -121,6 +125,9 @@ public class GlobalReferences : MonoBehaviour
 
         if(choiceManager == null)
             choiceManager = GetComponent<ChoiceManager>();
+
+        if(mobilePhoneManager == null)
+            mobilePhoneManager = GetComponent<MobilePhoneManager>();
     }
 
 }

@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 732584037089853847}
   - component: {fileID: 1056975161177881605}
-  - component: {fileID: 732584037089853846}
   - component: {fileID: 5801253641011332518}
   - component: {fileID: 5668330395773294515}
   - component: {fileID: 732584037089853844}
@@ -19,6 +18,7 @@ GameObject:
   - component: {fileID: 732584037089853845}
   - component: {fileID: 5950935679616342231}
   - component: {fileID: 3271675658108980413}
+  - component: {fileID: 1089269977544630682}
   m_Layer: 0
   m_Name: Managers
   m_TagString: Managers
@@ -52,25 +52,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd8dde746107b2248a16568983e72f1b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &732584037089853846
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 732584037089853841}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5d26399f343640d428062a80024b8f9d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  player: 0
-  enableControllerChecking: 1
-  controllerType: 1
-  gamePadDeadZone: 0.15
-  buttonHoldTime: 0.25
-  holdTimer: 0
-  startHoldTimer: 0
+  activateGameLoop: 1
+  stopAction: 0
 --- !u!114 &5801253641011332518
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -97,6 +80,7 @@ MonoBehaviour:
   gameManager: {fileID: 0}
   dialogueManager: {fileID: 0}
   choiceManager: {fileID: 0}
+  mobilePhoneManager: {fileID: 0}
 --- !u!114 &5668330395773294515
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -164,6 +148,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8efa87cd2407e814488a31e4507b1774, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  kb_wasdSprites:
+  - {fileID: 21300000, guid: 0e4ad5bc3e5467d4eb0ee1164c71c5a6, type: 3}
+  - {fileID: 21300002, guid: 0e4ad5bc3e5467d4eb0ee1164c71c5a6, type: 3}
+  - {fileID: 21300004, guid: 0e4ad5bc3e5467d4eb0ee1164c71c5a6, type: 3}
+  - {fileID: 21300006, guid: 0e4ad5bc3e5467d4eb0ee1164c71c5a6, type: 3}
+  gp_abxySprites:
+  - {fileID: 21300000, guid: df2f18d4ed7fc464086da05dd68539b4, type: 3}
+  - {fileID: 21300002, guid: df2f18d4ed7fc464086da05dd68539b4, type: 3}
+  - {fileID: 21300004, guid: df2f18d4ed7fc464086da05dd68539b4, type: 3}
+  - {fileID: 21300006, guid: df2f18d4ed7fc464086da05dd68539b4, type: 3}
 --- !u!114 &5950935679616342231
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -198,3 +192,37 @@ MonoBehaviour:
   timeToMakeChoice: 8
   numSecondsBetweenChoiceSwaps: 1
   buttonSwapSpeed: 25
+--- !u!114 &1089269977544630682
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 732584037089853841}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b7abb11f087ed643884f2842d1d5dcf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mobileGO: {fileID: 0}
+  phoneAlerts:
+  - alertTime:
+      hour: 10
+      minute: 30
+    alertMessageSender: Lola Sterrett
+    alertMessageText: What time you finishing work today?
+  - alertTime:
+      hour: 9
+      minute: 26
+    alertMessageSender: Rob Gross
+    alertMessageText: Hey man, are you farting at the moment?
+  - alertTime:
+      hour: 14
+      minute: 42
+    alertMessageSender: Lachlan Petersen
+    alertMessageText: Hey do you want to play smash bros when you get home?
+  - alertTime:
+      hour: 12
+      minute: 11
+    alertMessageSender: James Rose
+    alertMessageText: Ay bro can i borrow some protein powder?

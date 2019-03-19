@@ -6,6 +6,10 @@ public class GameManager : MonoBehaviour
 {
     [SerializeField]
     private bool activateGameLoop = false;
+
+    [SerializeField]
+    private bool stopAction = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -19,5 +23,32 @@ public class GameManager : MonoBehaviour
         {
             SceneController.instance.ChangeScene("MainMenu");
         }
+
+        UpdateStopAction();
+    }
+
+    private void UpdateStopAction()
+    {
+        bool dialogueActive = GlobalReferences.instance.dialogueManager.IsDialogueActive();
+        bool mobileActive = GlobalReferences.instance.mobilePhoneManager.IsMobileActive();
+
+        if(dialogueActive || mobileActive)
+        {
+            stopAction = true;
+        }
+        else
+        {
+            stopAction = false;
+        }
+    }
+
+    public bool GetStopAction()
+    {
+        return stopAction;
+    }
+
+    public void SetStopAction(bool inActive)
+    {
+        stopAction = inActive;
     }
 }

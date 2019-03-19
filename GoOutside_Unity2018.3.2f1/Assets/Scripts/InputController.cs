@@ -612,14 +612,14 @@ public class InputController : MonoBehaviour
         {
             GamePadState state = GamePad.GetState(player);
 
-            if (state.Buttons.Y == ButtonState.Pressed)
+            if (state.Buttons.X == ButtonState.Pressed)
             {
                 option3CanPress = true;
             }
 
             if (option3CanPress == true)
             {
-                if (state.Buttons.Y == ButtonState.Released)
+                if (state.Buttons.X == ButtonState.Released)
                 {
                     option3CanPress = false;
                     return true;
@@ -633,14 +633,14 @@ public class InputController : MonoBehaviour
         {
             GamePadState state = GamePad.GetState(player);
 
-            if (state.Buttons.X == ButtonState.Pressed)
+            if (state.Buttons.Y == ButtonState.Pressed)
             {
                 option4CanPress = true;
             }
 
             if (option4CanPress == true)
             {
-                if (state.Buttons.X == ButtonState.Released)
+                if (state.Buttons.Y == ButtonState.Released)
                 {
                     option4CanPress = false;
                     return true;

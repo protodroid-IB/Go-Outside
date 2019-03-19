@@ -120,3 +120,54 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8695b6deac6c474da239eeba3ad0434, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tracks:
+  - clip: {fileID: 8300000, guid: 06610c29497f6de4380f958df69e982c, type: 3}
+    startPoint: 0
+    minVolume: 0.5
+    maxVolume: 1
+    debug: 0
+  - clip: {fileID: 8300000, guid: 988b6298ff78c4f4ea3e84b7fd54122a, type: 3}
+    startPoint: 0.1
+    minVolume: 0.2
+    maxVolume: 1
+    debug: 0
+  - clip: {fileID: 8300000, guid: 002dd2be5aa8e32419e2a3d42673ea53, type: 3}
+    startPoint: 0.4
+    minVolume: 0
+    maxVolume: 1
+    debug: 0
+  - clip: {fileID: 8300000, guid: 889fb70fb33141e45b7d3f8e0858125a, type: 3}
+    startPoint: 0.2
+    minVolume: 0.25
+    maxVolume: 1
+    debug: 0
+  - clip: {fileID: 8300000, guid: 9f5a16d3701643143bdcb52aa6f9c153, type: 3}
+    startPoint: 0.35
+    minVolume: 0.1
+    maxVolume: 1
+    debug: 0
+  - clip: {fileID: 8300000, guid: 33b0b2132daeaef41aadadcbb9d39daa, type: 3}
+    startPoint: 0.7
+    minVolume: 0.1
+    maxVolume: 1
+    debug: 0
+  - clip: {fileID: 8300000, guid: 7e13719c69bc4574b8ba5a89a564053f, type: 3}
+    startPoint: 0.8
+    minVolume: 0.1
+    maxVolume: 1
+    debug: 0
+  - clip: {fileID: 8300000, guid: 9efa77cad298b4649b1c30b7d2dfb54d, type: 3}
+    startPoint: 0.6
+    minVolume: 0.4
+    maxVolume: 1
+    debug: 0
+  - clip: {fileID: 8300000, guid: 78e92aa7a85e97d47849b4884fe7b51a, type: 3}
+    startPoint: 0.5
+    minVolume: 0.1
+    maxVolume: 1
+    debug: 0
+  - clip: {fileID: 8300000, guid: 188e49e2ef53e14438970486961fbaec, type: 3}
+    startPoint: 0.7
+    minVolume: 0
+    maxVolume: 0.7
+    debug: 0

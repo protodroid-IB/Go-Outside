@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 
 public class ChoiceManager : MonoBehaviour
 {
@@ -98,7 +99,25 @@ public class ChoiceManager : MonoBehaviour
         GlobalReferences.instance.playerInteract.option3Interact += Button3Selected;
         GlobalReferences.instance.playerInteract.option4Interact += Button4Selected;
 
+        SetButtonSprites(GlobalReferences.instance.inputController.ControllerType);
+
         InitialiseButtons();
+    }
+
+    private void SetButtonSprites(ControllerType inControlType)
+    {
+        Sprite[] buttonSprites;
+
+        if (inControlType == ControllerType.Keyboard)
+            buttonSprites = GlobalReferences.instance.uiManager.kb_wasdSprites;
+        else
+            buttonSprites = GlobalReferences.instance.uiManager.gp_abxySprites;
+
+        for (int i=0; i < choiceReferences.Buttons.Length; i++)
+        {
+            choiceReferences.Buttons[i].GetComponent<Image>().sprite = buttonSprites[i];
+            choiceReferences.Buttons[i].transform.GetChild(0).GetComponent<Image>().sprite = buttonSprites[i];
+        }
     }
 
     private void Update()

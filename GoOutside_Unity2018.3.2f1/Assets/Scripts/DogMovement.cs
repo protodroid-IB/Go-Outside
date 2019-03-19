@@ -30,7 +30,7 @@ public class DogMovement : MonoBehaviour
 
     private void Update()
     {
-        if (!GlobalReferences.instance.dialogueManager.IsDialogueActive())
+        if (!GlobalReferences.instance.gameManager.GetStopAction())
         {
             switch (state)
             {

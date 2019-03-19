@@ -6,6 +6,13 @@ using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
+    [Header("Keyboard WASD sprites")]
+    public Sprite[] kb_wasdSprites;
+
+    [Space(5)]
+    [Header("Gamepad ABXY sprites")]
+    public Sprite[] gp_abxySprites;
+
     private TextMeshProUGUI ui_TimeOfDay;
 
     private Image ui_dropOffSisterTick, ui_workoutTick, ui_deliverLettersTick, ui_patDogsTick, ui_pickUpSisterTick;

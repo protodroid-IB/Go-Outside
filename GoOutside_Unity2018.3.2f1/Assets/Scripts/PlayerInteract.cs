@@ -12,6 +12,7 @@ public class PlayerInteract : MonoBehaviour
     public Interact option2Interact;
     public Interact option3Interact;
     public Interact option4Interact;
+    public Interact mobilePhoneInteract;
 
 
     // Start is called before the first frame update
@@ -25,6 +26,8 @@ public class PlayerInteract : MonoBehaviour
         bool holding = GlobalReferences.instance.inputController.interact1Hold(GlobalReferences.instance.inputController.player, GlobalReferences.instance.inputController.buttonHoldTime, ref GlobalReferences.instance.inputController.holdTimer, ref GlobalReferences.instance.inputController.startHoldTimer);
         bool pressing = GlobalReferences.instance.inputController.interact1Press(GlobalReferences.instance.inputController.player, GlobalReferences.instance.inputController.buttonHoldTime, ref GlobalReferences.instance.inputController.holdTimer, ref GlobalReferences.instance.inputController.startHoldTimer);
 
+        bool mobilePhone = GlobalReferences.instance.inputController.interact2Press(GlobalReferences.instance.inputController.player);
+
         bool option1 = GlobalReferences.instance.inputController.option1(GlobalReferences.instance.inputController.player);
         bool option2 = GlobalReferences.instance.inputController.option2(GlobalReferences.instance.inputController.player);
         bool option3 = GlobalReferences.instance.inputController.option3(GlobalReferences.instance.inputController.player);
@@ -33,6 +36,12 @@ public class PlayerInteract : MonoBehaviour
         if (holding || pressing)
         {
             interact.Invoke();
+        }
+
+        if(mobilePhone)
+        {
+            if(mobilePhoneInteract != null)
+                mobilePhoneInteract.Invoke();
         }
 
         if(option1)
