@@ -13,6 +13,14 @@ public class MobilePhoneManager : MonoBehaviour
     private GameObject applicationsGO;
     private Animator applicationsAnimator;
 
+    private ApplicationIcon[] applicationIcons;
+    private int currentlySelected = 0;
+
+    private float appMoveTimer = 0f;
+
+    [SerializeField]
+    private float appTimeBetweenMoves = 0.25f;
+
     private bool mobileActive = false;
 
     private MobilePhoneState mobileState = MobilePhoneState.Closed;
@@ -36,6 +44,8 @@ public class MobilePhoneManager : MonoBehaviour
     {
         mobileAnimator = mobileGO.GetComponent<Animator>();
         applicationsAnimator = applicationsGO.GetComponent<Animator>();
+        applicationIcons = applicationsGO.GetComponentsInChildren<ApplicationIcon>();
+
         FindNextTimeOfDay();
         GlobalReferences.instance.playerInteract.mobilePhoneInteract += OpenPhone;
     }
@@ -83,12 +93,20 @@ public class MobilePhoneManager : MonoBehaviour
         //Debug.Log(nextAlertTime.hour + "\t:" + nextAlertTime.minute);
     }
 
+    public bool IsMobileActive()
+    {
+        return mobileActive;
+    }
+
+
+
+
     private void Alert()
     {
         CheckClosePhoneAnimation();
         CheckState_Open();
     }
-
+   
     private void Open()
     {
         if(!GlobalReferences.instance.usefulFunctions.CheckAnimationPlaying(applicationsAnimator, "Apps_Idle"))
@@ -100,6 +118,11 @@ public class MobilePhoneManager : MonoBehaviour
                 applicationsAnimator.SetTrigger("Open");
             }
         }
+
+        if (GlobalReferences.instance.usefulFunctions.CheckAnimationPlaying(mobileAnimator, "MobilePhone_LargeIdle"))
+        {
+            NavigateApplications();
+        }
     }
 
     private void Closed()
@@ -109,29 +132,6 @@ public class MobilePhoneManager : MonoBehaviour
         CheckState_Open();
     }
 
-    private void CheckState_Alert()
-    {
-        if(mobileState == MobilePhoneState.Closed)
-        {
-            Vector2 timeOfDay = GlobalReferences.instance.resourceManager.GetTimeOfDay();
-
-            //Debug.Log(timeOfDay.x + "\t:" + timeOfDay.y);
-
-            if(nextAlertTime.hour == (int)timeOfDay.x)
-            {
-                if(nextAlertTime.minute == (int)timeOfDay.y)
-                {
-                    mobileState = MobilePhoneState.Alert;
-                    mobileAnimator.SetBool("Alerted", true);
-                }
-            }
-        }
-    }
-
-    private void CheckState_Open()
-    {
-        
-    }
 
     private void OpenPhone()
     {
@@ -146,6 +146,7 @@ public class MobilePhoneManager : MonoBehaviour
             mobileState = MobilePhoneState.Open;
 
             mobileActive = true;
+            SetApplicationIconSelected(0);
         }
     }
 
@@ -160,6 +161,32 @@ public class MobilePhoneManager : MonoBehaviour
         applicationsAnimator.SetTrigger("Close");
 
         mobileActive = false;
+    }
+
+
+
+    private void CheckState_Alert()
+    {
+        if (mobileState == MobilePhoneState.Closed)
+        {
+            Vector2 timeOfDay = GlobalReferences.instance.resourceManager.GetTimeOfDay();
+
+            //Debug.Log(timeOfDay.x + "\t:" + timeOfDay.y);
+
+            if (nextAlertTime.hour == (int)timeOfDay.x)
+            {
+                if (nextAlertTime.minute == (int)timeOfDay.y)
+                {
+                    mobileState = MobilePhoneState.Alert;
+                    mobileAnimator.SetBool("Alerted", true);
+                }
+            }
+        }
+    }
+
+    private void CheckState_Open()
+    {
+
     }
 
     private void CheckClosePhoneAnimation()
@@ -180,9 +207,51 @@ public class MobilePhoneManager : MonoBehaviour
 
     }
 
-
-    public bool IsMobileActive()
+    private void NavigateApplications()
     {
-        return mobileActive;
+        Vector2 direction = GlobalReferences.instance.inputController.move(GlobalReferences.instance.inputController.player, transform.position);
+        bool interactPress = GlobalReferences.instance.inputController.interact1Press(GlobalReferences.instance.inputController.player, GlobalReferences.instance.inputController.buttonHoldTime, ref GlobalReferences.instance.inputController.holdTimer, ref GlobalReferences.instance.inputController.startHoldTimer);
+        bool exitOptions = false;
+
+        bool gamePadSelect = GlobalReferences.instance.inputController.option1(GlobalReferences.instance.inputController.player);
+        bool gamePadBack = GlobalReferences.instance.inputController.option2(GlobalReferences.instance.inputController.player);
+
+        MoveThroughApplications(direction);
+    }
+
+    private void MoveThroughApplications(Vector2 direction)
+    {
+        if (appMoveTimer >= appTimeBetweenMoves)
+        {
+            if (direction.x <= -0.3f)
+            {
+                appMoveTimer = 0f;
+                currentlySelected--;
+                if (currentlySelected < 0) currentlySelected = applicationIcons.Length - 1;
+                SetApplicationIconSelected(currentlySelected);
+            }
+            else if (direction.x >= 0.3f)
+            {
+                appMoveTimer = 0f;
+                currentlySelected++;
+                if (currentlySelected >= applicationIcons.Length) currentlySelected = 0;
+                SetApplicationIconSelected(currentlySelected);
+            }
+        }
+        else
+        {
+            appMoveTimer += Time.deltaTime;
+        }
+
+        Debug.Log(currentlySelected);
+    }
+
+    private void SetApplicationIconSelected(int inIcon)
+    {
+        for(int i=0; i < applicationIcons.Length; i++)
+        {
+            if (i == inIcon) applicationIcons[i].SetSelected(true);
+            else applicationIcons[i].SetSelected(false);
+        }
     }
 }
