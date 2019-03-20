@@ -61,6 +61,9 @@ public class GlobalReferences : MonoBehaviour
     [HideInInspector]
     public MobilePhoneManager mobilePhoneManager;
 
+    [HideInInspector]
+    public PauseManager pauseManager;
+
     
 
     //public PlayerMovementController PlayerMovement { get => playerMovement;}
@@ -82,7 +85,7 @@ public class GlobalReferences : MonoBehaviour
         dialogueManager = GetComponent<DialogueManager>();
         choiceManager = GetComponent<ChoiceManager>();
         mobilePhoneManager = GetComponent<MobilePhoneManager>();
-
+        pauseManager = GetComponent<PauseManager>();
     }
 
     private void Start()
@@ -128,6 +131,9 @@ public class GlobalReferences : MonoBehaviour
 
         if(mobilePhoneManager == null)
             mobilePhoneManager = GetComponent<MobilePhoneManager>();
+
+        if(pauseManager == null)
+            pauseManager = GetComponent<PauseManager>();
     }
 
 }

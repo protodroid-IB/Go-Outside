@@ -8,6 +8,11 @@ public class MobilePhoneManager : MonoBehaviour
     [SerializeField]
     private GameObject mobileGO;
     private Animator mobileAnimator;
+
+    [SerializeField]
+    private GameObject applicationsGO;
+    private Animator applicationsAnimator;
+
     private bool mobileActive = false;
 
     private MobilePhoneState mobileState = MobilePhoneState.Closed;
@@ -30,6 +35,7 @@ public class MobilePhoneManager : MonoBehaviour
     void Start()
     {
         mobileAnimator = mobileGO.GetComponent<Animator>();
+        applicationsAnimator = applicationsGO.GetComponent<Animator>();
         FindNextTimeOfDay();
         GlobalReferences.instance.playerInteract.mobilePhoneInteract += OpenPhone;
     }
@@ -79,18 +85,26 @@ public class MobilePhoneManager : MonoBehaviour
 
     private void Alert()
     {
-
+        CheckClosePhoneAnimation();
         CheckState_Open();
     }
 
     private void Open()
     {
-        
+        if(!GlobalReferences.instance.usefulFunctions.CheckAnimationPlaying(applicationsAnimator, "Apps_Idle"))
+        {
+            if (GlobalReferences.instance.usefulFunctions.CheckAnimationPlaying(mobileAnimator, "MobilePhone_LargeIdle"))
+            {
+                applicationsAnimator.ResetTrigger("Open");
+                applicationsAnimator.ResetTrigger("Close");
+                applicationsAnimator.SetTrigger("Open");
+            }
+        }
     }
 
     private void Closed()
     {
-
+        CheckClosePhoneAnimation();
         CheckState_Alert();
         CheckState_Open();
     }
@@ -126,7 +140,10 @@ public class MobilePhoneManager : MonoBehaviour
             GlobalReferences.instance.playerInteract.mobilePhoneInteract -= OpenPhone;
             GlobalReferences.instance.playerInteract.mobilePhoneInteract += ClosePhone;
 
+            mobileAnimator.ResetTrigger("Open");
+            mobileAnimator.ResetTrigger("Close");
             mobileAnimator.SetTrigger("Open");
+            mobileState = MobilePhoneState.Open;
 
             mobileActive = true;
         }
@@ -137,9 +154,25 @@ public class MobilePhoneManager : MonoBehaviour
         GlobalReferences.instance.playerInteract.mobilePhoneInteract += OpenPhone;
         GlobalReferences.instance.playerInteract.mobilePhoneInteract -= ClosePhone;
 
-        mobileAnimator.SetTrigger("Close");
+        mobileState = MobilePhoneState.Closed;
+        applicationsAnimator.ResetTrigger("Open");
+        applicationsAnimator.ResetTrigger("Close");
+        applicationsAnimator.SetTrigger("Close");
 
         mobileActive = false;
+    }
+
+    private void CheckClosePhoneAnimation()
+    {
+        if (GlobalReferences.instance.usefulFunctions.CheckAnimationPlaying(mobileAnimator, "MobilePhone_LargeIdle"))
+        {
+            if (GlobalReferences.instance.usefulFunctions.CheckAnimationPlaying(applicationsAnimator, "Apps_Off"))
+            {
+                mobileAnimator.ResetTrigger("Open");
+                mobileAnimator.ResetTrigger("Close");
+                mobileAnimator.SetTrigger("Close");
+            }
+        }
     }
 
     private void CheckState_Closed()
