@@ -13,6 +13,11 @@ public class MobilePhoneManager : MonoBehaviour
     private GameObject applicationsGO;
     private Animator applicationsAnimator;
 
+    [SerializeField]
+    private GameObject messageAppGO, mapAppGo, exerciseAppGO;
+
+    private bool inApplication = false;
+
     private ApplicationIcon[] applicationIcons;
     private int currentlySelected = 0;
 
@@ -24,6 +29,7 @@ public class MobilePhoneManager : MonoBehaviour
     private bool mobileActive = false;
 
     private MobilePhoneState mobileState = MobilePhoneState.Closed;
+
 
     [System.Serializable]
     public class PhoneAlert
@@ -37,8 +43,10 @@ public class MobilePhoneManager : MonoBehaviour
     private PhoneAlert[] phoneAlerts;
 
     private TimeOfDay nextAlertTime = new TimeOfDay();
-    
-    
+
+    public MobilePhoneState MobileState { get => mobileState;}
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -109,13 +117,33 @@ public class MobilePhoneManager : MonoBehaviour
    
     private void Open()
     {
-        if(!GlobalReferences.instance.usefulFunctions.CheckAnimationPlaying(applicationsAnimator, "Apps_Idle"))
+        if (!inApplication)
         {
-            if (GlobalReferences.instance.usefulFunctions.CheckAnimationPlaying(mobileAnimator, "MobilePhone_LargeIdle"))
+            if (!GlobalReferences.instance.usefulFunctions.CheckAnimationPlaying(applicationsAnimator, "Apps_Idle"))
             {
-                applicationsAnimator.ResetTrigger("Open");
-                applicationsAnimator.ResetTrigger("Close");
-                applicationsAnimator.SetTrigger("Open");
+                if (GlobalReferences.instance.usefulFunctions.CheckAnimationPlaying(mobileAnimator, "MobilePhone_LargeIdle"))
+                {
+                    applicationsAnimator.ResetTrigger("Open");
+                    applicationsAnimator.ResetTrigger("Close");
+                    applicationsAnimator.SetTrigger("Open");
+                }
+            }
+        }
+        else
+        {
+            switch (currentlySelected)
+            {
+                case 0:
+                    
+                    break;
+
+                case 1:
+                    MapLogic();
+                    break;
+
+                case 2:
+                    
+                    break;
             }
         }
 
@@ -124,6 +152,7 @@ public class MobilePhoneManager : MonoBehaviour
             NavigateApplications();
         }
     }
+
 
     private void Closed()
     {
@@ -146,6 +175,7 @@ public class MobilePhoneManager : MonoBehaviour
             mobileState = MobilePhoneState.Open;
 
             mobileActive = true;
+            GlobalReferences.instance.playerInteract.interact += SelectApplication;
             SetApplicationIconSelected(0);
         }
     }
@@ -210,17 +240,45 @@ public class MobilePhoneManager : MonoBehaviour
     private void NavigateApplications()
     {
         Vector2 direction = GlobalReferences.instance.inputController.move(GlobalReferences.instance.inputController.player, transform.position);
-        bool interactPress = GlobalReferences.instance.inputController.interact1Press(GlobalReferences.instance.inputController.player, GlobalReferences.instance.inputController.buttonHoldTime, ref GlobalReferences.instance.inputController.holdTimer, ref GlobalReferences.instance.inputController.startHoldTimer);
-        bool exitOptions = false;
+        
+        if(!messageAppGO.activeInHierarchy && !mapAppGo.activeInHierarchy && !exerciseAppGO.activeInHierarchy)
+        {
+            if (inApplication)
+            {
+                if (GlobalReferences.instance.usefulFunctions.CheckAnimationPlaying(mobileAnimator, "MobilePhone_LargeIdle"))
+                {
+                    if (GlobalReferences.instance.usefulFunctions.CheckAnimationPlaying(applicationsAnimator, "Apps_Off"))
+                    {
+                        switch (currentlySelected)
+                        {
+                            case 0:
+                                messageAppGO.SetActive(true);
+                                break;
 
-        bool gamePadSelect = GlobalReferences.instance.inputController.option1(GlobalReferences.instance.inputController.player);
-        bool gamePadBack = GlobalReferences.instance.inputController.option2(GlobalReferences.instance.inputController.player);
+                            case 1:
+                                mapAppGo.SetActive(true);
+                                break;
 
-        MoveThroughApplications(direction);
+                            case 2:
+                                exerciseAppGO.SetActive(true);
+                                break;
+                        }
+                    }
+                }
+            }
+            else
+            {
+                MoveThroughApplications(direction);
+            }
+        }
+        
+        
+        
     }
 
     private void MoveThroughApplications(Vector2 direction)
     {
+        
         if (appMoveTimer >= appTimeBetweenMoves)
         {
             if (direction.x <= -0.3f)
@@ -242,16 +300,75 @@ public class MobilePhoneManager : MonoBehaviour
         {
             appMoveTimer += Time.deltaTime;
         }
-
-        Debug.Log(currentlySelected);
     }
 
     private void SetApplicationIconSelected(int inIcon)
     {
-        for(int i=0; i < applicationIcons.Length; i++)
+        for (int i = 0; i < applicationIcons.Length; i++)
         {
             if (i == inIcon) applicationIcons[i].SetSelected(true);
             else applicationIcons[i].SetSelected(false);
         }
     }
+
+    private void SelectApplication()
+    {
+        if(inApplication == false)
+        {
+            if (GlobalReferences.instance.usefulFunctions.CheckAnimationPlaying(mobileAnimator, "MobilePhone_LargeIdle"))
+            {
+                if (GlobalReferences.instance.usefulFunctions.CheckAnimationPlaying(applicationsAnimator, "Apps_Idle"))
+                {
+                    applicationsAnimator.ResetTrigger("Open");
+                    applicationsAnimator.ResetTrigger("Close");
+                    applicationsAnimator.SetTrigger("Close");
+
+                    GlobalReferences.instance.playerInteract.interact -= SelectApplication;
+                    GlobalReferences.instance.playerInteract.mobilePhoneInteract -= ClosePhone;
+                    GlobalReferences.instance.playerInteract.mobilePhoneInteract += BackHome;
+
+                    inApplication = true;
+                }
+            }
+        }
+        
+    }
+
+    private void BackHome()
+    {
+        if (inApplication == true)
+        {
+            if (GlobalReferences.instance.usefulFunctions.CheckAnimationPlaying(mobileAnimator, "MobilePhone_LargeIdle"))
+            {
+                if (GlobalReferences.instance.usefulFunctions.CheckAnimationPlaying(applicationsAnimator, "Apps_Off"))
+                {
+
+                    GlobalReferences.instance.playerInteract.option2Interact -= BackHome;
+                    GlobalReferences.instance.playerInteract.interact += SelectApplication;
+                    GlobalReferences.instance.playerInteract.mobilePhoneInteract += ClosePhone;
+
+                    applicationsAnimator.ResetTrigger("Open");
+                    applicationsAnimator.ResetTrigger("Close");
+                    applicationsAnimator.SetTrigger("Open");
+
+
+                    if (messageAppGO.activeInHierarchy)
+                        messageAppGO.SetActive(false);
+                    else if (mapAppGo.activeInHierarchy)
+                        mapAppGo.SetActive(false);
+                    else if (exerciseAppGO.activeInHierarchy)
+                        exerciseAppGO.SetActive(false);
+
+                    inApplication = false;
+                }
+            }
+        }
+    }
+
+    private void MapLogic()
+    {
+        GlobalReferences.instance.mapCameraMovement.MoveCamera();
+    }
+
+
 }

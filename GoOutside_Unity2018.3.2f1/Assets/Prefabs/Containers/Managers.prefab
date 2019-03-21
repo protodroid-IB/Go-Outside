@@ -19,6 +19,7 @@ GameObject:
   - component: {fileID: 5950935679616342231}
   - component: {fileID: 3271675658108980413}
   - component: {fileID: 1089269977544630682}
+  - component: {fileID: 1344313630}
   m_Layer: 0
   m_Name: Managers
   m_TagString: Managers
@@ -81,6 +82,7 @@ MonoBehaviour:
   dialogueManager: {fileID: 0}
   choiceManager: {fileID: 0}
   mobilePhoneManager: {fileID: 0}
+  pauseManager: {fileID: 0}
 --- !u!114 &5668330395773294515
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -205,6 +207,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mobileGO: {fileID: 0}
+  applicationsGO: {fileID: 0}
+  messageAppGO: {fileID: 0}
+  mapAppGo: {fileID: 0}
+  exerciseAppGO: {fileID: 0}
+  appTimeBetweenMoves: 0.25
   phoneAlerts:
   - alertTime:
       hour: 10
@@ -226,3 +233,16 @@ MonoBehaviour:
       minute: 11
     alertMessageSender: James Rose
     alertMessageText: Ay bro can i borrow some protein powder?
+--- !u!114 &1344313630
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 732584037089853841}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 44b13632245006d4384f35afde7bb66b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pauseMenuGO: {fileID: 0}
