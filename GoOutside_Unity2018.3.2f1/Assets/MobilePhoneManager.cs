@@ -16,6 +16,10 @@ public class MobilePhoneManager : MonoBehaviour
     [SerializeField]
     private GameObject messageAppGO, mapAppGo, exerciseAppGO;
 
+    private MessageApplication messageApp;
+    private bool canShowMessage = false;
+    private string latestPlayerResponse;
+
     private bool inApplication = false;
 
     private ApplicationIcon[] applicationIcons;
@@ -34,13 +38,38 @@ public class MobilePhoneManager : MonoBehaviour
     [System.Serializable]
     public class PhoneAlert
     {
+        private int index = 0;
         public TimeOfDay alertTime;
         public string alertMessageSender;
         public string alertMessageText;
+        public Choice[] responses = new Choice[4];
+        private bool playerResponded = false;
+
+        public bool GetPlayerResponded()
+        {
+            return playerResponded;
+        }
+
+        public void SetPlayerResponded(bool inResponded)
+        {
+            playerResponded = inResponded;
+        }
+
+        public void SetIndex(int inIndex)
+        {
+            index = inIndex;
+        }
+
+        public int GetIndex()
+        {
+            return index;
+        }
     }
 
     [SerializeField]
     private PhoneAlert[] phoneAlerts;
+
+    private int currentPhoneAlert = -1;
 
     private TimeOfDay nextAlertTime = new TimeOfDay();
 
@@ -53,6 +82,12 @@ public class MobilePhoneManager : MonoBehaviour
         mobileAnimator = mobileGO.GetComponent<Animator>();
         applicationsAnimator = applicationsGO.GetComponent<Animator>();
         applicationIcons = applicationsGO.GetComponentsInChildren<ApplicationIcon>();
+        messageApp = messageAppGO.GetComponent<MessageApplication>();
+
+        for (int i=0; i < phoneAlerts.Length; i++)
+        {
+            phoneAlerts[i].SetIndex(i);
+        }
 
         FindNextTimeOfDay();
         GlobalReferences.instance.playerInteract.mobilePhoneInteract += OpenPhone;
@@ -84,15 +119,20 @@ public class MobilePhoneManager : MonoBehaviour
 
         for(int i=0; i < phoneAlerts.Length; i++)
         {
-            if(phoneAlerts[i].alertTime.hour <= hour)
+            if(!phoneAlerts[i].GetPlayerResponded())
             {
-                hour = phoneAlerts[i].alertTime.hour;
-
-                if(phoneAlerts[i].alertTime.minute <= mins)
+                if (phoneAlerts[i].alertTime.hour <= hour)
                 {
-                    mins = phoneAlerts[i].alertTime.minute;
+                    hour = phoneAlerts[i].alertTime.hour;
+
+                    if (phoneAlerts[i].alertTime.minute <= mins)
+                    {
+                        mins = phoneAlerts[i].alertTime.minute;
+                        currentPhoneAlert = phoneAlerts[i].GetIndex();
+                    }
                 }
             }
+            
         }
 
         nextAlertTime.hour = hour;
@@ -134,7 +174,7 @@ public class MobilePhoneManager : MonoBehaviour
             switch (currentlySelected)
             {
                 case 0:
-                    
+                    MessageLogic();
                     break;
 
                 case 1:
@@ -153,6 +193,7 @@ public class MobilePhoneManager : MonoBehaviour
         }
     }
 
+    
 
     private void Closed()
     {
@@ -191,6 +232,11 @@ public class MobilePhoneManager : MonoBehaviour
         applicationsAnimator.SetTrigger("Close");
 
         mobileActive = false;
+
+        if(!canShowMessage)
+        {
+            messageApp.SetNPCMessageActive(false);
+        }
     }
 
 
@@ -209,6 +255,7 @@ public class MobilePhoneManager : MonoBehaviour
                 {
                     mobileState = MobilePhoneState.Alert;
                     mobileAnimator.SetBool("Alerted", true);
+                    canShowMessage = true;
                 }
             }
         }
@@ -353,7 +400,10 @@ public class MobilePhoneManager : MonoBehaviour
 
 
                     if (messageAppGO.activeInHierarchy)
+                    {
                         messageAppGO.SetActive(false);
+                        messageApp.SetNPCMessageActive(false);
+                    }
                     else if (mapAppGo.activeInHierarchy)
                         mapAppGo.SetActive(false);
                     else if (exerciseAppGO.activeInHierarchy)
@@ -368,6 +418,40 @@ public class MobilePhoneManager : MonoBehaviour
     private void MapLogic()
     {
         GlobalReferences.instance.mapCameraMovement.MoveCamera();
+    }
+
+    private void MessageLogic()
+    {
+        if(canShowMessage)
+        {
+            messageApp.SetNPCMessageActive(true);
+
+            if (!phoneAlerts[currentPhoneAlert].GetPlayerResponded())
+            {
+                messageApp.SetNPCName(phoneAlerts[currentPhoneAlert].alertMessageSender);
+                messageApp.SetNPCMessage(phoneAlerts[currentPhoneAlert].alertMessageText);
+                messageApp.SetNPCTime(phoneAlerts[currentPhoneAlert].alertTime);
+
+                if (!GlobalReferences.instance.choiceManager.ChoiceReferences.transform.GetChild(0).gameObject.activeInHierarchy)
+                {
+                    GlobalReferences.instance.choiceManager.ActivateChoices(phoneAlerts[currentPhoneAlert].responses);
+                }
+            }
+        }
+    }
+
+    public void ChoiceMade(string choice)
+    {
+        phoneAlerts[currentPhoneAlert].SetPlayerResponded(true);
+        messageApp.PlayerRespond(choice);
+        latestPlayerResponse = choice;
+        TimeOfDay currentTime = new TimeOfDay();
+        currentTime.hour = (int)GlobalReferences.instance.resourceManager.GetTimeOfDay().x;
+        currentTime.minute = (int)GlobalReferences.instance.resourceManager.GetTimeOfDay().y;
+        messageApp.SetPlayerTime(currentTime);
+        canShowMessage = false;
+        mobileAnimator.SetBool("Alerted", false);
+        FindNextTimeOfDay();
     }
 
 

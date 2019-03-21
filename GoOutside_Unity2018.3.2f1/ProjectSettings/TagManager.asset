@@ -31,6 +31,7 @@ TagManager:
   - Preload
   - Music
   - MapCamera
+  - MessageApplication
   layers:
   - Default
   - TransparentFX

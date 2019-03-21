@@ -67,6 +67,9 @@ public class GlobalReferences : MonoBehaviour
     [HideInInspector]
     public MapCameraMovement mapCameraMovement;
 
+    //[HideInInspector]
+    //public MessageApplication messageApplication;
+
     
 
     //public PlayerMovementController PlayerMovement { get => playerMovement;}
@@ -89,7 +92,8 @@ public class GlobalReferences : MonoBehaviour
         choiceManager = GetComponent<ChoiceManager>();
         mobilePhoneManager = GetComponent<MobilePhoneManager>();
         pauseManager = GetComponent<PauseManager>();
-        mapCameraMovement = GameObject.FindWithTag("MapCamera").GetComponent<MapCameraMovement>(); 
+        mapCameraMovement = GameObject.FindWithTag("MapCamera").GetComponent<MapCameraMovement>();
+        //messageApplication = GameObject.FindWithTag("MessageApplication").GetComponent<MessageApplication>();
     }
 
     private void Start()
@@ -141,6 +145,10 @@ public class GlobalReferences : MonoBehaviour
 
         if(mapCameraMovement == null)
             mapCameraMovement = GameObject.FindWithTag("MapCamera").GetComponent<MapCameraMovement>();
+
+        //if(messageApplication == null)
+        //    messageApplication = GameObject.FindWithTag("MessageApplication").GetComponent<MessageApplication>();
+
     }
 
 }

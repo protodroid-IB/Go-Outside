@@ -71,6 +71,8 @@ public class ChoiceManager : MonoBehaviour
 
     private ChoiceButton[] choiceButtons = new ChoiceButton[4];
 
+    public ChoiceUIReferences ChoiceReferences { get => choiceReferences; set => choiceReferences = value; }
+
     private int GetButtonNumFromChoiceNum(int inChoice)
     {
         int num = 0;
@@ -317,6 +319,11 @@ public class ChoiceManager : MonoBehaviour
         choiceReferences.TimerFill.localScale = new Vector3(1f, choiceReferences.TimerFill.localScale.y, choiceReferences.TimerFill.localScale.z);
         choiceReferences.gameObject.SetActive(false);
         GlobalReferences.instance.dialogueManager.SetDialogueActive(false);
+
+        if(GlobalReferences.instance.mobilePhoneManager.IsMobileActive())
+        {
+            GlobalReferences.instance.mobilePhoneManager.ChoiceMade(choiceReferences.Choices[choiceSelectedNum].text);
+        }
 
         if(choiceSelectedNum < 0)
             GlobalReferences.instance.resourceManager.UpdateMentalState(-0.1f, true);
