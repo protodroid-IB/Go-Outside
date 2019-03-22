@@ -31,9 +31,9 @@ public class GameManager : MonoBehaviour
     {
         bool dialogueActive = GlobalReferences.instance.dialogueManager.IsDialogueActive();
         bool mobileActive = GlobalReferences.instance.mobilePhoneManager.IsMobileActive();
-        bool pauseActive = GlobalReferences.instance.pauseManager.IsPauseActive();
+       // bool pauseActive = GlobalReferences.instance.pauseManager.IsPauseActive();
 
-        if(dialogueActive || mobileActive || pauseActive)
+        if(dialogueActive || mobileActive)
         {
             stopAction = true;
         }

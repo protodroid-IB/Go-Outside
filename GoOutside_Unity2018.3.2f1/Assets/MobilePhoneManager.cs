@@ -14,7 +14,7 @@ public class MobilePhoneManager : MonoBehaviour
     private Animator applicationsAnimator;
 
     [SerializeField]
-    private GameObject messageAppGO, mapAppGo, exerciseAppGO;
+    private GameObject messageAppGO, mapAppGo, exerciseAppGO, mainMenuAppGO, quitGameAppGO;
 
     private MessageApplication messageApp;
     private bool canShowMessage = false;
@@ -289,7 +289,7 @@ public class MobilePhoneManager : MonoBehaviour
     {
         Vector2 direction = GlobalReferences.instance.inputController.move(GlobalReferences.instance.inputController.player, transform.position);
         
-        if(!messageAppGO.activeInHierarchy && !mapAppGo.activeInHierarchy && !exerciseAppGO.activeInHierarchy)
+        if(!messageAppGO.activeInHierarchy && !mapAppGo.activeInHierarchy && !exerciseAppGO.activeInHierarchy && !mainMenuAppGO.activeInHierarchy && !quitGameAppGO.activeInHierarchy)
         {
             if (inApplication)
             {
@@ -310,6 +310,15 @@ public class MobilePhoneManager : MonoBehaviour
                             case 2:
                                 exerciseAppGO.SetActive(true);
                                 break;
+
+                            case 3:
+                                mainMenuAppGO.SetActive(true);
+                                break;
+
+                            case 4:
+                                quitGameAppGO.SetActive(true);
+                                break;
+
                         }
                     }
                 }
@@ -382,7 +391,7 @@ public class MobilePhoneManager : MonoBehaviour
         
     }
 
-    private void BackHome()
+    public void BackHome()
     {
         if (inApplication == true)
         {
@@ -409,6 +418,10 @@ public class MobilePhoneManager : MonoBehaviour
                         mapAppGo.SetActive(false);
                     else if (exerciseAppGO.activeInHierarchy)
                         exerciseAppGO.SetActive(false);
+                    else if (mainMenuAppGO.activeInHierarchy)
+                        mainMenuAppGO.SetActive(false);
+                    else if (quitGameAppGO.activeInHierarchy)
+                        quitGameAppGO.SetActive(false);
 
                     inApplication = false;
                 }

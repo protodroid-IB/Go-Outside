@@ -16,6 +16,9 @@ public class ApplicationIcon : MonoBehaviour
     {
         selected = inSelected;
 
+        if (animator == null)
+            animator = GetComponent<Animator>();
+
         animator.SetBool("Selected", selected);
     }
 
@@ -25,5 +28,11 @@ public class ApplicationIcon : MonoBehaviour
     void Start()
     {
         animator = GetComponent<Animator>();
+    }
+
+    private void OnEnable()
+    {
+        if(animator == null)
+            animator = GetComponent<Animator>();
     }
 }
