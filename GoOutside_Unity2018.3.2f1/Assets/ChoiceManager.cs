@@ -25,7 +25,7 @@ public class ChoiceManager : MonoBehaviour
     private bool canSwap = false;
 
     [SerializeField]
-    [Range(5, 100)]
+    [Range(1, 100)]
     private float buttonSwapSpeed = 25f;
 
     private bool canSelectChoice = false;
@@ -151,7 +151,7 @@ public class ChoiceManager : MonoBehaviour
 
             if(canSwap)
             {
-                    UpdateButtonPositions();   
+                UpdateButtonPositions();   
             }
 
             timer += Time.deltaTime;
@@ -240,6 +240,15 @@ public class ChoiceManager : MonoBehaviour
         for(int i=0; i < choiceButtons.Length; i++)
         {
             choiceReferences.Buttons[i].transform.position = Vector3.Lerp(choiceReferences.Buttons[i].transform.position, choiceButtons[i].buttonPosition, buttonSwapSpeed * Time.deltaTime);
+
+            if(GlobalReferences.instance.usefulFunctions.CalculateSqrDistanceFromTarget(choiceReferences.Buttons[i].transform.position, choiceButtons[i].buttonPosition) <= 200f)
+            {
+                canSelectChoice = true;
+            }
+            else
+            {
+                canSelectChoice = false;
+            }
         }
     }
 
