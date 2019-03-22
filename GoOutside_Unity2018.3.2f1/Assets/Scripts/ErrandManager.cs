@@ -4,7 +4,15 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class ErrandManager : MonoBehaviour
-{
+{ 
+    [SerializeField]
+    private GameObject letterboxParent;
+
+    private Dictionary<int, LetterBox> chosenLetterboxes = new Dictionary<int, LetterBox>();
+
+    private int numLetterBoxesPairedWithHouses = 0;
+
+
     [SerializeField]
     private int totalNumGymMachines = 6, totalNumLetters = 12, totalNumDogs = 5;
 
@@ -13,6 +21,25 @@ public class ErrandManager : MonoBehaviour
     private bool sisterArrivedAtSchool = false, sisterBackFromSchool = false;
 
     private bool workoutComplete = false, lettersDelivered = false, dogsPatted = false;
+
+
+
+    private void InitialiseMarkers()
+    {
+        FindHousesToDeliverTo();
+        GlobalReferences.instance.mapUIManager.InitialiseHouseMarkers(chosenLetterboxes);
+    }
+
+    public void IncrementNumPariedLetterboxes()
+    {
+        numLetterBoxesPairedWithHouses++;
+
+        if (numLetterBoxesPairedWithHouses >= letterboxParent.transform.childCount)
+        {
+            InitialiseMarkers();
+        } 
+    }
+
 
 
 
@@ -32,14 +59,27 @@ public class ErrandManager : MonoBehaviour
             WorkoutComplete();
     }
 
-    public void IncrementLettersCount()
+    public void IncrementLettersCount(LetterBox inLetterBox)
     {
-        if (currentNumLetters < totalNumLetters)
+        if (chosenLetterboxes.ContainsValue(inLetterBox))
         {
-            currentNumLetters++;
-            GlobalReferences.instance.uiManager.UpdateCountUI(Errands.DeliverLetters, currentNumLetters, totalNumLetters);
-        }
+            if (currentNumLetters < totalNumLetters)
+            {
+                currentNumLetters++;
+                GlobalReferences.instance.uiManager.UpdateCountUI(Errands.DeliverLetters, currentNumLetters, totalNumLetters);
+                int key = 0;
 
+                foreach (KeyValuePair<int, LetterBox> letterBox in chosenLetterboxes)
+                {
+                    if (letterBox.Value == inLetterBox)
+                    {
+                        key = letterBox.Key;
+                    }
+                }
+
+                GlobalReferences.instance.mapUIManager.RemoveLetterMarker(key);
+            }
+        }
 
         if (currentNumLetters >= totalNumLetters)
             LettersDelivered();
@@ -180,6 +220,20 @@ public class ErrandManager : MonoBehaviour
     }
 
 
+    private void FindHousesToDeliverTo()
+    {
+        for(int i=0; i < totalNumLetters; i++)
+        {
+            int rand = UnityEngine.Random.Range(0, letterboxParent.transform.childCount);
+
+            while(chosenLetterboxes.ContainsKey(rand))
+            {
+                rand = UnityEngine.Random.Range(0, letterboxParent.transform.childCount);
+            }
+
+            chosenLetterboxes.Add(rand, letterboxParent.transform.GetChild(rand).GetComponent<LetterBox>());
+        }
+    }
 
 
 

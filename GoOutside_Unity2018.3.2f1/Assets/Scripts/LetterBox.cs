@@ -8,6 +8,10 @@ public class LetterBox : MonoBehaviour
     private Interactable interactable;
     private ProgressController progressController;
 
+    private GameObject house;
+
+    private bool delivered;
+
     private void Start()
     {
         interactable = GetComponent<Interactable>();
@@ -25,8 +29,19 @@ public class LetterBox : MonoBehaviour
     private void OnDeliveryComplete()
     {
         // update the errand manager
-        GlobalReferences.instance.errandManager.IncrementLettersCount();
-
+        GlobalReferences.instance.errandManager.IncrementLettersCount(this);
         // visually display some way to show the machine has been exercised on already!
+    }
+
+
+    public void SetHouse(GameObject inHouse)
+    {
+        house = inHouse;
+        GlobalReferences.instance.errandManager.IncrementNumPariedLetterboxes();
+    }
+
+    public GameObject GetHouse()
+    {
+        return house;
     }
 }

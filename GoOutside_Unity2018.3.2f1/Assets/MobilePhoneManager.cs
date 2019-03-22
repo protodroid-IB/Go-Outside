@@ -232,6 +232,7 @@ public class MobilePhoneManager : MonoBehaviour
         applicationsAnimator.SetTrigger("Close");
 
         mobileActive = false;
+        currentlySelected = 0;
 
         if(!canShowMessage)
         {
@@ -390,7 +391,7 @@ public class MobilePhoneManager : MonoBehaviour
                 if (GlobalReferences.instance.usefulFunctions.CheckAnimationPlaying(applicationsAnimator, "Apps_Off"))
                 {
 
-                    GlobalReferences.instance.playerInteract.option2Interact -= BackHome;
+                    GlobalReferences.instance.playerInteract.mobilePhoneInteract -= BackHome;
                     GlobalReferences.instance.playerInteract.interact += SelectApplication;
                     GlobalReferences.instance.playerInteract.mobilePhoneInteract += ClosePhone;
 
@@ -435,6 +436,7 @@ public class MobilePhoneManager : MonoBehaviour
                 if (!GlobalReferences.instance.choiceManager.ChoiceReferences.transform.GetChild(0).gameObject.activeInHierarchy)
                 {
                     GlobalReferences.instance.choiceManager.ActivateChoices(phoneAlerts[currentPhoneAlert].responses);
+                    GlobalReferences.instance.playerInteract.mobilePhoneInteract -= BackHome;
                 }
             }
         }
@@ -452,6 +454,7 @@ public class MobilePhoneManager : MonoBehaviour
         canShowMessage = false;
         mobileAnimator.SetBool("Alerted", false);
         FindNextTimeOfDay();
+        GlobalReferences.instance.playerInteract.mobilePhoneInteract += BackHome;
     }
 
 
