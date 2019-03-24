@@ -11,10 +11,23 @@ public class MapUIManager : MonoBehaviour
 
     private Dictionary<int, GameObject> houseMarkers = new Dictionary<int, GameObject>();
 
+    [SerializeField]
+    private GameObject playerMarkerPrefab;
+
+    private GameObject playerMarker;
+
 
     private void Start()
     {
         markerParent = transform.GetChild(0);
+
+        playerMarker = Instantiate(playerMarkerPrefab, FindGlobalPosition(GlobalReferences.instance.playerMovement.transform.position), Quaternion.identity, markerParent);
+        playerMarker.transform.localRotation = ResetLocalRotation();
+    }
+
+    private void Update()
+    {
+        playerMarker.transform.position = FindGlobalPosition(GlobalReferences.instance.playerMovement.transform.position);
     }
 
 

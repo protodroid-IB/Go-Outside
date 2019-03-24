@@ -135,6 +135,8 @@ public class DialogueManager : MonoBehaviour
                 dialogueTextTimer += dialogueTextSpeed * Time.deltaTime;
                 currentCharacter = (int)dialogueTextTimer;
 
+                if (currentCharacter > inDialogue.Length) currentCharacter = inDialogue.Length;
+
                 currentDialogue = inDialogue.Substring(0, currentCharacter);
             }
             else

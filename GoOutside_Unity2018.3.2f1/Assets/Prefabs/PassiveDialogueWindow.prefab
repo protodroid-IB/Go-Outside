@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2280591009575551153}
   - component: {fileID: 108741088863625491}
   - component: {fileID: 108741088863625492}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: InteractTrigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -73,7 +73,7 @@ GameObject:
   - component: {fileID: 8021095723547889810}
   - component: {fileID: 8021095723547889823}
   - component: {fileID: 8021095723547889808}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Window
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -149,7 +149,7 @@ GameObject:
   - component: {fileID: 8021095723867794513}
   - component: {fileID: 8021095723867794527}
   - component: {fileID: 8021095723867794512}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -228,7 +228,7 @@ GameObject:
   - component: {fileID: 3409450736000261022}
   - component: {fileID: 232046223}
   - component: {fileID: 232046219}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: PassiveDialogueWindow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -386,7 +386,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8021095724444433688}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Pointer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -424,7 +424,7 @@ GameObject:
   - component: {fileID: 8021095724792947915}
   - component: {fileID: 8021095724792947913}
   - component: {fileID: 8021095724792947914}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: TextMeshPro Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
