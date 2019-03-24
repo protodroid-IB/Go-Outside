@@ -1,12 +1,19 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 [RequireComponent(typeof(Interactable), typeof(ProgressController))]
 public class GymMachine : MonoBehaviour
 {
     private Interactable interactable;
     private ProgressController progressController;
+
+    [SerializeField]
+    private int machineNumber;
+
+    [SerializeField]
+    private TextMeshProUGUI numberUI;
 
     private void Start()
     {
@@ -15,6 +22,8 @@ public class GymMachine : MonoBehaviour
 
         interactable.interacting += OnExercising;
         progressController.progressComplete += OnExerciseCompleted;
+
+        numberUI.text = machineNumber.ToString();
     }
 
     private void OnExercising()
@@ -24,9 +33,22 @@ public class GymMachine : MonoBehaviour
 
     private void OnExerciseCompleted()
     {
-        // update the errand manager
-        GlobalReferences.instance.errandManager.IncrementGymMachineCount();
-
+        if(GlobalReferences.instance.exerciseApplication.CheckExerciseComplete(machineNumber))
+        {
+            // update the errand manager
+            GlobalReferences.instance.errandManager.IncrementGymMachineCount();
+        }
+        else
+        {
+            GlobalReferences.instance.resourceManager.UpdateMentalState(-0.02f, true);
+        }
+        
         // visually display some way to show the machine has been exercised on already!
+    }
+
+
+    public int GetMachineNumber()
+    {
+        return machineNumber;
     }
 }

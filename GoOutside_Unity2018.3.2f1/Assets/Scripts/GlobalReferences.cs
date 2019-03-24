@@ -70,6 +70,8 @@ public class GlobalReferences : MonoBehaviour
     [HideInInspector]
     public MapUIManager mapUIManager;
 
+    public ExerciseApplication exerciseApplication;
+
 
 
     //public PlayerMovementController PlayerMovement { get => playerMovement;}
@@ -148,7 +150,6 @@ public class GlobalReferences : MonoBehaviour
 
         if(mapUIManager == null)
             mapUIManager = GameObject.FindWithTag("MapUI").GetComponent<MapUIManager>();
-
     }
 
 }

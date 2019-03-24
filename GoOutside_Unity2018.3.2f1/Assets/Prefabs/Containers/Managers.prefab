@@ -84,6 +84,7 @@ MonoBehaviour:
   mobilePhoneManager: {fileID: 0}
   mapCameraMovement: {fileID: 0}
   mapUIManager: {fileID: 0}
+  exerciseApplication: {fileID: 0}
 --- !u!114 &5668330395773294515
 MonoBehaviour:
   m_ObjectHideFlags: 0
