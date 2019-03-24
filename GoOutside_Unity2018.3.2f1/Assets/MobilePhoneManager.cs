@@ -187,7 +187,7 @@ public class MobilePhoneManager : MonoBehaviour
             }
         }
 
-        if (GlobalReferences.instance.usefulFunctions.CheckAnimationPlaying(mobileAnimator, "MobilePhone_LargeIdle"))
+        if (GlobalReferences.instance.usefulFunctions.CheckAnimationPlaying(mobileAnimator, "MobilePhone_LargeIdle") || GlobalReferences.instance.usefulFunctions.CheckAnimationPlaying(mobileAnimator, "MobilePhone_LargeChoice"))
         {
             NavigateApplications();
         }
@@ -293,7 +293,7 @@ public class MobilePhoneManager : MonoBehaviour
         {
             if (inApplication)
             {
-                if (GlobalReferences.instance.usefulFunctions.CheckAnimationPlaying(mobileAnimator, "MobilePhone_LargeIdle"))
+                if (GlobalReferences.instance.usefulFunctions.CheckAnimationPlaying(mobileAnimator, "MobilePhone_LargeIdle") || GlobalReferences.instance.usefulFunctions.CheckAnimationPlaying(mobileAnimator, "MobilePhone_LargeChoice"))
                 {
                     if (GlobalReferences.instance.usefulFunctions.CheckAnimationPlaying(applicationsAnimator, "Apps_Off"))
                     {
@@ -372,7 +372,7 @@ public class MobilePhoneManager : MonoBehaviour
     {
         if(inApplication == false)
         {
-            if (GlobalReferences.instance.usefulFunctions.CheckAnimationPlaying(mobileAnimator, "MobilePhone_LargeIdle"))
+            if (GlobalReferences.instance.usefulFunctions.CheckAnimationPlaying(mobileAnimator, "MobilePhone_LargeIdle") || GlobalReferences.instance.usefulFunctions.CheckAnimationPlaying(mobileAnimator, "MobilePhone_LargeChoice"))
             {
                 if (GlobalReferences.instance.usefulFunctions.CheckAnimationPlaying(applicationsAnimator, "Apps_Idle"))
                 {
@@ -395,7 +395,7 @@ public class MobilePhoneManager : MonoBehaviour
     {
         if (inApplication == true)
         {
-            if (GlobalReferences.instance.usefulFunctions.CheckAnimationPlaying(mobileAnimator, "MobilePhone_LargeIdle"))
+            if (GlobalReferences.instance.usefulFunctions.CheckAnimationPlaying(mobileAnimator, "MobilePhone_LargeIdle") || GlobalReferences.instance.usefulFunctions.CheckAnimationPlaying(mobileAnimator, "MobilePhone_LargeChoice"))
             {
                 if (GlobalReferences.instance.usefulFunctions.CheckAnimationPlaying(applicationsAnimator, "Apps_Off"))
                 {
@@ -450,6 +450,7 @@ public class MobilePhoneManager : MonoBehaviour
                 {
                     GlobalReferences.instance.choiceManager.ActivateChoices(phoneAlerts[currentPhoneAlert].responses);
                     GlobalReferences.instance.playerInteract.mobilePhoneInteract -= BackHome;
+                    mobileAnimator.SetBool("Choice", true);
                 }
             }
         }
@@ -468,6 +469,7 @@ public class MobilePhoneManager : MonoBehaviour
         mobileAnimator.SetBool("Alerted", false);
         FindNextTimeOfDay();
         GlobalReferences.instance.playerInteract.mobilePhoneInteract += BackHome;
+        mobileAnimator.SetBool("Choice", false);
     }
 
 

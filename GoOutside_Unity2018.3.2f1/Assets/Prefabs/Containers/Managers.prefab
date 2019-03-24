@@ -53,7 +53,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd8dde746107b2248a16568983e72f1b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  activateGameLoop: 1
+  activateGameLoop: 0
   stopAction: 0
 --- !u!114 &5801253641011332518
 MonoBehaviour:
@@ -82,7 +82,8 @@ MonoBehaviour:
   dialogueManager: {fileID: 0}
   choiceManager: {fileID: 0}
   mobilePhoneManager: {fileID: 0}
-  pauseManager: {fileID: 0}
+  mapCameraMovement: {fileID: 0}
+  mapUIManager: {fileID: 0}
 --- !u!114 &5668330395773294515
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -121,6 +122,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7253ea7d5f6ed2f46a6203efb194b262, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  letterboxParent: {fileID: 0}
   totalNumGymMachines: 6
   totalNumLetters: 12
   totalNumDogs: 5
@@ -211,6 +213,8 @@ MonoBehaviour:
   messageAppGO: {fileID: 0}
   mapAppGo: {fileID: 0}
   exerciseAppGO: {fileID: 0}
+  mainMenuAppGO: {fileID: 0}
+  quitGameAppGO: {fileID: 0}
   appTimeBetweenMoves: 0.25
   phoneAlerts:
   - alertTime:
@@ -218,21 +222,57 @@ MonoBehaviour:
       minute: 30
     alertMessageSender: Lola Sterrett
     alertMessageText: What time you finishing work today?
+    responses:
+    - text: I'm ... ahhh. not working?
+      mentalStateEffect: -0.1
+    - text: I have absolutely no idea.
+      mentalStateEffect: -0.05
+    - text: I don't have a job at the moment you poo.
+      mentalStateEffect: -0.1
+    - text: I finsh at 3pm.
+      mentalStateEffect: 0.03
   - alertTime:
-      hour: 9
+      hour: 8
       minute: 26
     alertMessageSender: Rob Gross
     alertMessageText: Hey man, are you farting at the moment?
+    responses:
+    - text: I am definitely farting right now.
+      mentalStateEffect: -0.05
+    - text: I am not farting but you are mr gross.
+      mentalStateEffect: -0.05
+    - text: Nah man. Wasn't me.
+      mentalStateEffect: 0.02
+    - text: Egg.
+      mentalStateEffect: -0.1
   - alertTime:
       hour: 14
       minute: 42
     alertMessageSender: Lachlan Petersen
     alertMessageText: Hey do you want to play smash bros when you get home?
+    responses:
+    - text: Not really if I'm being honest...
+      mentalStateEffect: -0.02
+    - text: Yeah ok but I have stuff to do so only for a bit!
+      mentalStateEffect: 0
+    - text: Wrong number. Blocked.
+      mentalStateEffect: -0.1
+    - text: No.
+      mentalStateEffect: -0.05
   - alertTime:
       hour: 12
       minute: 11
     alertMessageSender: James Rose
     alertMessageText: Ay bro can i borrow some protein powder?
+    responses:
+    - text: Yeah sure it's in my pantry!
+      mentalStateEffect: 0.05
+    - text: No sorry man, I don't like you.
+      mentalStateEffect: -0.1
+    - text: Uhhh what powder?
+      mentalStateEffect: -0.02
+    - text: No.
+      mentalStateEffect: -0.05
 --- !u!114 &1344313630
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -240,7 +280,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 732584037089853841}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 44b13632245006d4384f35afde7bb66b, type: 3}
   m_Name: 
