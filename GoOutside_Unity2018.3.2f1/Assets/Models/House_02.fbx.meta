@@ -1,0 +1,214 @@
+fileFormatVersion: 2
+guid: efc6fe528ee8a6544938a12afc55bf98
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: FenceStraight35
+    100002: FenceStraight37
+    100004: FenceStraight38
+    100006: FenceStraight39
+    100008: FenceStraight40
+    100010: FenceStraight41
+    100012: FenceStraight42
+    100014: FenceStraight43
+    100016: FenceStraight44
+    100018: FenceStraight46
+    100020: FenceStraight47
+    100022: House26
+    100024: //RootNode
+    100026: House_02_Merged
+    100028: House_02_Unmerged1
+    100030: pCube18
+    100032: pCube20
+    100034: pCube21
+    100036: pCube22
+    100038: pCube23
+    100040: pCube24
+    100042: pCube25
+    100044: pCube26
+    100046: pCube27
+    100048: pCube28
+    100050: pCube29
+    100052: pCube30
+    100054: pCube31
+    100056: pCube32
+    100058: StonePath1
+    100060: transform1
+    100062: transform10
+    100064: transform11
+    100066: transform12
+    100068: transform13
+    100070: transform14
+    100072: transform15
+    100074: transform16
+    100076: transform17
+    100078: transform18
+    100080: transform19
+    100082: transform2
+    100084: transform20
+    100086: transform21
+    100088: transform22
+    100090: transform23
+    100092: transform24
+    100094: transform25
+    100096: transform26
+    100098: transform3
+    100100: transform4
+    100102: transform5
+    100104: transform6
+    100106: transform7
+    100108: transform8
+    100110: transform9
+    400000: FenceStraight35
+    400002: FenceStraight37
+    400004: FenceStraight38
+    400006: FenceStraight39
+    400008: FenceStraight40
+    400010: FenceStraight41
+    400012: FenceStraight42
+    400014: FenceStraight43
+    400016: FenceStraight44
+    400018: FenceStraight46
+    400020: FenceStraight47
+    400022: House26
+    400024: //RootNode
+    400026: House_02_Merged
+    400028: House_02_Unmerged1
+    400030: pCube18
+    400032: pCube20
+    400034: pCube21
+    400036: pCube22
+    400038: pCube23
+    400040: pCube24
+    400042: pCube25
+    400044: pCube26
+    400046: pCube27
+    400048: pCube28
+    400050: pCube29
+    400052: pCube30
+    400054: pCube31
+    400056: pCube32
+    400058: StonePath1
+    400060: transform1
+    400062: transform10
+    400064: transform11
+    400066: transform12
+    400068: transform13
+    400070: transform14
+    400072: transform15
+    400074: transform16
+    400076: transform17
+    400078: transform18
+    400080: transform19
+    400082: transform2
+    400084: transform20
+    400086: transform21
+    400088: transform22
+    400090: transform23
+    400092: transform24
+    400094: transform25
+    400096: transform26
+    400098: transform3
+    400100: transform4
+    400102: transform5
+    400104: transform6
+    400106: transform7
+    400108: transform8
+    400110: transform9
+    2100000: Grass
+    2100002: Fence
+    2100004: Door
+    2100006: House2
+    2100008: Windows
+    2100010: StonePath
+    2300000: House_02_Merged
+    2300002: //RootNode
+    3300000: House_02_Merged
+    3300002: //RootNode
+    4300000: House_02_Merged
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 48
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    previousCalculatedGlobalScale: 1
+    hasPreviousCalculatedGlobalScale: 0
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
