@@ -1304,15 +1304,15 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1957886063, guid: ed6b5365a42f91743962cd179e54ca1e, type: 3}
+      propertyPath: fillTransform
+      value: 
+      objectReference: {fileID: 6875893733910353024}
     - target: {fileID: 3463137059675467309, guid: ed6b5365a42f91743962cd179e54ca1e,
         type: 3}
       propertyPath: m_Layer
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1957886063, guid: ed6b5365a42f91743962cd179e54ca1e, type: 3}
-      propertyPath: fillTransform
-      value: 
-      objectReference: {fileID: 6875893733910353024}
     - target: {fileID: 5688148793448858000, guid: ed6b5365a42f91743962cd179e54ca1e,
         type: 3}
       propertyPath: m_Layer

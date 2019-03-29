@@ -7,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: GymMat
-  m_Shader: {fileID: 4800000, guid: 4103be99a8b7fd44a9754ab30f011570, type: 3}
+  m_Name: GymMatRoof2
+  m_Shader: {fileID: 4800000, guid: fb2e5977ae0e03b4983886d9fa3c9949, type: 3}
   m_ShaderKeywords: _SMOOTHNESS_TEXTURE_ALBEDO_CHANNEL_A
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -40,7 +40,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _DissolveTex:
-        m_Texture: {fileID: 2800000, guid: 5a4065c0dd60ae3418b2ec9042593bca, type: 3}
+        m_Texture: {fileID: 2800000, guid: 8a5c076c9c13be1499d072bad2848702, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _EmissionMap:
@@ -76,11 +76,14 @@ Material:
     - _BurnSize: 0
     - _Cutoff: 0.5
     - _DetailNormalMapScale: 1
+    - _DisableDissolve: 0
     - _DissolveAmount: 0.0035
     - _DissolveLineWidth: 0.003
-    - _DissolveScale: 0
+    - _DissolveRoofBool: 1
+    - _DissolveScale: 0.0035
     - _DstBlend: 0
-    - _EmissionAmount: 2
+    - _EmissionAmount: 0
+    - _EnableDissolve: 0
     - _GlossMapScale: 0
     - _Glossiness: 0
     - _GlossyReflections: 1

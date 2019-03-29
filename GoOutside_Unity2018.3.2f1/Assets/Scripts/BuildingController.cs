@@ -7,7 +7,7 @@ public class BuildingController : MonoBehaviour
     [SerializeField]
     private MeshRenderer roofMesh;
 
-    private Material roofMat;
+    private Material[] roofMats;
 
     private bool activateDissolveLerp = false;
 
@@ -19,8 +19,13 @@ public class BuildingController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        roofMat = roofMesh.sharedMaterial;
-        roofMat.SetFloat("_DissolveRoofBool", 0.0f);
+        roofMats = roofMesh.sharedMaterials;
+
+        for(int i=0; i < roofMats.Length; i++)
+        {
+            roofMats[i].SetFloat("_DissolveRoofBool", 0.0f);
+        }
+        
     }
 
 
@@ -28,8 +33,6 @@ public class BuildingController : MonoBehaviour
     {
         if (activateDissolveLerp)
         {
-            
-
             if (Mathf.Abs(targetDissolve - 0.0f) <= 0.001f)
             {
                 dissolveLerp = Mathf.Lerp(dissolveLerp, targetDissolve, 3.0f * Time.deltaTime);
@@ -39,7 +42,10 @@ public class BuildingController : MonoBehaviour
                 dissolveLerp = Mathf.Lerp(dissolveLerp, targetDissolve, Time.deltaTime);
             }
 
-            roofMat.SetFloat("_RoofDissolveAmount", dissolveLerp);
+            for(int i=0; i < roofMats.Length; i++)
+            {
+                roofMats[i].SetFloat("_RoofDissolveAmount", dissolveLerp);
+            }
 
             if (Mathf.Abs(dissolveLerp - 1.0f) <= 0.001f)
             {
@@ -59,11 +65,18 @@ public class BuildingController : MonoBehaviour
     {
         if(inBool)
         {
-            roofMat.SetFloat("_DissolveRoofBool", 1.0f);
+            for(int i=0; i < roofMats.Length; i++)
+            {
+                roofMats[i].SetFloat("_DissolveRoofBool", 1.0f);
+            }
+           
         }
         else
         {
-            roofMat.SetFloat("_DissolveRoofBool", 0.0f);
+            for (int i = 0; i < roofMats.Length; i++)
+            {
+                roofMats[i].SetFloat("_DissolveRoofBool", 0.0f);
+            }
         }
     }
 
