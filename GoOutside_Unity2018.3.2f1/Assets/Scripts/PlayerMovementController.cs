@@ -10,11 +10,17 @@ public class PlayerMovementController : MonoBehaviour
     public Transform playerTransform;
 
     [SerializeField]
+    private Animator playerAnim;
+
+    [SerializeField]
     [Range(0.5f, 20)]
-    private float maxSpeed = 14f;
+    private float maxWalkSpeed = 14f, maxRunSpeed = 20f;
 
     [SerializeField]
     private float moveDeadZone = 0.5f;
+
+    [SerializeField]
+    private float runDeadZone = 0.75f;
 
     [SerializeField]
     [Range(0.25f, 10)]
@@ -62,6 +68,8 @@ public class PlayerMovementController : MonoBehaviour
 
             Turn(direction);
             Move(direction);
+
+            playerAnim.SetFloat("Velocity", direction.magnitude);
         }
         else
         {
@@ -90,9 +98,13 @@ public class PlayerMovementController : MonoBehaviour
 
     private void Move(Vector2 inDirection)
     {
-        if(inDirection.sqrMagnitude >= (moveDeadZone * moveDeadZone))
+        if(inDirection.sqrMagnitude >= (moveDeadZone * moveDeadZone) && (inDirection.sqrMagnitude < (runDeadZone * runDeadZone)))
         {
-            velocity = Vector3.Slerp(velocity, inDirection.magnitude * transform.forward * maxSpeed * Time.deltaTime, moveAcceleration * Time.deltaTime);
+            velocity = Vector3.Slerp(velocity, inDirection.magnitude * transform.forward * maxWalkSpeed * Time.deltaTime, moveAcceleration * Time.deltaTime);
+        }
+        else if (inDirection.sqrMagnitude > (moveDeadZone * moveDeadZone) && (inDirection.sqrMagnitude >= (runDeadZone * runDeadZone)))
+        {
+            velocity = Vector3.Slerp(velocity, inDirection.magnitude * transform.forward * maxRunSpeed * Time.deltaTime, moveAcceleration * Time.deltaTime);
         }
 
         transform.position += new Vector3(velocity.x, 0f, velocity.z);
@@ -108,6 +120,7 @@ public class PlayerMovementController : MonoBehaviour
         {
             playerRB.velocity = Vector3.zero;
             velocity = Vector3.zero;
+            playerAnim.SetFloat("Velocity", 0f);
             playerRB.constraints |= RigidbodyConstraints.FreezePositionY;
         }
         else
@@ -121,7 +134,7 @@ public class PlayerMovementController : MonoBehaviour
 
     public float GetMaxSpeed()
     {
-        return maxSpeed;
+        return maxWalkSpeed;
     }
 
     private void OnCollisionStay(Collision collision)

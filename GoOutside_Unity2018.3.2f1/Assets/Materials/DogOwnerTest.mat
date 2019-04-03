@@ -8,7 +8,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: DogOwnerTest
-  m_Shader: {fileID: 4800000, guid: 9d8023f84e5ec2d41bd53ac3fafbfc6c, type: 3}
+  m_Shader: {fileID: 4800000, guid: f036c26de2eba7848a0d58319b41119e, type: 3}
   m_ShaderKeywords: _SMOOTHNESS_TEXTURE_ALBEDO_CHANNEL_A
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -48,11 +48,15 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: 14fcd8d3971cd3d4ba529d59cd6c1683, type: 3}
+        m_Texture: {fileID: 2800000, guid: 23fd3c2fb9946014daf17b3cda6be76a, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
         m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _NoiseTex:
+        m_Texture: {fileID: 2800000, guid: 8a5c076c9c13be1499d072bad2848702, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _OcclusionMap:
@@ -61,6 +65,10 @@ Material:
         m_Offset: {x: 0, y: 0}
     - _ParallaxMap:
         m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Ramp:
+        m_Texture: {fileID: 2800000, guid: d1f7d0d78ef42f94c9ad689e1f4c3a01, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _SecondTex:
@@ -76,6 +84,8 @@ Material:
     - _BurnSize: 0.041
     - _Cutoff: 0.5
     - _DetailNormalMapScale: 1
+    - _DisAmount: 0.01
+    - _DisLineWidth: 0.005
     - _DissolveAmount: 0
     - _DissolveLineWidth: 0.081
     - _DissolveScale: 1.05
@@ -86,6 +96,7 @@ Material:
     - _GlossyReflections: 1
     - _Metallic: 0
     - _Mode: 0
+    - _NScale: 0.005
     - _OcclusionStrength: 1
     - _Parallax: 0.02
     - _SmoothnessTextureChannel: 1
@@ -94,7 +105,8 @@ Material:
     - _UVSec: 0
     - _ZWrite: 1
     m_Colors:
-    - _Color: {r: 0.4528302, g: 0.3481666, b: 0.3481666, a: 1}
-    - _Color2: {r: 0, g: 0, b: 0, a: 1}
+    - _Color: {r: 0.7735849, g: 0.7735849, b: 0.7735849, a: 1}
+    - _Color2: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+    - _DisLineColor: {r: 1, g: 1, b: 1, a: 1}
     - _DissolveLineColor: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}

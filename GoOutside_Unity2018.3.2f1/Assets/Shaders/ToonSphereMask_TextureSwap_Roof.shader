@@ -105,11 +105,11 @@
 			float3 roofPlayerDistance = distance(GLOBALMASK_Position, IN.worldPos);
 			float3 roofDissolveAmount = 1 - (saturate(roofPlayerDistance / 35.0));
 
-			if(_DissolveRoofBool >= 0.5)
-			{
-				half test = tex2D(_DissolveTex, IN.uv_MainTex).rgb - (10.0 * roofDissolveAmount) * _RoofDissolveAmount;
+			//if(_DissolveRoofBool >= 0.5)
+			//{
+				half test = (tex2D(_DissolveTex, IN.uv_MainTex).rgb - (10.0 * roofDissolveAmount) * _RoofDissolveAmount) * (int)_DissolveRoofBool;
 				clip(test);
-			}
+			//}
 
             o.Albedo = resultTex;
             o.Alpha = c.a;

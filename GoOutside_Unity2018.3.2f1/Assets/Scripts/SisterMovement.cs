@@ -8,11 +8,15 @@ public class SisterMovement : MonoBehaviour
 {
     private enum SisterState {Still, Follow, Wander, Target}
 
+    [SerializeField]
+    private Animator sisterAnim;
+
     private SisterState sisterState = SisterState.Still;
 
     private NavMeshAgent navAgent;
     private Interactable interactable;
 
+    [SerializeField]
     private float maxSpeed = 2f;
     private float wanderSpeed;
 
@@ -70,7 +74,7 @@ public class SisterMovement : MonoBehaviour
             sisterState = SisterState.Wander;
             navAgent.speed = wanderSpeed;
         }
-        
+
     }
 
     private void Update()
@@ -128,7 +132,8 @@ public class SisterMovement : MonoBehaviour
         {
             RotateSisterToFacePlayer();
         }
-        
+
+        sisterAnim.SetBool("Walking", false);
     }
 
     private void FollowTarget()
@@ -142,7 +147,9 @@ public class SisterMovement : MonoBehaviour
             timer = 0f;
             navAgent.speed = maxSpeed;
         }
-        
+
+        sisterAnim.SetBool("Walking", true);
+
 
         float distanceFromPlayer = CalculateSqrDistanceFromPlayer();
 
@@ -181,7 +188,9 @@ public class SisterMovement : MonoBehaviour
 
     private void Wander()
     {
-        if(wanderSphere.activeSelf == false)
+        sisterAnim.SetBool("Walking", true);
+
+        if (wanderSphere.activeSelf == false)
         {
             wanderSphere.SetActive(true);
             navAgent.isStopped = true;
@@ -200,7 +209,7 @@ public class SisterMovement : MonoBehaviour
             targetWanderPos = hit.position;
 
             navAgent.isStopped = false;
-            navAgent.SetDestination(targetWanderPos);  
+            navAgent.SetDestination(targetWanderPos);
         }
         
 
@@ -249,7 +258,7 @@ public class SisterMovement : MonoBehaviour
     private void OnDestroy()
     {
         interactable.interacting -= FollowTarget;
-        interactable.endInteract -= Wander;
+        interactable.endInteract -= SetWander;
     }
 
 
