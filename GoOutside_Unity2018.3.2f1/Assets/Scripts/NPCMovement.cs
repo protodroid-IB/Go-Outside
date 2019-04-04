@@ -13,6 +13,9 @@ public class NPCMovement : MonoBehaviour
     private NPCInteraction npcInteraction;
 
     [SerializeField]
+    private Animator npcAnimator;
+
+    [SerializeField]
     [Range(1f, 10f)]
     private float runSpeed = 5f;
 
@@ -27,6 +30,9 @@ public class NPCMovement : MonoBehaviour
     private Quaternion turnRotation = Quaternion.identity;
 
     private Vector3 homePosition;
+
+    [HideInInspector]
+    public bool withinPlayerRadius = false;
 
 
 
@@ -63,7 +69,11 @@ public class NPCMovement : MonoBehaviour
                     break;
 
                 case NPCState.Talking:
+                    Talking();
+                    break;
 
+                case NPCState.Collided:
+                    Talking();
                     break;
             }
         }
@@ -71,6 +81,14 @@ public class NPCMovement : MonoBehaviour
         {
             navAgent.isStopped = true;
         }
+
+        withinPlayerRadius = CheckWithinPlayerRadius();
+    }
+
+    private void Talking()
+    {
+        npcAnimator.SetBool("Walking", false);
+        ChangeAnimationSpeed(1f);
     }
 
     private void Idle()
@@ -122,6 +140,8 @@ public class NPCMovement : MonoBehaviour
         if(GlobalReferences.instance.usefulFunctions.CheckPointInBounds(patrolCollider, GlobalReferences.instance.playerMovement.transform.position))
         {
             state = NPCState.Chasing;
+            npcAnimator.SetBool("Walking", true);
+            ChangeAnimationSpeed(1.5f);
         }
     }
 
@@ -130,6 +150,8 @@ public class NPCMovement : MonoBehaviour
         if(GlobalReferences.instance.usefulFunctions.CalculateSqrDistanceFromTarget(transform.GetChild(0).position, homePosition) <= 0.001)
         {
             state = NPCState.Idle;
+            npcAnimator.SetBool("Walking", false);
+            ChangeAnimationSpeed(1f);
         }
     }
 
@@ -138,6 +160,8 @@ public class NPCMovement : MonoBehaviour
         if (!GlobalReferences.instance.usefulFunctions.CheckPointInBounds(patrolCollider, GlobalReferences.instance.playerMovement.transform.position))
         {
             state = NPCState.GoingHome;
+            npcAnimator.SetBool("Walking", true);
+            ChangeAnimationSpeed(1f);
         }
     }
 
@@ -155,6 +179,25 @@ public class NPCMovement : MonoBehaviour
     public void UnFreeze()
     {
         state = NPCState.GoingHome;
+    }
+
+
+    private bool CheckWithinPlayerRadius()
+    {
+        float inRadius = GlobalReferences.instance.sphereMask.GetRadius();
+
+        if (GlobalReferences.instance.usefulFunctions.CalculateSqrDistanceFromPlayer(transform.position) <= (inRadius * inRadius))
+        {
+            return true;
+        }
+
+        return false;   
+    }
+
+
+    private void ChangeAnimationSpeed(float inSpeed)
+    {
+        npcAnimator.speed = inSpeed;
     }
 
 

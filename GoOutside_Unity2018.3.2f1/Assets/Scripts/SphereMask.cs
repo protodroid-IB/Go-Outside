@@ -60,4 +60,9 @@ public class SphereMask : MonoBehaviour
     {
         UpdateMask(1f);
     }
+
+    public float GetRadius()
+    {
+        return radius;
+    }
 }

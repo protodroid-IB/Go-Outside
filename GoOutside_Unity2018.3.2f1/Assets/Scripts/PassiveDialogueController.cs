@@ -18,6 +18,7 @@ public class PassiveDialogueController : MonoBehaviour
     }
 
 
+
     private void DialogueEnter()
     {
         animator.ResetTrigger("Idle");
