@@ -8,6 +8,7 @@ public class PlayerInteract : MonoBehaviour
 
     public delegate void Interact();
     public Interact interact;
+    public Interact notInteracting;
     public Interact option1Interact;
     public Interact option2Interact;
     public Interact option3Interact;
@@ -38,6 +39,14 @@ public class PlayerInteract : MonoBehaviour
         if (holding || pressing)
         {
             interact.Invoke();
+        }
+        else
+        {
+            if(notInteracting != null)
+            {
+                notInteracting.Invoke();
+            }
+            
         }
 
         if(mobilePhone)

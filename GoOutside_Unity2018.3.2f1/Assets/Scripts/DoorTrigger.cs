@@ -25,7 +25,6 @@ public class DoorTrigger : MonoBehaviour
                 buildingController.SetTargetDissolve(1.0f);
                 buildingController.ActivateDissolveLerp();
                 inDoorWay = true;
-                Debug.Log("ENTERING");
             }
 
             
@@ -37,7 +36,6 @@ public class DoorTrigger : MonoBehaviour
             {
                 buildingController.SetTargetDissolve(0.0f);
                 buildingController.ActivateDissolveLerp();
-                Debug.Log("EXITING");
             }
 
             

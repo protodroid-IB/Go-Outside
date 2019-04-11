@@ -8,6 +8,7 @@ public class Interactable : MonoBehaviour
 
     public delegate void Interacting();
     public Interacting interacting;
+    public Interacting notInteracting;
     public Interacting beginInteract;
     public Interacting endInteract;
 
@@ -19,10 +20,14 @@ public class Interactable : MonoBehaviour
         if(canInteract)
         {
             GlobalReferences.instance.playerInteract.interact += InteractAction;
-            Debug.Log("Player can interact with: " + transform.name);
+            GlobalReferences.instance.playerInteract.notInteracting += NotInteractionAction;
         }   
         else
+        {
             GlobalReferences.instance.playerInteract.interact -= InteractAction;
+            GlobalReferences.instance.playerInteract.notInteracting -= NotInteractionAction;
+        }
+            
     }
 
     public bool GetCanInteract()
@@ -40,6 +45,16 @@ public class Interactable : MonoBehaviour
             }
           
         }
-        Debug.Log("Player interacting with: " + transform.name);
+    }
+
+    private void NotInteractionAction()
+    {
+        if(notInteracting != null)
+        {
+            if (!GlobalReferences.instance.gameManager.GetStopAction())
+            {
+                notInteracting.Invoke();
+            }
+        }
     }
 }

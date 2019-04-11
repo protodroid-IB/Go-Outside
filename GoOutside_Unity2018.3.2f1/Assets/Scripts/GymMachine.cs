@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using System;
 
 [RequireComponent(typeof(Interactable), typeof(ProgressController))]
 public class GymMachine : MonoBehaviour
@@ -15,20 +16,35 @@ public class GymMachine : MonoBehaviour
     [SerializeField]
     private TextMeshProUGUI numberUI;
 
+    [SerializeField]
+    private MeshRenderer beltMR;
+    private Material beltMaterial;
+
     private void Start()
     {
         interactable = GetComponent<Interactable>();
         progressController = GetComponent<ProgressController>();
+        
+        if(beltMR != null)
+            beltMaterial = beltMR.material;
 
         interactable.interacting += OnExercising;
+        interactable.notInteracting += NotExercising;
         progressController.progressComplete += OnExerciseCompleted;
 
         numberUI.text = machineNumber.ToString();
     }
 
+    private void NotExercising()
+    {
+        if (beltMR != null)
+            beltMaterial.SetFloat("_TreadmillOnBool", 0.0f);
+    }
+
     private void OnExercising()
     {
-        // animate the machine!!!!
+        if (beltMR != null)
+            beltMaterial.SetFloat("_TreadmillOnBool", 1.0f);
     }
 
     private void OnExerciseCompleted()
@@ -42,8 +58,13 @@ public class GymMachine : MonoBehaviour
         {
             GlobalReferences.instance.resourceManager.UpdateMentalState(-0.02f, true);
         }
-        
-        // visually display some way to show the machine has been exercised on already!
+
+        if (beltMR != null)
+            beltMaterial.SetFloat("_TreadmillOnBool", 0.0f);
+
+        interactable.interacting -= OnExercising;
+        interactable.notInteracting -= NotExercising;
+        progressController.progressComplete -= OnExerciseCompleted;
     }
 
 

@@ -93,7 +93,6 @@ public class ProgressController : MonoBehaviour
         if (progress >= 1.0f)
         {
             OnFull();
-            Debug.Log("Progress Complete!");
         }
     }
 
