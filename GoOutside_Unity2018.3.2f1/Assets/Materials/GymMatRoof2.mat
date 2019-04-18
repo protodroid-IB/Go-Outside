@@ -89,7 +89,7 @@ Material:
     - _DisableDissolve: 0
     - _DissolveAmount: 0.0035
     - _DissolveLineWidth: 0.003
-    - _DissolveRoofBool: 1
+    - _DissolveRoofBool: 0
     - _DissolveScale: 0.0035
     - _DstBlend: 0
     - _EmissionAmount: 0

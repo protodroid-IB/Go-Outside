@@ -19,6 +19,7 @@ public class WeightBench : MonoBehaviour
 
         interactable.interacting += OnLifting;
         interactable.notInteracting += NotLifting;
+        interactable.endInteract += NotLifting;
         progressController.progressComplete += OnCompletedLift;
     }
 
@@ -27,6 +28,7 @@ public class WeightBench : MonoBehaviour
         animator.SetBool("Lifting", false);
         interactable.interacting -= OnLifting;
         interactable.notInteracting -= NotLifting;
+        interactable.endInteract -= NotLifting;
         progressController.progressComplete -= OnCompletedLift;
     }
 

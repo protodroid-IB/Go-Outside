@@ -15,6 +15,9 @@ public class DogOwnerMovement : MonoBehaviour
     private Transform dogOwnerTransform;
 
     [SerializeField]
+    private Animator ownerAnimator;
+
+    [SerializeField]
     private Transform dogBody;
 
     [SerializeField]
@@ -85,6 +88,9 @@ public class DogOwnerMovement : MonoBehaviour
         else
         {
             navAgent.isStopped = true;
+            ResetAllAnimTriggers();
+            ownerAnimator.SetTrigger("Idle");
+            ownerAnimator.speed = 1f;
         }
         
 
@@ -105,6 +111,10 @@ public class DogOwnerMovement : MonoBehaviour
         NavMeshHit hit;
         NavMesh.SamplePosition(nextPosition, out hit, distanceFromPlayer, 1);
         navAgent.SetDestination(hit.position);
+        ResetAllAnimTriggers();
+        ownerAnimator.SetTrigger("Run");
+        ownerAnimator.speed = 1f;
+
     }
 
     private void FollowDog()
@@ -120,7 +130,7 @@ public class DogOwnerMovement : MonoBehaviour
         NavMesh.SamplePosition(nextPosition, out hit, maxDistanceFromDog, 1);
         navAgent.SetDestination(hit.position);
 
-        if(dogMovement.GetState() != DogState.Idle || GlobalReferences.instance.usefulFunctions.CalculateSqrDistanceFromTarget(navAgent.transform.position, dogBody.position) >= (maxDistanceFromDog * maxDistanceFromDog))
+        if (dogMovement.GetState() != DogState.Idle || GlobalReferences.instance.usefulFunctions.CalculateSqrDistanceFromTarget(navAgent.transform.position, dogBody.position) >= (maxDistanceFromDog * maxDistanceFromDog))
         {
             navAgent.isStopped = false;
 
@@ -128,26 +138,31 @@ public class DogOwnerMovement : MonoBehaviour
             GlobalReferences.instance.usefulFunctions.CalculateSqrDistanceFromTarget(navAgent.transform.position, dogBody.position) <= ((normalDistance + 1.5f) * (normalDistance + 1.5f)))
             {
                 navAgent.speed = normalSpeed;
+                ownerAnimator.speed = 1f;
             }
 
             // the dog owner is too close to the dog
             if (GlobalReferences.instance.usefulFunctions.CalculateSqrDistanceFromTarget(navAgent.transform.position, dogBody.position) <= (minDistanceFromDog * minDistanceFromDog))
             {
                 navAgent.speed = minSpeed;
+                ownerAnimator.speed = 0.9f;
             }
 
             if (GlobalReferences.instance.usefulFunctions.CalculateSqrDistanceFromTarget(navAgent.transform.position, dogBody.position) >= (maxDistanceFromDog * maxDistanceFromDog))
             {
                 navAgent.speed = maxSpeed;
+                ownerAnimator.speed = 1.25f;
             }
         }
         else
         {
-            if(!fieldOfVision.isDetected)
-                state = DogOwnerState.Idle;   
+            if (!fieldOfVision.isDetected)
+                state = DogOwnerState.Idle;
         }
 
-        
+        ResetAllAnimTriggers();
+        ownerAnimator.SetTrigger("Walk");
+
     }
 
 
@@ -168,7 +183,11 @@ public class DogOwnerMovement : MonoBehaviour
             } 
         }
 
-       
+        ResetAllAnimTriggers();
+        ownerAnimator.SetTrigger("Idle");
+        ownerAnimator.speed = 1f;
+
+
         float sinRotation = idleRotateVariation * Mathf.Sin(Time.time);
 
         if (sinRotation < (idleRotateVariation * 0.8f) && sinRotation > -(idleRotateVariation * 0.8f))
@@ -215,6 +234,9 @@ public class DogOwnerMovement : MonoBehaviour
     public void Freeze()
     {
         state = DogOwnerState.Collided;
+        ResetAllAnimTriggers();
+        ownerAnimator.SetTrigger("Idle");
+        ownerAnimator.speed = 1f;
     }
 
     public void UnFreeze()
@@ -242,6 +264,13 @@ public class DogOwnerMovement : MonoBehaviour
     public void PlayerNotDetected()
     {
         Invoke("UnFreeze", 2f);
+    }
+
+    private void ResetAllAnimTriggers()
+    {
+        ownerAnimator.ResetTrigger("Idle");
+        ownerAnimator.ResetTrigger("Walk");
+        ownerAnimator.ResetTrigger("Run");
     }
 
     private void OnDestroy()

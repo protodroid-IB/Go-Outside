@@ -30,6 +30,7 @@ public class GymMachine : MonoBehaviour
 
         interactable.interacting += OnExercising;
         interactable.notInteracting += NotExercising;
+        interactable.endInteract += NotExercising;
         progressController.progressComplete += OnExerciseCompleted;
 
         numberUI.text = machineNumber.ToString();
@@ -64,6 +65,7 @@ public class GymMachine : MonoBehaviour
 
         interactable.interacting -= OnExercising;
         interactable.notInteracting -= NotExercising;
+        interactable.endInteract -= NotExercising;
         progressController.progressComplete -= OnExerciseCompleted;
     }
 
