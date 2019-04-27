@@ -451,13 +451,11 @@ public class InputController : MonoBehaviour
         {
             GamePadState state = GamePad.GetState(player);
 
-            float triggerInput = state.Triggers.Right;
-
-            if(triggerInput >= deadZone)
+            if(state.Buttons.A == ButtonState.Pressed)
             {
                 inStartHoldTimer = true;
             }
-            else
+            else if(state.Buttons.A == ButtonState.Released)
             {
                 inStartHoldTimer = false;
                 inHoldTimer = 0.0f;
@@ -476,9 +474,8 @@ public class InputController : MonoBehaviour
         {
             GamePadState state = GamePad.GetState(player);
 
-            float triggerInput = state.Triggers.Right;
 
-            if(triggerInput >= deadZone)
+            if(state.Buttons.A == ButtonState.Pressed)
             {
                 if(inHoldTimer < inHoldTime)
                 {
@@ -488,7 +485,7 @@ public class InputController : MonoBehaviour
 
             if(canPress == true)
             {
-                if(state.Triggers.Right < deadZone)
+                if(state.Buttons.A == ButtonState.Released)
                 {
                     canPress = false;
                     return true;
@@ -525,23 +522,23 @@ public class InputController : MonoBehaviour
         {
             GamePadState state = GamePad.GetState(player);
 
-            if (state.Buttons.A == ButtonState.Pressed)
+            if (state.Buttons.B == ButtonState.Pressed)
             {
-                option1CanPress = true;
+                option2CanPress = true;
             }
 
-            if (option1CanPress == true)
+            if (option2CanPress == true)
             {
-                if (state.Buttons.A == ButtonState.Released)
+                if (state.Buttons.B == ButtonState.Released)
                 {
-                    option1CanPress = false;
+                    option2CanPress = false;
                     return true;
                 }
             }
 
             return false;
-
         }
+
 
         public bool Interact4(PlayerIndex player)
         {

@@ -22,7 +22,11 @@ public class ErrandManager : MonoBehaviour
 
     private bool workoutComplete = false, lettersDelivered = false, dogsPatted = false;
 
-    private bool allTasksComplete = false;
+    [HideInInspector]
+    public bool allTasksComplete = false;
+
+    [HideInInspector]
+    public bool spokenToMumEnd = false;
 
 
     private void InitialiseMarkers()
@@ -259,7 +263,10 @@ public class ErrandManager : MonoBehaviour
                     {
                         if (lettersDelivered)
                         {
-                            allComplete = true;
+                            if(spokenToMumEnd)
+                            {
+                                allComplete = true;
+                            } 
                         }
                     }
                 }

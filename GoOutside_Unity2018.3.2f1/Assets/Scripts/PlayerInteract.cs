@@ -14,6 +14,7 @@ public class PlayerInteract : MonoBehaviour
     public Interact option3Interact;
     public Interact option4Interact;
     public Interact mobilePhoneInteract;
+    public Interact mobileBackButton;
     public Interact pauseInteract;
 
 
@@ -29,6 +30,7 @@ public class PlayerInteract : MonoBehaviour
         bool pressing = GlobalReferences.instance.inputController.interact1Press(GlobalReferences.instance.inputController.player, GlobalReferences.instance.inputController.buttonHoldTime, ref GlobalReferences.instance.inputController.holdTimer, ref GlobalReferences.instance.inputController.startHoldTimer);
 
         bool mobilePhone = GlobalReferences.instance.inputController.interact2Press(GlobalReferences.instance.inputController.player);
+        bool backButton = GlobalReferences.instance.inputController.interact3Press(GlobalReferences.instance.inputController.player);
         bool pause = GlobalReferences.instance.inputController.pause(GlobalReferences.instance.inputController.player);
 
         bool option1 = GlobalReferences.instance.inputController.option1(GlobalReferences.instance.inputController.player);
@@ -53,6 +55,12 @@ public class PlayerInteract : MonoBehaviour
         {
             if(mobilePhoneInteract != null)
                 mobilePhoneInteract.Invoke();
+        }
+
+        if(backButton)
+        {
+            if (mobileBackButton != null)
+                mobileBackButton.Invoke();
         }
 
         if(pause)

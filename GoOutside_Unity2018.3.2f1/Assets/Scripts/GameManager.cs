@@ -25,6 +25,10 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private BuildingController playerRoof;
 
+    private bool gameOver = false;
+
+    private float gameTimer = 0f;
+
     
 
     // Start is called before the first frame update
@@ -42,9 +46,17 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(GlobalReferences.instance.resourceManager.DayEnded && activateGameLoop)
+        if(gameOver && activateGameLoop)
         {
-            SceneController.instance.ChangeScene("MainMenu");
+            // if end state screen has not yet been enabled
+            if (!GlobalReferences.instance.endStateUIManager.gameObject.activeInHierarchy)
+            {
+                bool completedTasks = GlobalReferences.instance.errandManager.allTasksComplete;
+                disableActions = true;
+
+                GlobalReferences.instance.endStateUIManager.gameObject.SetActive(true);
+                GlobalReferences.instance.endStateUIManager.SetEndStateUI(completedTasks, numTimesDied, (int)gameTimer);
+            }
         }
         else
         {
@@ -85,10 +97,13 @@ public class GameManager : MonoBehaviour
                 if (GlobalReferences.instance.usefulFunctions.CheckAnimationPlaying(fadeAnimator, "SceneFader-Clear"))
                 {
                     GlobalReferences.instance.mumDialogue.TalkYouDied();
-                }
-
-                
+                }  
             }
+
+            if (GlobalReferences.instance.resourceManager.DayEnded) gameOver = true;
+            if (GlobalReferences.instance.errandManager.allTasksComplete) gameOver = true;
+
+            gameTimer += Time.deltaTime;
         }
 
         if(GlobalReferences.instance.resourceManager.GetTimeOfDay().x == 15 && GlobalReferences.instance.resourceManager.GetTimeOfDay().y < 2f)

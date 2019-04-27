@@ -83,6 +83,8 @@ public class GlobalReferences : MonoBehaviour
     [HideInInspector]
     public SisterMovement sisterMovement;
 
+    public EndStateUIManager endStateUIManager;
+
 
 
     //public PlayerMovementController PlayerMovement { get => playerMovement;}
@@ -110,6 +112,7 @@ public class GlobalReferences : MonoBehaviour
         musicManager = GameObject.FindWithTag("Preload").GetComponent<MusicManager>();
         sceneFader = GameObject.FindWithTag("Preload").GetComponentInChildren<SceneFader>();
         sisterMovement = GameObject.FindWithTag("Sister").GetComponent<SisterMovement>();
+
     }
 
     private void Start()
