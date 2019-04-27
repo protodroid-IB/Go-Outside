@@ -42,4 +42,4 @@ Material:
     m_Colors:
     - _Color: {r: 0.6901961, g: 0.6901961, b: 0.6901961, a: 1}
     - _Color2: {r: 0.7264151, g: 0.7264151, b: 0.7264151, a: 1}
-    - _DisLineColor: {r: 1, g: 1, b: 1, a: 1}
+    - _DisLineColor: {r: 0, g: 0, b: 0, a: 1}

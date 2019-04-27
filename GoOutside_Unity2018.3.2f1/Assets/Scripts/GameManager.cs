@@ -7,13 +7,36 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private bool activateGameLoop = false;
 
-    [SerializeField]
+
+    public bool disableActions = false;
+
     private bool stopAction = false;
+
+    private int numTimesDied = 0;
+    private bool teleport = false;
+
+    [SerializeField]
+    private Transform playerTeleportLocation;
+
+    private bool diedTalk = false;
+
+    private Vector2 nextTime = Vector2.zero;
+
+    [SerializeField]
+    private BuildingController playerRoof;
+
+    
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        if(activateGameLoop)
+            Invoke("StartMumTalking", 3f);
+    }
+
+    private void StartMumTalking()
+    {
+        GlobalReferences.instance.mumDialogue.Talk();
     }
 
     // Update is called once per frame
@@ -23,6 +46,62 @@ public class GameManager : MonoBehaviour
         {
             SceneController.instance.ChangeScene("MainMenu");
         }
+        else
+        {
+            Animator fadeAnimator = GlobalReferences.instance.sceneFader.GetAnimator();
+
+            if (GlobalReferences.instance.resourceManager.GetMentalState() <= 0f && teleport == false)
+            {
+                teleport = true;
+                numTimesDied++;
+                GlobalReferences.instance.sceneFader.FadeToBlack();
+                disableActions = true;
+                GlobalReferences.instance.playerMovement.velocity = Vector3.zero;
+                nextTime.x = GlobalReferences.instance.resourceManager.GetTimeOfDay().x + 1f;
+                nextTime.y = GlobalReferences.instance.resourceManager.GetTimeOfDay().y + 60f;
+            }
+
+            if (teleport && GlobalReferences.instance.usefulFunctions.CheckAnimationPlaying(fadeAnimator, "SceneFader-Black"))
+            {
+                GlobalReferences.instance.sceneFader.FadeFromBlack();
+                teleport = false;
+                GlobalReferences.instance.resourceManager.SetMentalState(1f - 0.1f * (float)numTimesDied);
+                GlobalReferences.instance.playerMovement.transform.position = playerTeleportLocation.position;
+                GlobalReferences.instance.playerMovement.transform.rotation = playerTeleportLocation.rotation;
+                GlobalReferences.instance.playerMovement.velocity = Vector3.zero;
+                diedTalk = true;
+                GlobalReferences.instance.resourceManager.SetTimeOfDay((int)nextTime.x, (int)((int)nextTime.y % 60));
+                playerRoof.DissolveRoof();
+            }
+
+            if(diedTalk)
+            {
+                if (GlobalReferences.instance.dialogueManager.HasFinishedTalking())
+                {
+                    diedTalk = false;
+                    disableActions = false;
+                }
+
+                if (GlobalReferences.instance.usefulFunctions.CheckAnimationPlaying(fadeAnimator, "SceneFader-Clear"))
+                {
+                    GlobalReferences.instance.mumDialogue.TalkYouDied();
+                }
+
+                
+            }
+        }
+
+        if(GlobalReferences.instance.resourceManager.GetTimeOfDay().x == 15 && GlobalReferences.instance.resourceManager.GetTimeOfDay().y < 2f)
+        {
+            GlobalReferences.instance.sisterMovement.EnableInteraction();
+            GlobalReferences.instance.sisterMovement.EnableHomeDropOff();
+        }
+        else if(GlobalReferences.instance.resourceManager.GetTimeOfDay().x == 14 && GlobalReferences.instance.resourceManager.GetTimeOfDay().y > 30f)
+        {
+            GlobalReferences.instance.sisterMovement.DisableSchoolDropOff();
+        }
+
+
 
         UpdateStopAction();
     }
@@ -33,7 +112,7 @@ public class GameManager : MonoBehaviour
         bool mobileActive = GlobalReferences.instance.mobilePhoneManager.IsMobileActive();
        // bool pauseActive = GlobalReferences.instance.pauseManager.IsPauseActive();
 
-        if(dialogueActive || mobileActive)
+        if(dialogueActive || mobileActive || disableActions)
         {
             stopAction = true;
         }

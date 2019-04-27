@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 4378218830208496068}
   - component: {fileID: 2826590552851290495}
   - component: {fileID: 8090910627718080194}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: Mesh
   m_TagString: HouseMesh
   m_Icon: {fileID: 0}

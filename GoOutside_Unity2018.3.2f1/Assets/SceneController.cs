@@ -18,15 +18,41 @@ public class SceneController : MonoBehaviour
     }
     #endregion
 
+    private string sceneTochangeTo = "";
+    private SceneFader sceneFader;
+
     private void Awake()
     {
         MakeSingleton();
     }
 
+    private void Start()
+    {
+        sceneFader = GetComponentInChildren<SceneFader>();
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
     public void ChangeScene(string inSceneName)
     {
-        SceneManager.LoadScene(inSceneName);
+        sceneTochangeTo = inSceneName;
+        sceneFader.FadeToBlack();
     }
+
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        sceneFader.FadeFromBlack();
+    }
+
+    public void ChangeSceneBackend()
+    {
+        if(sceneTochangeTo != "")
+        {
+            Debug.Log(sceneTochangeTo);
+            SceneManager.LoadScene(sceneTochangeTo);
+        }
+        
+    }
+
 
     public void QuitGame()
     {
@@ -36,5 +62,10 @@ public class SceneController : MonoBehaviour
     public void QuitGame(string inString)
     {
         Application.Quit();
+    }
+
+    private void OnDestroy()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
     }
 }

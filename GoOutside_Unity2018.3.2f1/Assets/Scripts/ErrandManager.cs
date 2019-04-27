@@ -22,6 +22,7 @@ public class ErrandManager : MonoBehaviour
 
     private bool workoutComplete = false, lettersDelivered = false, dogsPatted = false;
 
+    private bool allTasksComplete = false;
 
 
     private void InitialiseMarkers()
@@ -37,7 +38,7 @@ public class ErrandManager : MonoBehaviour
         if (numLetterBoxesPairedWithHouses >= letterboxParent.transform.childCount)
         {
             InitialiseMarkers();
-        } 
+        }
     }
 
 
@@ -80,6 +81,10 @@ public class ErrandManager : MonoBehaviour
                 GlobalReferences.instance.mapUIManager.RemoveLetterMarker(key);
             }
         }
+        else
+        {
+            GlobalReferences.instance.resourceManager.UpdateMentalState(-0.02f, true);
+        }
 
         if (currentNumLetters >= totalNumLetters)
             LettersDelivered();
@@ -106,12 +111,14 @@ public class ErrandManager : MonoBehaviour
     public void SisterArrivedAtSchool()
     {
         sisterArrivedAtSchool = true;
+        CheckAllComplete();
         GlobalReferences.instance.uiManager.TickCheckbox(Errands.DropSister);
     }
 
     public void SisterBackFromSchool()
     {
         sisterBackFromSchool = true;
+        CheckAllComplete();
         GlobalReferences.instance.uiManager.TickCheckbox(Errands.PickUpSister);
     }
 
@@ -125,6 +132,7 @@ public class ErrandManager : MonoBehaviour
     private void WorkoutComplete()
     {
         workoutComplete = true;
+        CheckAllComplete();
 
         // update UI
         if (GlobalReferences.instance.uiManager != null)
@@ -136,6 +144,7 @@ public class ErrandManager : MonoBehaviour
     private void LettersDelivered()
     {
         lettersDelivered = true;
+        CheckAllComplete();
 
         // update UI
         if (GlobalReferences.instance.uiManager != null)
@@ -147,6 +156,7 @@ public class ErrandManager : MonoBehaviour
     private void DogsPatted()
     {
         dogsPatted = true;
+        CheckAllComplete();
 
         // update UI
         if (GlobalReferences.instance.uiManager != null)
@@ -233,6 +243,30 @@ public class ErrandManager : MonoBehaviour
 
             chosenLetterboxes.Add(rand, letterboxParent.transform.GetChild(rand).GetComponent<LetterBox>());
         }
+    }
+    
+    private void CheckAllComplete()
+    {
+        bool allComplete = false;
+
+        if(sisterArrivedAtSchool)
+        {
+            if (sisterBackFromSchool)
+            {
+                if (workoutComplete)
+                {
+                    if (dogsPatted)
+                    {
+                        if (lettersDelivered)
+                        {
+                            allComplete = true;
+                        }
+                    }
+                }
+            }
+        }
+
+        allTasksComplete = allComplete;
     }
 
 

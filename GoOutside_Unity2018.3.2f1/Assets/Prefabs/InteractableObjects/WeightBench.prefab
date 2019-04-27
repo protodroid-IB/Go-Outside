@@ -379,12 +379,13 @@ GameObject:
   m_Component:
   - component: {fileID: 1714512295126016421}
   - component: {fileID: 2302270431660984721}
+  - component: {fileID: 3344865442756636248}
   m_Layer: 10
   m_Name: Mesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &1714512295126016421
 Transform:
@@ -414,6 +415,22 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 3.373972, y: 2.1245604, z: 3.8909597}
   m_Center: {x: -0.021840096, y: 1.1180987, z: -1.2172723}
+--- !u!208 &3344865442756636248
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4675481504765163052}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 1.686986, y: 2, z: 1.94548}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: -0.0218401, y: 1.118099, z: -1.217272}
+  m_TimeToStationary: 0.5
 --- !u!1 &5239171977104230799
 GameObject:
   m_ObjectHideFlags: 0
@@ -557,11 +574,11 @@ MonoBehaviour:
     lineCount: 1
     pageCount: 1
     materialCount: 1
-  m_havePropertiesChanged: 1
+  m_havePropertiesChanged: 0
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_spriteAnimator: {fileID: 0}
-  m_isInputParsingRequired: 1
+  m_isInputParsingRequired: 0
   m_inputSource: 0
   m_hasFontAssetChanged: 0
   m_subTextObjects:
@@ -1027,15 +1044,15 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2300004, guid: dbdd7e4a594ac3749b2af0c61942e1a9, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: cf8aeed064d82684fa942c2eeab38111, type: 2}
     - target: {fileID: 2300000, guid: dbdd7e4a594ac3749b2af0c61942e1a9, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: cf8aeed064d82684fa942c2eeab38111, type: 2}
     - target: {fileID: 2300002, guid: dbdd7e4a594ac3749b2af0c61942e1a9, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: cf8aeed064d82684fa942c2eeab38111, type: 2}
-    - target: {fileID: 2300004, guid: dbdd7e4a594ac3749b2af0c61942e1a9, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: cf8aeed064d82684fa942c2eeab38111, type: 2}

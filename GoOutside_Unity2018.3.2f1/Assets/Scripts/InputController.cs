@@ -332,7 +332,7 @@ public class InputController : MonoBehaviour
 
         public bool Interact2(PlayerIndex player)
         {
-            if (Input.GetKeyDown(KeyCode.Alpha1))
+            if (Input.GetKeyDown(KeyCode.Space))
             {
                 return true;
             }

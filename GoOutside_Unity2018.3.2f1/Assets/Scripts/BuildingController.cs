@@ -2,12 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class BuildingController : MonoBehaviour
 {
     [SerializeField]
     private MeshRenderer roofMesh;
 
     private Material[] roofMats;
+
+    [SerializeField]
+    private bool startRevealed = false;
 
     private bool activateDissolveLerp = false;
 
@@ -19,12 +23,25 @@ public class BuildingController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        roofMats = roofMesh.sharedMaterials;
+        roofMats = roofMesh.materials;
 
-        for(int i=0; i < roofMats.Length; i++)
+        if(startRevealed == false)
         {
-            roofMats[i].SetFloat("_DissolveRoofBool", 0.0f);
+            for (int i = 0; i < roofMats.Length; i++)
+            {
+                roofMats[i].SetFloat("_DissolveRoofBool", 0.0f);
+            }
         }
+        else
+        {
+            for (int i = 0; i < roofMats.Length; i++)
+            {
+                roofMats[i].SetFloat("_DissolveRoofBool", 1.0f);
+            }
+
+            ActivateDissolveLerp();
+        }
+        
         
     }
 
@@ -95,5 +112,15 @@ public class BuildingController : MonoBehaviour
     public void ActivateDissolveLerp()
     {
         activateDissolveLerp = true;
+    }
+
+    public void DissolveRoof()
+    {
+        for (int i = 0; i < roofMats.Length; i++)
+        {
+            roofMats[i].SetFloat("_DissolveRoofBool", 1.0f);
+        }
+        SetTargetDissolve(1f);
+        ActivateDissolveLerp();
     }
 }

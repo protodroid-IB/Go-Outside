@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[ExecuteInEditMode]
 public class SphereMask : MonoBehaviour
 {
     public float minRadius = 5f, maxRadius = 75f;

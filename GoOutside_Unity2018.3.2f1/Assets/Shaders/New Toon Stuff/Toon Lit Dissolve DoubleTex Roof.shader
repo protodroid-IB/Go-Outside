@@ -10,6 +10,8 @@
         _DisAmount("Noise Texture Opacity", Range(0.01, 1)) = 0.01
         _DisLineWidth("Line Width", Range(0, 2)) = 0.005
         _DisLineColor("Line Tint", Color) = (1,1,1,1)  
+		_DissolveRoofBool("DissolveBool", Range(0.0, 1.0)) = 1.0
+		_RoofDissolveAmount("RoofDissolveAmount", Range(0.0, 1.0)) = 0.0
     }
  
         SubShader{

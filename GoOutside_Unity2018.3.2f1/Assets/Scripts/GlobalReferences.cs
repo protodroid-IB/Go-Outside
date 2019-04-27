@@ -72,6 +72,17 @@ public class GlobalReferences : MonoBehaviour
 
     public ExerciseApplication exerciseApplication;
 
+    public MumDialogue mumDialogue;
+
+    [HideInInspector]
+    public MusicManager musicManager;
+
+    [HideInInspector]
+    public SceneFader sceneFader;
+
+    [HideInInspector]
+    public SisterMovement sisterMovement;
+
 
 
     //public PlayerMovementController PlayerMovement { get => playerMovement;}
@@ -96,6 +107,9 @@ public class GlobalReferences : MonoBehaviour
         //pauseManager = GetComponent<PauseManager>();
         mapCameraMovement = GameObject.FindWithTag("MapCamera").GetComponent<MapCameraMovement>();
         mapUIManager = GameObject.FindWithTag("MapUI").GetComponent<MapUIManager>();
+        musicManager = GameObject.FindWithTag("Preload").GetComponent<MusicManager>();
+        sceneFader = GameObject.FindWithTag("Preload").GetComponentInChildren<SceneFader>();
+        sisterMovement = GameObject.FindWithTag("Sister").GetComponent<SisterMovement>();
     }
 
     private void Start()
@@ -150,6 +164,15 @@ public class GlobalReferences : MonoBehaviour
 
         if(mapUIManager == null)
             mapUIManager = GameObject.FindWithTag("MapUI").GetComponent<MapUIManager>();
+
+        if(musicManager == null)
+            musicManager = GameObject.FindWithTag("Preload").GetComponent<MusicManager>();
+
+        if(sceneFader == null)
+            sceneFader = GameObject.FindWithTag("Preload").GetComponentInChildren<SceneFader>();
+
+        if(sisterMovement == null)
+            sisterMovement = GameObject.FindWithTag("Sister").GetComponent<SisterMovement>();
     }
 
 }

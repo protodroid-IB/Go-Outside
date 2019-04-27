@@ -84,7 +84,7 @@ public class DynamicMusicManager : MonoBehaviour
 
 
     // Start is called before the first frame update
-    void Start()
+    void OnEnable()
     {
         FindMusicGameobject();
         
@@ -115,5 +115,11 @@ public class DynamicMusicManager : MonoBehaviour
             }
         }
         
+
+    }
+
+    public GameObject GetMusicGameObject()
+    {
+        return musicGO;
     }
 }

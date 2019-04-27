@@ -29,6 +29,8 @@ public class DialogueManager : MonoBehaviour
 
     private Choice[] choices;
 
+    private List<string> inputDialogueSequence = new List<string>();
+
 
     private void Start()
     {
@@ -71,9 +73,23 @@ public class DialogueManager : MonoBehaviour
 
     private void ProgressDialogue()
     {
-        if (HasFinishedTalking())
+        if (HasFinishedTalking() && inputDialogueSequence.Count <= 0)
         {
             dialogueActive = false;
+        }
+        else
+        {
+            if(HasFinishedTalking())
+            {
+                dialogueText.text = "";
+                currentDialogue = "";
+                currentCharacter = 0;
+                dialogueTextTimer = 0f;
+                inputDialogue = inputDialogueSequence[0];
+                inputDialogueSequence.RemoveAt(0);
+                canStartTalking = true;
+            }
+            
         }
 
     }
@@ -83,7 +99,25 @@ public class DialogueManager : MonoBehaviour
     {
         if(!dialogueActive)
         {
+            inputDialogueSequence.Clear();
             inputDialogue = inDialogue;
+            dialogueActive = true;
+            askingQuestion = false;
+            GlobalReferences.instance.playerInteract.interact += ProgressDialogue;
+        }
+    }
+
+    public void Speak(string[] inDialogue)
+    {
+        if (!dialogueActive)
+        {
+            inputDialogueSequence.Clear();
+            for(int i=1; i < inDialogue.Length; i++)
+            {
+                inputDialogueSequence.Add(inDialogue[i]);
+            }
+
+            inputDialogue = inDialogue[0];
             dialogueActive = true;
             askingQuestion = false;
             GlobalReferences.instance.playerInteract.interact += ProgressDialogue;
@@ -94,6 +128,7 @@ public class DialogueManager : MonoBehaviour
     {
         if (!dialogueActive)
         {
+            inputDialogueSequence.Clear();
             inputDialogue = inDialogue;
             choices = inChoices;
 
@@ -101,6 +136,7 @@ public class DialogueManager : MonoBehaviour
             askingQuestion = true;
         }
     }
+
 
 
     public bool IsDialogueActive()

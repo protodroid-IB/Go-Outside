@@ -310,6 +310,11 @@ PrefabInstance:
       propertyPath: menuItems.Array.data[3].menuElement
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 6553863525353962018, guid: 99c071416170d2644b5447b3b009ea93,
+        type: 3}
+      propertyPath: menuItems.Array.data[0].receiveInputAfterSelecting
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2223592288632937892, guid: 99c071416170d2644b5447b3b009ea93,
         type: 3}
       propertyPath: m_havePropertiesChanged

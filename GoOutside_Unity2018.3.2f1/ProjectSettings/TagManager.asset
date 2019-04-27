@@ -36,6 +36,7 @@ TagManager:
   - House
   - HouseMesh
   - ExerciseApplication
+  - Sister
   layers:
   - Default
   - TransparentFX

@@ -13,10 +13,10 @@ public class SisterMovement : MonoBehaviour
 
     private SisterState sisterState = SisterState.Still;
 
-    private NavMeshAgent navAgent;
+    [HideInInspector]
+    public NavMeshAgent navAgent;
     private Interactable interactable;
 
-    [SerializeField]
     private float maxSpeed = 2f;
     private float wanderSpeed;
 
@@ -43,29 +43,50 @@ public class SisterMovement : MonoBehaviour
     private bool runTimer = false;
 
     private bool hasInteracted = false;
-    
 
 
+    [SerializeField]
+    public GameObject interactSphere, dropZoneSphereSchool, dropZoneSphereHome;
+
+    private bool wandering = true, still = true;
+
+    private bool inTriggerArea = false;
+
+    private float followSpeed;
+
+    [SerializeField]
+    [Range(0.1f, 1f)]
+    private float slowDownSpeedRatio = 0.5f;
+
+    [SerializeField]
+    private float followAcc = 0.5f, followDec = 0.5f;
 
     // Start is called before the first frame update
     void Start()
     {
         // speed stuff
-        maxSpeed = GlobalReferences.instance.playerMovement.GetMaxSpeed() * 0.5f;
-        wanderSpeed = maxSpeed * 0.4f;
+        maxSpeed = GlobalReferences.instance.playerMovement.GetMaxRunSpeed() * 2f;
+        wanderSpeed = maxSpeed * 0.1f;
         navAgent = GetComponent<NavMeshAgent>();
         navAgent.speed = maxSpeed;
 
         // interactable stuff
         interactable = GetComponent<Interactable>();
+        interactable.beginInteract += InTriggerArea;
         interactable.interacting += FollowTarget;
         interactable.endInteract += SetWander;
 
         // wander sphere stuff
         wanderSphere = Instantiate(wanderPrefab, transform.position, Quaternion.identity, transform);
         wanderSphere.SetActive(false);
+
+        dropZoneSphereHome.SetActive(false);
     }
 
+    private void InTriggerArea()
+    {
+        inTriggerArea = true;
+    }
 
     private void SetWander()
     {
@@ -73,7 +94,10 @@ public class SisterMovement : MonoBehaviour
         {
             sisterState = SisterState.Wander;
             navAgent.speed = wanderSpeed;
+            wandering = true;
         }
+
+        inTriggerArea = false;
 
     }
 
@@ -89,10 +113,6 @@ public class SisterMovement : MonoBehaviour
 
                 case SisterState.Wander:
                     Wander();
-                    break;
-
-                case SisterState.Target:
-
                     break;
 
                 default:
@@ -121,6 +141,8 @@ public class SisterMovement : MonoBehaviour
         {
             navAgent.isStopped = true;
         }
+
+        Debug.Log(sisterState);
         
     }
 
@@ -128,50 +150,78 @@ public class SisterMovement : MonoBehaviour
     {
         navAgent.isStopped = true;
 
-        if(CalculateSqrDistanceFromPlayer() <= lookAtPlayerDistance * lookAtPlayerDistance)
+        still = true;
+
+        if (CalculateSqrDistanceFromPlayer() <= lookAtPlayerDistance * lookAtPlayerDistance)
         {
             RotateSisterToFacePlayer();
         }
 
-        sisterAnim.SetBool("Walking", false);
+        //sisterAnim.SetBool("Walking", false);
+        sisterAnim.SetFloat("Speed", 0.0f);
     }
 
     private void FollowTarget()
     {
-        hasInteracted = true; 
+        hasInteracted = true;
 
-        if(navAgent.speed != maxSpeed)
+        if (wandering == true || still == true)
         {
+            wandering = false;
+            still = false;
+            followSpeed = GlobalReferences.instance.playerMovement.GetCurrentSpeed();
             sisterState = SisterState.Follow;
             runTimer = false;
             timer = 0f;
-            navAgent.speed = maxSpeed;
+            navAgent.isStopped = false;
         }
 
-        sisterAnim.SetBool("Walking", true);
+        //float distanceFromPlayer = CalculateSqrDistanceFromPlayer();
 
+        //if (distanceFromPlayer <= (distanceToKeepFromPlayer * distanceToKeepFromPlayer))
+        //{
+        //    navAgent.isStopped = false;
+        //    followSpeed = Mathf.Lerp(followSpeed, GlobalReferences.instance.playerMovement.GetCurrentSpeed() * 0.65f, 2f);
+        //    RotateSisterToFacePlayer();
+        //    navAgent.SetDestination(GlobalReferences.instance.playerMovement.transform.position);
+        //    //sisterAnim.SetFloat("Speed", 0.0f);
+        //}
+        //else
+        //{
+        //    //navAgent.speed = Mathf.Lerp(navAgent.speed, GlobalReferences.instance.playerMovement.GetCurrentSpeed(), 0.1f);
+        //    navAgent.isStopped = false;
+        //    navAgent.SetDestination(GlobalReferences.instance.playerMovement.transform.position);
+        //    followSpeed = Mathf.Lerp(followSpeed, GlobalReferences.instance.playerMovement.GetCurrentSpeed(), 2f);
 
-        float distanceFromPlayer = CalculateSqrDistanceFromPlayer();
+        //    //if (navAgent.velocity == Vector3.zero)
+        //    //{
+        //    //    if(CalculateSqrDistanceFromPlayer() <= lookAtPlayerDistance * lookAtPlayerDistance)
+        //    //        RotateSisterToFacePlayer();
+        //    //}
+        //}
 
-        if (distanceFromPlayer <= (distanceToKeepFromPlayer * distanceToKeepFromPlayer))
+        navAgent.SetDestination(GlobalReferences.instance.playerMovement.transform.position);
+
+        float distanceFromPlayer = CalculateDistanceFromPlayer();
+
+        if (distanceFromPlayer <= distanceToKeepFromPlayer)
         {
-            navAgent.isStopped = true;
-            navAgent.velocity = Vector3.zero;
-            RotateSisterToFacePlayer();
+            followSpeed = Mathf.Lerp(followSpeed, GlobalReferences.instance.playerMovement.GetCurrentSpeed() * slowDownSpeedRatio, followDec);
         }
         else
         {
-            navAgent.isStopped = false;
-            navAgent.SetDestination(GlobalReferences.instance.playerMovement.transform.position);
-
-            if (navAgent.velocity == Vector3.zero)
+            if (followSpeed > GlobalReferences.instance.playerMovement.GetCurrentSpeed() * slowDownSpeedRatio)
             {
-                if(CalculateSqrDistanceFromPlayer() <= lookAtPlayerDistance * lookAtPlayerDistance)
-                    RotateSisterToFacePlayer();
+                followSpeed = Mathf.Lerp(followSpeed, GlobalReferences.instance.playerMovement.GetCurrentSpeed() * slowDownSpeedRatio, followDec);
+            }
+            else
+            {
+                followSpeed = Mathf.Lerp(followSpeed, GlobalReferences.instance.playerMovement.GetCurrentSpeed(), followAcc);
             }
         }
 
-        
+        navAgent.speed = followSpeed;
+        sisterAnim.SetFloat("Speed", followSpeed / maxSpeed);
     }
 
     private void RotateSisterToFacePlayer()
@@ -188,16 +238,19 @@ public class SisterMovement : MonoBehaviour
 
     private void Wander()
     {
-        sisterAnim.SetBool("Walking", true);
+        //sisterAnim.SetBool("Walking", true);
+       
 
         if (wanderSphere.activeSelf == false)
         {
             wanderSphere.SetActive(true);
             navAgent.isStopped = true;
-           // targetWanderPos = Vector3.zero;
+            // targetWanderPos = Vector3.zero;
         }
 
-        if(navAgent.isStopped == true)
+        sisterAnim.SetFloat("Speed", navAgent.speed / maxSpeed);
+
+        if (navAgent.isStopped == true)
         {
             //targetWanderPos = FindPositionInSphere();
             SphereCollider collider = wanderSphere.GetComponent<SphereCollider>();
@@ -211,15 +264,23 @@ public class SisterMovement : MonoBehaviour
             navAgent.isStopped = false;
             navAgent.SetDestination(targetWanderPos);
         }
-        
 
-        if(((transform.position - targetWanderPos).sqrMagnitude < 0.01) || (timer >= 0.75f))
+
+        if (inTriggerArea == false)
         {
-            sisterState = SisterState.Still;
-            runTimer = true;
-            timer = 0f;
-            navAgent.isStopped = true;
+            if (((transform.position - targetWanderPos).sqrMagnitude < 0.01) || (timer >= 0.75f))
+            {
+                sisterState = SisterState.Still;
+                runTimer = true;
+                timer = 0f;
+                navAgent.isStopped = true;
+            }
         }
+        else
+        {
+            sisterState = SisterState.Follow;
+        }
+        
 
         if (navAgent.velocity == Vector3.zero)
         {
@@ -244,6 +305,11 @@ public class SisterMovement : MonoBehaviour
 
 
 
+    private float CalculateDistanceFromPlayer()
+    {
+        return (GlobalReferences.instance.playerMovement.transform.position - transform.position).magnitude;
+    }
+
     private float CalculateSqrDistanceFromPlayer()
     {
         return (GlobalReferences.instance.playerMovement.transform.position - transform.position).sqrMagnitude;
@@ -259,6 +325,51 @@ public class SisterMovement : MonoBehaviour
     {
         interactable.interacting -= FollowTarget;
         interactable.endInteract -= SetWander;
+    }
+
+
+    public void WalkIntoSchool(Vector3 position)
+    {
+        sisterState = SisterState.Target;
+        interactable.interacting -= FollowTarget;
+        interactable.endInteract -= SetWander;
+        interactSphere.SetActive(false);
+        dropZoneSphereSchool.SetActive(false);
+        sisterAnim.SetFloat("Speed", 0.0f);
+    }
+
+    public void DisableSchoolDropOff()
+    {
+        dropZoneSphereSchool.SetActive(false);
+    }
+
+    public void EnableInteraction()
+    {
+        if(interactSphere.activeInHierarchy == false)
+        {
+            interactable.interacting += FollowTarget;
+            interactable.endInteract += SetWander;
+            interactSphere.SetActive(true);
+            hasInteracted = false;
+            sisterState = SisterState.Follow;
+        }
+        
+    }
+
+    public void EnableHomeDropOff()
+    {
+        dropZoneSphereHome.SetActive(true);
+    }
+
+    public void WalkIntoHome(Vector3 position)
+    {
+        sisterState = SisterState.Still;
+        interactable.interacting -= FollowTarget;
+        interactable.endInteract -= SetWander;
+        interactSphere.SetActive(false);
+        dropZoneSphereHome.SetActive(false);
+        sisterAnim.SetFloat("Speed", 0.0f);
+        Debug.Log("YEA HAN");
     }
 
 

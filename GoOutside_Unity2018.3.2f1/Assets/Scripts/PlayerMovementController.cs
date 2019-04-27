@@ -47,6 +47,8 @@ public class PlayerMovementController : MonoBehaviour
 
     private bool collided = false;
 
+    private float currentSpeed = 0f;
+
 
     private void Awake()
     {
@@ -98,13 +100,21 @@ public class PlayerMovementController : MonoBehaviour
 
     private void Move(Vector2 inDirection)
     {
+        
+
         if(inDirection.sqrMagnitude >= (moveDeadZone * moveDeadZone) && (inDirection.sqrMagnitude < (runDeadZone * runDeadZone)))
         {
-            velocity = Vector3.Slerp(velocity, inDirection.magnitude * transform.forward * maxWalkSpeed * Time.deltaTime, moveAcceleration * Time.deltaTime);
+            currentSpeed = inDirection.magnitude * maxWalkSpeed;
+            velocity = Vector3.Slerp(velocity, currentSpeed * transform.forward * Time.deltaTime, moveAcceleration * Time.deltaTime);
         }
         else if (inDirection.sqrMagnitude > (moveDeadZone * moveDeadZone) && (inDirection.sqrMagnitude >= (runDeadZone * runDeadZone)))
         {
-            velocity = Vector3.Slerp(velocity, inDirection.magnitude * transform.forward * maxRunSpeed * Time.deltaTime, moveAcceleration * Time.deltaTime);
+            currentSpeed = inDirection.magnitude * maxRunSpeed;
+            velocity = Vector3.Slerp(velocity, currentSpeed * transform.forward * Time.deltaTime, moveAcceleration * Time.deltaTime);
+        }
+        else
+        {
+            currentSpeed = 0f;
         }
 
         transform.position += new Vector3(velocity.x, 0f, velocity.z);
@@ -135,6 +145,16 @@ public class PlayerMovementController : MonoBehaviour
     public float GetMaxSpeed()
     {
         return maxWalkSpeed;
+    }
+
+    public float GetMaxRunSpeed()
+    {
+        return maxRunSpeed;
+    }
+
+    public float GetCurrentSpeed()
+    {
+        return currentSpeed;
     }
 
     private void OnCollisionStay(Collision collision)

@@ -106,7 +106,7 @@ Material:
     - _ZWrite: 1
     m_Colors:
     - _Color: {r: 0.38679248, g: 0.38679248, b: 0.38679248, a: 1}
-    - _Color2: {r: 1, g: 1, b: 1, a: 1}
-    - _DisLineColor: {r: 1, g: 1, b: 1, a: 1}
+    - _Color2: {r: 0.6431373, g: 0.6431373, b: 0.6431373, a: 1}
+    - _DisLineColor: {r: 0.066037714, g: 0.066037714, b: 0.066037714, a: 1}
     - _DissolveLineColor: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}

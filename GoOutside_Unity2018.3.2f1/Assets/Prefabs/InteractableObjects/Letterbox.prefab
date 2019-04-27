@@ -44,8 +44,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 12.798828}
-  m_Center: {x: 0, y: 0, z: 5.899414}
+  m_Size: {x: 1.9724121, y: 5.1683164, z: 12.798828}
+  m_Center: {x: 0.16981506, y: 1.0420792, z: 5.899414}
 --- !u!114 &7655928860610989561
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -87,6 +87,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   letterBoxAnim: {fileID: 6236440912478287757}
+--- !u!208 &770906518731614045
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 621307554231272381}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.389122, y: 0.899643, z: 0.536957}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0.007392883, y: 0.3996429, z: 0.1847839}
+  m_TimeToStationary: 0.5
 --- !u!95 &6236440912478287757
 Animator:
   serializedVersion: 3
@@ -255,6 +271,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Layer
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6733099831843436722, guid: 3eb07cad41e9552468a3483282773c8b,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 8364817167204612899, guid: 3eb07cad41e9552468a3483282773c8b,
         type: 3}

@@ -10,7 +10,7 @@ public class PlayerCollisions : MonoBehaviour
     {
         Debug.Log(collision.gameObject.layer);
 
-        if (collision.gameObject.CompareTag("PlayerCollide"))
+        if (collision.gameObject.CompareTag("PlayerCollide") || collision.gameObject.layer == 10)
         {
             Debug.Log("TRIGGERING?!");
             collided = true;
@@ -22,7 +22,7 @@ public class PlayerCollisions : MonoBehaviour
     {
         Debug.Log(collision.gameObject.layer);
 
-        if (collision.gameObject.CompareTag("PlayerCollide"))
+        if (collision.gameObject.CompareTag("PlayerCollide") || collision.gameObject.layer == 10)
         {
             Debug.Log("TRIGGERING?!");
             collided = true;

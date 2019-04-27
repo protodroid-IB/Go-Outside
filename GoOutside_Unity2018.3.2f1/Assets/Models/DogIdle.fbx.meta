@@ -1,0 +1,200 @@
+fileFormatVersion: 2
+guid: 91ca34e059e075944a54dd7af1c2897e
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: //RootNode
+    100002: IDLE_BE_headEND01
+    100004: IDLE_BE_L_earEND01
+    100006: IDLE_BE_L_footEND01
+    100008: IDLE_BE_L_foreankleEND01
+    100010: IDLE_BE_L_forefootEND01
+    100012: IDLE_BE_L_hindankle01
+    100014: IDLE_BE_R_EarEND01
+    100016: IDLE_BE_R_footEND01
+    100018: IDLE_BE_R_foreankleEND01
+    100020: IDLE_BE_R_forefootEND01
+    100022: IDLE_BE_R_hindankle01
+    100024: IDLE_BE_TailEND01
+    100026: IDLE_BN_Chest01
+    100028: IDLE_BN_head01
+    100030: IDLE_BN_L_EAR01
+    100032: IDLE_BN_L_forefoot01
+    100034: IDLE_BN_L_Foreshin01
+    100036: IDLE_BN_L_Forethigh01
+    100038: IDLE_BN_L_hindfoot01
+    100040: IDLE_BN_L_Hindshin01
+    100042: IDLE_BN_L_Hindthigh01
+    100044: IDLE_BN_neck01
+    100046: IDLE_BN_Pelvis01
+    100048: IDLE_BN_R_EAR01
+    100050: IDLE_BN_R_forefoot01
+    100052: IDLE_BN_R_Foreshin01
+    100054: IDLE_BN_R_Forethigh01
+    100056: IDLE_BN_R_hindfoot01
+    100058: IDLE_BN_R_Hindshin01
+    100060: IDLE_BN_R_Hindthigh01
+    100062: IDLE_BN_Root01
+    100064: IDLE_Box001
+    100066: IDLE_Circle002
+    100068: IDLE_Circle003
+    100070: IDLE_Circle004
+    100072: IDLE_Circle005
+    100074: IDLE_Ctrl_CHest01
+    100076: IDLE_ctrl_COG01
+    100078: IDLE_Ctrl_GLOBAL01
+    100080: IDLE_Ctrl_HEAD01
+    100082: IDLE_Ctrl_HIP01
+    100084: IDLE_Ctrl_L_EAR01
+    100086: IDLE_Ctrl_Neck01
+    100088: IDLE_Ctrl_R_EAR01
+    100090: IDLE_Ctrl_ROOT01
+    100092: IDLE_IK Chain001
+    100094: IDLE_IK Chain002
+    100096: IDLE_IK Chain003
+    100098: IDLE_IK Chain004
+    400000: //RootNode
+    400002: IDLE_BE_headEND01
+    400004: IDLE_BE_L_earEND01
+    400006: IDLE_BE_L_footEND01
+    400008: IDLE_BE_L_foreankleEND01
+    400010: IDLE_BE_L_forefootEND01
+    400012: IDLE_BE_L_hindankle01
+    400014: IDLE_BE_R_EarEND01
+    400016: IDLE_BE_R_footEND01
+    400018: IDLE_BE_R_foreankleEND01
+    400020: IDLE_BE_R_forefootEND01
+    400022: IDLE_BE_R_hindankle01
+    400024: IDLE_BE_TailEND01
+    400026: IDLE_BN_Chest01
+    400028: IDLE_BN_head01
+    400030: IDLE_BN_L_EAR01
+    400032: IDLE_BN_L_forefoot01
+    400034: IDLE_BN_L_Foreshin01
+    400036: IDLE_BN_L_Forethigh01
+    400038: IDLE_BN_L_hindfoot01
+    400040: IDLE_BN_L_Hindshin01
+    400042: IDLE_BN_L_Hindthigh01
+    400044: IDLE_BN_neck01
+    400046: IDLE_BN_Pelvis01
+    400048: IDLE_BN_R_EAR01
+    400050: IDLE_BN_R_forefoot01
+    400052: IDLE_BN_R_Foreshin01
+    400054: IDLE_BN_R_Forethigh01
+    400056: IDLE_BN_R_hindfoot01
+    400058: IDLE_BN_R_Hindshin01
+    400060: IDLE_BN_R_Hindthigh01
+    400062: IDLE_BN_Root01
+    400064: IDLE_Box001
+    400066: IDLE_Circle002
+    400068: IDLE_Circle003
+    400070: IDLE_Circle004
+    400072: IDLE_Circle005
+    400074: IDLE_Ctrl_CHest01
+    400076: IDLE_ctrl_COG01
+    400078: IDLE_Ctrl_GLOBAL01
+    400080: IDLE_Ctrl_HEAD01
+    400082: IDLE_Ctrl_HIP01
+    400084: IDLE_Ctrl_L_EAR01
+    400086: IDLE_Ctrl_Neck01
+    400088: IDLE_Ctrl_R_EAR01
+    400090: IDLE_Ctrl_ROOT01
+    400092: IDLE_IK Chain001
+    400094: IDLE_IK Chain002
+    400096: IDLE_IK Chain003
+    400098: IDLE_IK Chain004
+    2100000: 'Material #82'
+    2100002: 'Material #24'
+    2100004: 'Material #117'
+    2100006: 'Material #47'
+    4300000: IDLE_Box001
+    7400000: Take 001
+    9500000: //RootNode
+    13700000: IDLE_Box001
+    2186277476908879412: ImportLogs
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    previousCalculatedGlobalScale: 0.0254
+    hasPreviousCalculatedGlobalScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

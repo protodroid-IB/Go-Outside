@@ -54,6 +54,7 @@ public class LetterBox : MonoBehaviour
     {
         house = inHouse;
         GlobalReferences.instance.errandManager.IncrementNumPariedLetterboxes();
+        //Debug.Log(gameObject.name);
     }
 
     public GameObject GetHouse()

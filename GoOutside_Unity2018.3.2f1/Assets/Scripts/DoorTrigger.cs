@@ -36,9 +36,7 @@ public class DoorTrigger : MonoBehaviour
             {
                 buildingController.SetTargetDissolve(0.0f);
                 buildingController.ActivateDissolveLerp();
-            }
-
-            
+            } 
         }
     }
 

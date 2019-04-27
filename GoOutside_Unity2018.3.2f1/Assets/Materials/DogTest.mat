@@ -107,6 +107,6 @@ Material:
     m_Colors:
     - _Color: {r: 0.6509434, g: 0.6509434, b: 0.6509434, a: 1}
     - _Color2: {r: 0.34640455, g: 0.3490566, b: 0.08726415, a: 1}
-    - _DisLineColor: {r: 1, g: 1, b: 1, a: 1}
+    - _DisLineColor: {r: 0.1792453, g: 0.1792453, b: 0.1792453, a: 1}
     - _DissolveLineColor: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}

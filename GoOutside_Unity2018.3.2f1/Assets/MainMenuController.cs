@@ -9,6 +9,8 @@ public class MainMenuController : MonoBehaviour
 {
     public enum MenuElement { Play, ControllerType, Options, Exit };
 
+    public bool canReceiveInput = true;
+
     [System.Serializable]
     public class MenuItem
     {
@@ -18,6 +20,7 @@ public class MainMenuController : MonoBehaviour
         public string sceneName;
         public Transform pointerSpotLocation;
         public Button button;
+        public bool receiveInputAfterSelecting = true;
     }
 
     [SerializeField]
@@ -158,7 +161,9 @@ public class MainMenuController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        ReceiveInput();
+        if (canReceiveInput)
+            ReceiveInput();
+
         UpdatePointerPosition();
     }
 
@@ -186,6 +191,7 @@ public class MainMenuController : MonoBehaviour
     public void ChangeScene()
     {
         SceneController.instance.ChangeScene(menuItems[currentMenuItemSelected].sceneName);
+        canReceiveInput = false;
     }
 
     public void ActivateOptionsPanel()
